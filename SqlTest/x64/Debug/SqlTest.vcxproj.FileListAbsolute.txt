@@ -1,0 +1,3 @@
+D:\Visual Studio 2022 projects\SqlTest\SqlTest\x64\Debug\SqlTest.vcxproj.AssemblyReference.cache
+D:\Visual Studio 2022 projects\SqlTest\SqlTest\x64\Debug\SqlTest.MyForm.resources
+D:\Visual Studio 2022 projects\SqlTest\SqlTest\x64\Debug\SqlTest.vcxproj.GenerateResource.cache
