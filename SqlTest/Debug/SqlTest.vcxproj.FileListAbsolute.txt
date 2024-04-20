@@ -1,0 +1,4 @@
+D:\Visual Studio 2022 projects\SqlTest\PeakShift-Database-Project\SqlTest\Debug\SqlTest.vcxproj.AssemblyReference.cache
+D:\Visual Studio 2022 projects\SqlTest\PeakShift-Database-Project\SqlTest\Debug\SqlTest.MyForm.resources
+D:\Visual Studio 2022 projects\SqlTest\PeakShift-Database-Project\SqlTest\Debug\SqlTest.vcxproj.GenerateResource.cache
+D:\Visual Studio 2022 projects\SqlTest\PeakShift-Database-Project\SqlTest\Debug\SqlTest.exe

@@ -1,9 +1,8 @@
-#include "MyForm.h"
+/*#include "MyForm.h"
 using namespace System;
 using namespace System::Windows::Forms;
 
 [STAThread]
-
 
 
 void main() {
@@ -11,4 +10,4 @@ void main() {
 	Application::SetCompatibleTextRenderingDefault(false);
 	SqlTest::MyForm form;
 	Application::Run(% form);
-}
+}*/
