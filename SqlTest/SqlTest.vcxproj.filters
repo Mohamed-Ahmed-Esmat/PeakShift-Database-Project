@@ -21,12 +21,18 @@
     <ClCompile Include="SubscrpPlans.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="HealthAssess.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MyForm.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="SubscrpPlans.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="HealthAssess.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

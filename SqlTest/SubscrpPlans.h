@@ -68,9 +68,9 @@ namespace SqlTest {
 		{
 			this->flowLayoutPanel1 = (gcnew System::Windows::Forms::FlowLayoutPanel());
 			this->panel1 = (gcnew System::Windows::Forms::Panel());
+			this->button1 = (gcnew System::Windows::Forms::Button());
 			this->label2 = (gcnew System::Windows::Forms::Label());
 			this->label1 = (gcnew System::Windows::Forms::Label());
-			this->button1 = (gcnew System::Windows::Forms::Button());
 			this->panel2 = (gcnew System::Windows::Forms::Panel());
 			this->button2 = (gcnew System::Windows::Forms::Button());
 			this->label3 = (gcnew System::Windows::Forms::Label());
@@ -105,11 +105,25 @@ namespace SqlTest {
 			this->panel1->Controls->Add(this->button1);
 			this->panel1->Controls->Add(this->label2);
 			this->panel1->Controls->Add(this->label1);
+			this->panel1->ImeMode = System::Windows::Forms::ImeMode::NoControl;
 			this->panel1->Location = System::Drawing::Point(20, 20);
 			this->panel1->Margin = System::Windows::Forms::Padding(20);
 			this->panel1->Name = L"panel1";
 			this->panel1->Size = System::Drawing::Size(525, 89);
 			this->panel1->TabIndex = 0;
+			this->panel1->Paint += gcnew System::Windows::Forms::PaintEventHandler(this, &SubscrpPlans::panel1_Paint);
+			// 
+			// button1
+			// 
+			this->button1->BackColor = System::Drawing::SystemColors::MenuHighlight;
+			this->button1->Font = (gcnew System::Drawing::Font(L"Modern No. 20", 13.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->button1->Location = System::Drawing::Point(365, 14);
+			this->button1->Name = L"button1";
+			this->button1->Size = System::Drawing::Size(148, 57);
+			this->button1->TabIndex = 2;
+			this->button1->Text = L"Subscribe";
+			this->button1->UseVisualStyleBackColor = false;
 			// 
 			// label2
 			// 
@@ -134,18 +148,6 @@ namespace SqlTest {
 			this->label1->Size = System::Drawing::Size(210, 32);
 			this->label1->TabIndex = 0;
 			this->label1->Text = L"Price/ 1 month";
-			// 
-			// button1
-			// 
-			this->button1->BackColor = System::Drawing::SystemColors::MenuHighlight;
-			this->button1->Font = (gcnew System::Drawing::Font(L"Modern No. 20", 13.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->button1->Location = System::Drawing::Point(365, 14);
-			this->button1->Name = L"button1";
-			this->button1->Size = System::Drawing::Size(148, 57);
-			this->button1->TabIndex = 2;
-			this->button1->Text = L"Subscribe";
-			this->button1->UseVisualStyleBackColor = false;
 			// 
 			// panel2
 			// 
@@ -264,5 +266,7 @@ namespace SqlTest {
 #pragma endregion
 	private: System::Void label2_Click(System::Object^ sender, System::EventArgs^ e) {
 	}
+private: System::Void panel1_Paint(System::Object^ sender, System::Windows::Forms::PaintEventArgs^ e) {
+}
 };
 }

@@ -1,4 +1,4 @@
-/*#include "SubscrpPlans.h"
+#include "HealthAssess.h"
 
 using namespace System;
 using namespace System::Windows::Forms;
@@ -10,6 +10,6 @@ using namespace System::Windows::Forms;
 void main() {
 	Application::EnableVisualStyles();
 	Application::SetCompatibleTextRenderingDefault(false);
-	SqlTest::SubscrpPlans form;
+	SqlTest::HealthAssess form;
 	Application::Run(% form);
-}*/
+}
