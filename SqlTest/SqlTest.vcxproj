@@ -123,11 +123,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="DailyMetric.cpp" />
     <ClCompile Include="HealthAssess.cpp" />
     <ClCompile Include="MyForm.cpp" />
     <ClCompile Include="SubscrpPlans.cpp" />
+    <ClCompile Include="UserDashboard.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="DailyMetric.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
     <ClInclude Include="HealthAssess.h">
       <FileType>CppForm</FileType>
     </ClInclude>
@@ -137,8 +142,14 @@
     <ClInclude Include="SubscrpPlans.h">
       <FileType>CppForm</FileType>
     </ClInclude>
+    <ClInclude Include="UserDashboard.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="DailyMetric.resx">
+      <DependentUpon>DailyMetric.h</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="HealthAssess.resx">
       <DependentUpon>HealthAssess.h</DependentUpon>
     </EmbeddedResource>
@@ -147,6 +158,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="SubscrpPlans.resx">
       <DependentUpon>SubscrpPlans.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserDashboard.resx">
+      <DependentUpon>UserDashboard.h</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
