@@ -6,3 +6,5 @@ D:\Visual Studio 2022 projects\SqlTest\PeakShift-Database-Project\SqlTest\x64\De
 D:\Visual Studio 2022 projects\SqlTest\PeakShift-Database-Project\SqlTest\x64\Debug\SqlTest.SubscrpPlans.resources
 D:\Visual Studio 2022 projects\SqlTest\PeakShift-Database-Project\SqlTest\x64\Debug\SqlTest.vcxproj.GenerateResource.cache
 D:\Visual Studio 2022 projects\SqlTest\PeakShift-Database-Project\SqlTest\x64\Debug\SqlTest.HealthAssess.resources
+D:\Visual Studio 2022 projects\SqlTest\PeakShift-Database-Project\SqlTest\x64\Debug\SqlTest.DailyMetric.resources
+D:\Visual Studio 2022 projects\SqlTest\PeakShift-Database-Project\SqlTest\x64\Debug\SqlTest.UserDashboard.resources
