@@ -1,0 +1,14 @@
+
+*.vsidx
+.vs/SqlTest/v17/Browse.VC.db
+*.ipch
+.vs/SqlTest/v17/.suo
+.vs/SqlTest/v17/Solution.VC.db
+SqlTest/x64/Debug/SqlTest.vcxproj.AssemblyReference.cache
+SqlTest/x64/Debug/SqlTest.vcxproj.AssemblyReference.cache
+/.vs
+*.obj
+*.obj
+*.tlog
+/SqlTest/x64/Debug
+SqlTest/x64/Debug/vc143.pdb

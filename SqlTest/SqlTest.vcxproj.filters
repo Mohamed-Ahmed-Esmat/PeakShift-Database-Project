@@ -24,6 +24,12 @@
     <ClCompile Include="HealthAssess.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="UserDashboard.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="DailyMetric.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MyForm.h">
@@ -33,6 +39,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="HealthAssess.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="UserDashboard.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DailyMetric.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
