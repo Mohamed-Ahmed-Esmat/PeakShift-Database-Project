@@ -30,6 +30,12 @@
     <ClCompile Include="DailyMetric.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="CoachDashboard.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ViewUserInfo.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MyForm.h">
@@ -45,6 +51,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="DailyMetric.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CoachDashboard.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ViewUserInfo.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

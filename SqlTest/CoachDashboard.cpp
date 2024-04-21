@@ -1,5 +1,4 @@
-/* #include "HealthAssess.h"
-#include "UserDashboard.h"
+#include "CoachDashboard.h"
 using namespace System;
 using namespace System::Windows::Forms;
 
@@ -10,6 +9,6 @@ using namespace System::Windows::Forms;
 void main() {
 	Application::EnableVisualStyles();
 	Application::SetCompatibleTextRenderingDefault(false);
-	SqlTest::UserDashboard form;
+	SqlTest::CoachDashboard form;
 	Application::Run(% form);
-}*/
+}
