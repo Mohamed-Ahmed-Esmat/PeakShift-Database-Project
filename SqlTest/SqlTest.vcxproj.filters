@@ -30,19 +30,6 @@
     <ClCompile Include="DailyMetric.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="ExercisePlan.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="NutritionPlan.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="AllWorkouts.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Workouts.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Payments.cpp">
     <ClCompile Include="CoachDashboard.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -66,19 +53,6 @@
     <ClInclude Include="DailyMetric.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="ExercisePlan.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="NutritionPlan.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="AllWorkouts.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Workouts.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Payments.h">
     <ClInclude Include="CoachDashboard.h">
       <Filter>Header Files</Filter>
     </ClInclude>

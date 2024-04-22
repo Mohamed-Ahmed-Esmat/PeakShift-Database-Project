@@ -12,10 +12,3 @@ SqlTest/x64/Debug/SqlTest.vcxproj.AssemblyReference.cache
 *.tlog
 /SqlTest/x64/Debug
 SqlTest/x64/Debug/vc143.pdb
-*.tlog
-*.obj
-x64/Debug/SqlTest.exe
-x64/Debug/SqlTest.exe.metagen
-x64/Debug/SqlTest.pdb
-SqlTest/x64/Debug/SqlTest.vcxproj.AssemblyReference.cache
-SqlTest/x64/Debug/SqlTest.tlog/SqlTest.lastbuildstate

@@ -1,8 +1,12 @@
-C:\Users\Maz\Documents\GitHub\PeakShift-Database-Project\SqlTest\x64\Debug\SqlTest.vcxproj.AssemblyReference.cache
-C:\Users\Maz\Documents\GitHub\PeakShift-Database-Project\SqlTest\x64\Debug\SqlTest.DailyMetric.resources
-C:\Users\Maz\Documents\GitHub\PeakShift-Database-Project\SqlTest\x64\Debug\SqlTest.ExercisePlan.resources
-C:\Users\Maz\Documents\GitHub\PeakShift-Database-Project\SqlTest\x64\Debug\SqlTest.HealthAssess.resources
-C:\Users\Maz\Documents\GitHub\PeakShift-Database-Project\SqlTest\x64\Debug\SqlTest.MyForm.resources
-C:\Users\Maz\Documents\GitHub\PeakShift-Database-Project\SqlTest\x64\Debug\SqlTest.SubscrpPlans.resources
-C:\Users\Maz\Documents\GitHub\PeakShift-Database-Project\SqlTest\x64\Debug\SqlTest.UserDashboard.resources
-C:\Users\Maz\Documents\GitHub\PeakShift-Database-Project\SqlTest\x64\Debug\SqlTest.vcxproj.GenerateResource.cache
+D:\Visual Studio 2022 projects\SqlTest\SqlTest\x64\Debug\SqlTest.vcxproj.AssemblyReference.cache
+D:\Visual Studio 2022 projects\SqlTest\SqlTest\x64\Debug\SqlTest.MyForm.resources
+D:\Visual Studio 2022 projects\SqlTest\SqlTest\x64\Debug\SqlTest.vcxproj.GenerateResource.cache
+D:\Visual Studio 2022 projects\SqlTest\PeakShift-Database-Project\SqlTest\x64\Debug\SqlTest.vcxproj.AssemblyReference.cache
+D:\Visual Studio 2022 projects\SqlTest\PeakShift-Database-Project\SqlTest\x64\Debug\SqlTest.MyForm.resources
+D:\Visual Studio 2022 projects\SqlTest\PeakShift-Database-Project\SqlTest\x64\Debug\SqlTest.SubscrpPlans.resources
+D:\Visual Studio 2022 projects\SqlTest\PeakShift-Database-Project\SqlTest\x64\Debug\SqlTest.vcxproj.GenerateResource.cache
+D:\Visual Studio 2022 projects\SqlTest\PeakShift-Database-Project\SqlTest\x64\Debug\SqlTest.HealthAssess.resources
+D:\Visual Studio 2022 projects\SqlTest\PeakShift-Database-Project\SqlTest\x64\Debug\SqlTest.DailyMetric.resources
+D:\Visual Studio 2022 projects\SqlTest\PeakShift-Database-Project\SqlTest\x64\Debug\SqlTest.UserDashboard.resources
+D:\Visual Studio 2022 projects\SqlTest\PeakShift-Database-Project\SqlTest\x64\Debug\SqlTest.CoachDashboard.resources
+D:\Visual Studio 2022 projects\SqlTest\PeakShift-Database-Project\SqlTest\x64\Debug\SqlTest.ViewUserInfo.resources
