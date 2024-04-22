@@ -123,25 +123,42 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="AllWorkouts.cpp" />
     <ClCompile Include="CoachDashboard.cpp" />
     <ClCompile Include="DailyMetric.cpp" />
+    <ClCompile Include="ExercisePlan.cpp" />
     <ClCompile Include="HealthAssess.cpp" />
     <ClCompile Include="MyForm.cpp" />
+    <ClCompile Include="NutritionPlan.cpp" />
+    <ClCompile Include="Payments.cpp" />
     <ClCompile Include="SubscrpPlans.cpp" />
     <ClCompile Include="UserDashboard.cpp" />
     <ClCompile Include="ViewUserInfo.cpp" />
+    <ClCompile Include="Workouts.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="AllWorkouts.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
     <ClInclude Include="CoachDashboard.h">
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="DailyMetric.h">
       <FileType>CppForm</FileType>
     </ClInclude>
+    <ClInclude Include="ExercisePlan.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
     <ClInclude Include="HealthAssess.h">
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="MyForm.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="NutritionPlan.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="Payments.h">
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="SubscrpPlans.h">
@@ -153,19 +170,34 @@
     <ClInclude Include="ViewUserInfo.h">
       <FileType>CppForm</FileType>
     </ClInclude>
+    <ClInclude Include="Workouts.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="AllWorkouts.resx">
+      <DependentUpon>AllWorkouts.h</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="CoachDashboard.resx">
       <DependentUpon>CoachDashboard.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="DailyMetric.resx">
       <DependentUpon>DailyMetric.h</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ExercisePlan.resx">
+      <DependentUpon>ExercisePlan.h</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="HealthAssess.resx">
       <DependentUpon>HealthAssess.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MyForm.resx">
       <DependentUpon>MyForm.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NutritionPlan.resx">
+      <DependentUpon>NutritionPlan.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Payments.resx">
+      <DependentUpon>Payments.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SubscrpPlans.resx">
       <DependentUpon>SubscrpPlans.h</DependentUpon>
@@ -175,6 +207,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ViewUserInfo.resx">
       <DependentUpon>ViewUserInfo.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Workouts.resx">
+      <DependentUpon>Workouts.h</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
