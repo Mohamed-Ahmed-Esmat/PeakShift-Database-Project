@@ -1,3 +1,10 @@
-﻿  HealthAssess.cpp
-  HealthAssess.obj : MSIL module encountered; incremental linking is disabled for MSIL; performing full link
-  SqlTest.vcxproj -> D:\Visual Studio 2022 projects\SqlTest\PeakShift-Database-Project\x64\Debug\SqlTest.exe
+﻿  DailyMetric.cpp
+  ExercisePlan.cpp
+  HealthAssess.cpp
+  MyForm.cpp
+  SubscrpPlans.cpp
+  UserDashboard.cpp
+  .NETFramework,Version=v4.7.2.AssemblyAttributes.cpp
+  Generating Code...
+  DailyMetric.obj : MSIL module encountered; incremental linking is disabled for MSIL; performing full link
+  SqlTest.vcxproj -> C:\Users\Maz\Documents\GitHub\PeakShift-Database-Project\x64\Debug\SqlTest.exe

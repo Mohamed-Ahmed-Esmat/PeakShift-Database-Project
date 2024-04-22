@@ -6,3 +6,11 @@ D:\Visual Studio 2022 projects\SqlTest\PeakShift-Database-Project\SqlTest\x64\De
 D:\Visual Studio 2022 projects\SqlTest\PeakShift-Database-Project\SqlTest\x64\Debug\SqlTest.SubscrpPlans.resources
 D:\Visual Studio 2022 projects\SqlTest\PeakShift-Database-Project\SqlTest\x64\Debug\SqlTest.vcxproj.GenerateResource.cache
 D:\Visual Studio 2022 projects\SqlTest\PeakShift-Database-Project\SqlTest\x64\Debug\SqlTest.HealthAssess.resources
+C:\Users\Maz\Documents\GitHub\PeakShift-Database-Project\SqlTest\x64\Debug\SqlTest.vcxproj.AssemblyReference.cache
+C:\Users\Maz\Documents\GitHub\PeakShift-Database-Project\SqlTest\x64\Debug\SqlTest.DailyMetric.resources
+C:\Users\Maz\Documents\GitHub\PeakShift-Database-Project\SqlTest\x64\Debug\SqlTest.ExercisePlan.resources
+C:\Users\Maz\Documents\GitHub\PeakShift-Database-Project\SqlTest\x64\Debug\SqlTest.HealthAssess.resources
+C:\Users\Maz\Documents\GitHub\PeakShift-Database-Project\SqlTest\x64\Debug\SqlTest.MyForm.resources
+C:\Users\Maz\Documents\GitHub\PeakShift-Database-Project\SqlTest\x64\Debug\SqlTest.SubscrpPlans.resources
+C:\Users\Maz\Documents\GitHub\PeakShift-Database-Project\SqlTest\x64\Debug\SqlTest.UserDashboard.resources
+C:\Users\Maz\Documents\GitHub\PeakShift-Database-Project\SqlTest\x64\Debug\SqlTest.vcxproj.GenerateResource.cache
