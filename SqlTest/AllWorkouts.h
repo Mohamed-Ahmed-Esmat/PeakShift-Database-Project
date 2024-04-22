@@ -10,12 +10,12 @@ namespace SqlTest {
 	using namespace System::Drawing;
 
 	/// <summary>
-	/// Summary for Workouts
+	/// Summary for AllWorkouts
 	/// </summary>
-	public ref class Workouts : public System::Windows::Forms::Form
+	public ref class AllWorkouts : public System::Windows::Forms::Form
 	{
 	public:
-		Workouts(void)
+		AllWorkouts(void)
 		{
 			InitializeComponent();
 			//
@@ -27,7 +27,7 @@ namespace SqlTest {
 		/// <summary>
 		/// Clean up any resources being used.
 		/// </summary>
-		~Workouts()
+		~AllWorkouts()
 		{
 			if (components)
 			{
@@ -213,7 +213,7 @@ namespace SqlTest {
 			this->label5->TabIndex = 18;
 			this->label5->Text = L"Workout Type:";
 			// 
-			// Workouts
+			// AllWorkouts
 			// 
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::None;
 			this->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(201)), static_cast<System::Int32>(static_cast<System::Byte>(215)),
@@ -233,7 +233,7 @@ namespace SqlTest {
 			this->Controls->Add(this->panel1);
 			this->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->Name = L"Workouts";
+			this->Name = L"AllWorkouts";
 			this->Text = L"All Workouts";
 			this->panel1->ResumeLayout(false);
 			this->panel1->PerformLayout();

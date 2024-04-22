@@ -1,4 +1,10 @@
 #pragma once
+#include "ExercisePlan.h"
+#include "NutritionPlan.h"
+#include "Workouts.h"
+#include "Payments.h"
+#include "DailyMetric.h"
+#include "HealthAssess.h"
 
 namespace SqlTest {
 
@@ -192,6 +198,7 @@ namespace SqlTest {
 			this->EP_Button->TabIndex = 2;
 			this->EP_Button->Text = L"Exercise Plan";
 			this->EP_Button->UseVisualStyleBackColor = false;
+			this->EP_Button->Click += gcnew System::EventHandler(this, &UserDashboard::EP_Button_Click);
 			// 
 			// NP_Button
 			// 
@@ -204,6 +211,7 @@ namespace SqlTest {
 			this->NP_Button->TabIndex = 3;
 			this->NP_Button->Text = L"Nutrition Plan";
 			this->NP_Button->UseVisualStyleBackColor = false;
+			this->NP_Button->Click += gcnew System::EventHandler(this, &UserDashboard::NP_Button_Click);
 			// 
 			// W_button
 			// 
@@ -216,6 +224,7 @@ namespace SqlTest {
 			this->W_button->TabIndex = 4;
 			this->W_button->Text = L"Workouts";
 			this->W_button->UseVisualStyleBackColor = false;
+			this->W_button->Click += gcnew System::EventHandler(this, &UserDashboard::W_button_Click);
 			// 
 			// P_Button
 			// 
@@ -228,6 +237,7 @@ namespace SqlTest {
 			this->P_Button->TabIndex = 5;
 			this->P_Button->Text = L"Payments";
 			this->P_Button->UseVisualStyleBackColor = false;
+			this->P_Button->Click += gcnew System::EventHandler(this, &UserDashboard::P_Button_Click);
 			// 
 			// HA_Button
 			// 
@@ -240,6 +250,7 @@ namespace SqlTest {
 			this->HA_Button->TabIndex = 6;
 			this->HA_Button->Text = L"Health Assessments";
 			this->HA_Button->UseVisualStyleBackColor = false;
+			this->HA_Button->Click += gcnew System::EventHandler(this, &UserDashboard::HA_Button_Click);
 			// 
 			// UserDashboard
 			// 
@@ -269,6 +280,41 @@ namespace SqlTest {
 
 
 private: System::Void DM_Button_Click(System::Object^ sender, System::EventArgs^ e) {
+	DailyMetric^ dailyMetricForm = gcnew DailyMetric;
+	this->Hide();
+	dailyMetricForm->ShowDialog();
+	this->Show();
+
+}
+private: System::Void EP_Button_Click(System::Object^ sender, System::EventArgs^ e) {
+	ExercisePlan^ exercisePlaneForm = gcnew ExercisePlan;
+	this->Hide();
+	exercisePlaneForm->ShowDialog();
+	this->Show();
+}
+private: System::Void NP_Button_Click(System::Object^ sender, System::EventArgs^ e) {
+	NutritionPlan^ nutritionPlanForm = gcnew NutritionPlan;
+	this->Hide();
+	nutritionPlanForm->ShowDialog();
+	this->Show();
+}
+private: System::Void W_button_Click(System::Object^ sender, System::EventArgs^ e) {
+	Workouts^ workoutsForm = gcnew Workouts;
+	this->Hide();
+	workoutsForm->ShowDialog();
+	this->Show();
+}
+private: System::Void P_Button_Click(System::Object^ sender, System::EventArgs^ e) {
+	Payments^ paymentsForm = gcnew Payments;
+	this->Hide();
+	paymentsForm->ShowDialog();
+	this->Show();
+}
+private: System::Void HA_Button_Click(System::Object^ sender, System::EventArgs^ e) {
+	HealthAssess^ healthAssessForm = gcnew HealthAssess;
+	this->Hide();
+	healthAssessForm->ShowDialog();
+	this->Show();
 }
 };
 }

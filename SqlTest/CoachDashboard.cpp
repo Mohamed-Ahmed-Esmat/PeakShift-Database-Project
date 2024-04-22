@@ -1,4 +1,5 @@
 #include "CoachDashboard.h"
+#include "UserDashboard.h"
 using namespace System;
 using namespace System::Windows::Forms;
 
@@ -9,6 +10,6 @@ using namespace System::Windows::Forms;
 void main() {
 	Application::EnableVisualStyles();
 	Application::SetCompatibleTextRenderingDefault(false);
-	SqlTest::CoachDashboard form;
+	SqlTest::UserDashboard form;
 	Application::Run(% form);
 }

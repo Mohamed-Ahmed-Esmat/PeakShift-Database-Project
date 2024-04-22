@@ -1,4 +1,5 @@
 #pragma once
+#include "AllWorkouts.h"
 
 namespace SqlTest {
 
@@ -10,12 +11,12 @@ namespace SqlTest {
 	using namespace System::Drawing;
 
 	/// <summary>
-	/// Summary for Workouts1
+	/// Summary for Workouts
 	/// </summary>
-	public ref class Workouts1 : public System::Windows::Forms::Form
+	public ref class Workouts : public System::Windows::Forms::Form
 	{
 	public:
-		Workouts1(void)
+		Workouts(void)
 		{
 			InitializeComponent();
 			//
@@ -27,7 +28,7 @@ namespace SqlTest {
 		/// <summary>
 		/// Clean up any resources being used.
 		/// </summary>
-		~Workouts1()
+		~Workouts()
 		{
 			if (components)
 			{
@@ -135,6 +136,7 @@ namespace SqlTest {
 			this->AW_Button->TabIndex = 21;
 			this->AW_Button->Text = L"All Workouts";
 			this->AW_Button->UseVisualStyleBackColor = false;
+			this->AW_Button->Click += gcnew System::EventHandler(this, &Workouts::AW_Button_Click);
 			// 
 			// PD_Button
 			// 
@@ -203,7 +205,7 @@ namespace SqlTest {
 			this->label5->TabIndex = 27;
 			this->label5->Text = L"Sets:";
 			// 
-			// Workouts1
+			// Workouts
 			// 
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::None;
 			this->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(201)), static_cast<System::Int32>(static_cast<System::Byte>(215)),
@@ -224,7 +226,7 @@ namespace SqlTest {
 			this->Controls->Add(this->WT_Labe);
 			this->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->Name = L"Workouts1";
+			this->Name = L"Workouts";
 			this->Text = L"Workouts";
 			this->ResumeLayout(false);
 			this->PerformLayout();
@@ -232,5 +234,12 @@ namespace SqlTest {
 		}
 #pragma endregion
 
-	};
+	private: System::Void AW_Button_Click(System::Object^ sender, System::EventArgs^ e) {
+		AllWorkouts^ allWorkoutsForm = gcnew AllWorkouts;
+		this->Hide();
+		allWorkoutsForm->ShowDialog();
+		this->Show();
+
+	}
+};
 }

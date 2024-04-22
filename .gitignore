@@ -12,3 +12,6 @@ SqlTest/x64/Debug/SqlTest.vcxproj.AssemblyReference.cache
 *.tlog
 /SqlTest/x64/Debug
 SqlTest/x64/Debug/vc143.pdb
+*.tlog
+SqlTest/x64/Debug/vc143.pdb
+*.obj
