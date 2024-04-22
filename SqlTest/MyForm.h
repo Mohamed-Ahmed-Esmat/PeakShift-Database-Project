@@ -86,18 +86,22 @@ namespace SqlTest {
 			// 
 			// button1
 			// 
+			this->button1->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(128)), static_cast<System::Int32>(static_cast<System::Byte>(207)),
+				static_cast<System::Int32>(static_cast<System::Byte>(169)));
 			this->button1->Location = System::Drawing::Point(141, 245);
 			this->button1->Name = L"button1";
 			this->button1->Size = System::Drawing::Size(103, 39);
 			this->button1->TabIndex = 3;
 			this->button1->Text = L"Submit";
-			this->button1->UseVisualStyleBackColor = true;
+			this->button1->UseVisualStyleBackColor = false;
 			this->button1->Click += gcnew System::EventHandler(this, &MyForm::button1_Click);
 			// 
 			// MyForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
+			this->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(201)), static_cast<System::Int32>(static_cast<System::Byte>(215)),
+				static_cast<System::Int32>(static_cast<System::Byte>(248)));
 			this->ClientSize = System::Drawing::Size(403, 387);
 			this->Controls->Add(this->button1);
 			this->Controls->Add(this->textBox2);
