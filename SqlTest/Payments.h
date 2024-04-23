@@ -1,4 +1,5 @@
 #pragma once
+#include "SubscrpPlans.h"
 
 namespace SqlTest {
 
@@ -70,7 +71,7 @@ namespace SqlTest {
 			this->label1->AutoSize = true;
 			this->label1->Location = System::Drawing::Point(33, 54);
 			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(281, 32);
+			this->label1->Size = System::Drawing::Size(238, 29);
 			this->label1->TabIndex = 0;
 			this->label1->Text = L"Current Subscription:";
 			// 
@@ -79,7 +80,7 @@ namespace SqlTest {
 			this->label2->AutoSize = true;
 			this->label2->Location = System::Drawing::Point(33, 128);
 			this->label2->Name = L"label2";
-			this->label2->Size = System::Drawing::Size(149, 32);
+			this->label2->Size = System::Drawing::Size(128, 29);
 			this->label2->TabIndex = 1;
 			this->label2->Text = L"Renew on:";
 			// 
@@ -115,13 +116,14 @@ namespace SqlTest {
 			this->button3->TabIndex = 4;
 			this->button3->Text = L"Change Subscription Plan";
 			this->button3->UseVisualStyleBackColor = false;
+			this->button3->Click += gcnew System::EventHandler(this, &Payments::button3_Click);
 			// 
 			// label3
 			// 
 			this->label3->AutoSize = true;
 			this->label3->Location = System::Drawing::Point(326, 128);
 			this->label3->Name = L"label3";
-			this->label3->Size = System::Drawing::Size(102, 32);
+			this->label3->Size = System::Drawing::Size(89, 29);
 			this->label3->TabIndex = 6;
 			this->label3->Text = L"Renew";
 			// 
@@ -130,7 +132,7 @@ namespace SqlTest {
 			this->label4->AutoSize = true;
 			this->label4->Location = System::Drawing::Point(326, 54);
 			this->label4->Name = L"label4";
-			this->label4->Size = System::Drawing::Size(108, 32);
+			this->label4->Size = System::Drawing::Size(92, 29);
 			this->label4->TabIndex = 5;
 			this->label4->Text = L"Current";
 			// 
@@ -157,5 +159,11 @@ namespace SqlTest {
 		}
 #pragma endregion
 
-	};
+	private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e) {
+		SubscrpPlans^ subscrpPlans = gcnew SubscrpPlans;
+		this->Hide();
+		subscrpPlans->ShowDialog();
+		this->Show();
+	}
+};
 }

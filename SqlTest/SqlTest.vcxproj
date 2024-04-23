@@ -123,27 +123,48 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="AddCoach.cpp" />
+    <ClCompile Include="AddUser.cpp" />
     <ClCompile Include="AllWorkouts.cpp" />
     <ClCompile Include="CoachDashboard.cpp" />
+    <ClCompile Include="CoachUserDashboard.cpp" />
     <ClCompile Include="DailyMetric.cpp" />
+    <ClCompile Include="EditExercisePlan.cpp" />
+    <ClCompile Include="EditNutritionPlan.cpp" />
     <ClCompile Include="ExercisePlan.cpp" />
     <ClCompile Include="HealthAssess.cpp" />
     <ClCompile Include="MyForm.cpp" />
     <ClCompile Include="NutritionPlan.cpp" />
     <ClCompile Include="Payments.cpp" />
     <ClCompile Include="SubscrpPlans.cpp" />
+    <ClCompile Include="UpdateHealthAssessment.cpp" />
     <ClCompile Include="UserDashboard.cpp" />
     <ClCompile Include="ViewUserInfo.cpp" />
     <ClCompile Include="Workouts.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="AddCoach.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="AddUser.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
     <ClInclude Include="AllWorkouts.h">
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="CoachDashboard.h">
       <FileType>CppForm</FileType>
     </ClInclude>
+    <ClInclude Include="CoachUserDashboard.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
     <ClInclude Include="DailyMetric.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="EditExercisePlan.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="EditNutritionPlan.h">
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="ExercisePlan.h">
@@ -164,6 +185,9 @@
     <ClInclude Include="SubscrpPlans.h">
       <FileType>CppForm</FileType>
     </ClInclude>
+    <ClInclude Include="UpdateHealthAssessment.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
     <ClInclude Include="UserDashboard.h">
       <FileType>CppForm</FileType>
     </ClInclude>
@@ -175,14 +199,29 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="AddCoach.resx">
+      <DependentUpon>AddCoach.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AddUser.resx">
+      <DependentUpon>AddUser.h</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="AllWorkouts.resx">
       <DependentUpon>AllWorkouts.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="CoachDashboard.resx">
       <DependentUpon>CoachDashboard.h</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="CoachUserDashboard.resx">
+      <DependentUpon>CoachUserDashboard.h</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="DailyMetric.resx">
       <DependentUpon>DailyMetric.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditExercisePlan.resx">
+      <DependentUpon>EditExercisePlan.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditNutritionPlan.resx">
+      <DependentUpon>EditNutritionPlan.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ExercisePlan.resx">
       <DependentUpon>ExercisePlan.h</DependentUpon>
@@ -201,6 +240,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="SubscrpPlans.resx">
       <DependentUpon>SubscrpPlans.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UpdateHealthAssessment.resx">
+      <DependentUpon>UpdateHealthAssessment.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserDashboard.resx">
       <DependentUpon>UserDashboard.h</DependentUpon>

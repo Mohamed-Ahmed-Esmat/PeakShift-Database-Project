@@ -1,10 +1,21 @@
+  SqlTest.AddCoach.resources - Embedded, ContainedInManifestFile, 
+  SqlTest.AddUser.resources - Embedded, ContainedInManifestFile, 
+  SqlTest.AllWorkouts.resources - Embedded, ContainedInManifestFile, 
   SqlTest.CoachDashboard.resources - Embedded, ContainedInManifestFile, 
+  SqlTest.CoachUserDashboard.resources - Embedded, ContainedInManifestFile, 
   SqlTest.DailyMetric.resources - Embedded, ContainedInManifestFile, 
+  SqlTest.EditExercisePlan.resources - Embedded, ContainedInManifestFile, 
+  SqlTest.EditNutritionPlan.resources - Embedded, ContainedInManifestFile, 
+  SqlTest.ExercisePlan.resources - Embedded, ContainedInManifestFile, 
   SqlTest.HealthAssess.resources - Embedded, ContainedInManifestFile, 
   SqlTest.MyForm.resources - Embedded, ContainedInManifestFile, 
+  SqlTest.NutritionPlan.resources - Embedded, ContainedInManifestFile, 
+  SqlTest.Payments.resources - Embedded, ContainedInManifestFile, 
   SqlTest.SubscrpPlans.resources - Embedded, ContainedInManifestFile, 
+  SqlTest.UpdateHealthAssessment.resources - Embedded, ContainedInManifestFile, 
   SqlTest.UserDashboard.resources - Embedded, ContainedInManifestFile, 
   SqlTest.ViewUserInfo.resources - Embedded, ContainedInManifestFile, 
+  SqlTest.Workouts.resources - Embedded, ContainedInManifestFile, 
 ImageRuntimeVersion: v4.0.30319
 Assembly SqlTest, Version=0.0.*, Culture=Invariant Language (Invariant Country): 
 	hash=SHA1, flags=PublicKey
@@ -20,13 +31,52 @@ Assembly System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=
 	hash=None, flags=None
 Assembly System.Xml, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089: 
 	hash=None, flags=None
+Class SqlTest.AddCoach: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.Windows.Forms.Form
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+Class SqlTest.AddUser: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.Windows.Forms.Form
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+Class SqlTest.AllWorkouts: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.Windows.Forms.Form
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+Class SqlTest.UpdateHealthAssessment: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.Windows.Forms.Form
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+Class SqlTest.HealthAssess: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.Windows.Forms.Form
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+Class SqlTest.Workouts: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.Windows.Forms.Form
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+Class SqlTest.ExercisePlan: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.Windows.Forms.Form
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+Class SqlTest.DailyMetric: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.Windows.Forms.Form
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+Class SqlTest.NutritionPlan: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.Windows.Forms.Form
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+Class SqlTest.EditNutritionPlan: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.Windows.Forms.Form
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+Class SqlTest.EditExercisePlan: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.Windows.Forms.Form
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+Class SqlTest.CoachUserDashboard: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.Windows.Forms.Form
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
 Class SqlTest.ViewUserInfo: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
   :System.Windows.Forms.Form
     Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
 Class SqlTest.CoachDashboard: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
   :System.Windows.Forms.Form
     Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
-Class SqlTest.DailyMetric: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+Class SqlTest.SubscrpPlans: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.Windows.Forms.Form
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+Class SqlTest.Payments: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
   :System.Windows.Forms.Form
     Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
 Class SqlTest.UserDashboard: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit

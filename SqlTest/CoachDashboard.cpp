@@ -10,6 +10,6 @@ using namespace System::Windows::Forms;
 void main() {
 	Application::EnableVisualStyles();
 	Application::SetCompatibleTextRenderingDefault(false);
-	SqlTest::UserDashboard form;
+	SqlTest::CoachDashboard form;
 	Application::Run(% form);
 }
