@@ -50,6 +50,9 @@ namespace SqlTest {
 	private: System::Windows::Forms::Label^ label3;
 	private: System::Windows::Forms::Label^ label4;
 	private: System::Windows::Forms::Label^ label5;
+	private: System::Windows::Forms::ListBox^ ID_ListBox;
+	private: System::Windows::Forms::Label^ label6;
+	private: System::Windows::Forms::Panel^ panel1;
 
 
 
@@ -79,12 +82,16 @@ namespace SqlTest {
 			this->label3 = (gcnew System::Windows::Forms::Label());
 			this->label4 = (gcnew System::Windows::Forms::Label());
 			this->label5 = (gcnew System::Windows::Forms::Label());
+			this->ID_ListBox = (gcnew System::Windows::Forms::ListBox());
+			this->label6 = (gcnew System::Windows::Forms::Label());
+			this->panel1 = (gcnew System::Windows::Forms::Panel());
+			this->panel1->SuspendLayout();
 			this->SuspendLayout();
 			// 
 			// Duration
 			// 
 			this->Duration->AutoSize = true;
-			this->Duration->Location = System::Drawing::Point(531, 197);
+			this->Duration->Location = System::Drawing::Point(393, 373);
 			this->Duration->Name = L"Duration";
 			this->Duration->Size = System::Drawing::Size(122, 32);
 			this->Duration->TabIndex = 20;
@@ -93,7 +100,7 @@ namespace SqlTest {
 			// Sets
 			// 
 			this->Sets->AutoSize = true;
-			this->Sets->Location = System::Drawing::Point(531, 137);
+			this->Sets->Location = System::Drawing::Point(393, 313);
 			this->Sets->Name = L"Sets";
 			this->Sets->Size = System::Drawing::Size(71, 32);
 			this->Sets->TabIndex = 19;
@@ -102,7 +109,7 @@ namespace SqlTest {
 			// Reps
 			// 
 			this->Reps->AutoSize = true;
-			this->Reps->Location = System::Drawing::Point(247, 257);
+			this->Reps->Location = System::Drawing::Point(496, 255);
 			this->Reps->Name = L"Reps";
 			this->Reps->Size = System::Drawing::Size(80, 32);
 			this->Reps->TabIndex = 18;
@@ -111,7 +118,7 @@ namespace SqlTest {
 			// CB_Label
 			// 
 			this->CB_Label->AutoSize = true;
-			this->CB_Label->Location = System::Drawing::Point(247, 197);
+			this->CB_Label->Location = System::Drawing::Point(496, 195);
 			this->CB_Label->Name = L"CB_Label";
 			this->CB_Label->Size = System::Drawing::Size(119, 32);
 			this->CB_Label->TabIndex = 17;
@@ -120,7 +127,7 @@ namespace SqlTest {
 			// WT_Labe
 			// 
 			this->WT_Labe->AutoSize = true;
-			this->WT_Labe->Location = System::Drawing::Point(247, 137);
+			this->WT_Labe->Location = System::Drawing::Point(496, 135);
 			this->WT_Labe->Name = L"WT_Labe";
 			this->WT_Labe->Size = System::Drawing::Size(77, 32);
 			this->WT_Labe->TabIndex = 16;
@@ -130,7 +137,7 @@ namespace SqlTest {
 			// 
 			this->AW_Button->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(128)), static_cast<System::Int32>(static_cast<System::Byte>(207)),
 				static_cast<System::Int32>(static_cast<System::Byte>(169)));
-			this->AW_Button->Location = System::Drawing::Point(473, 12);
+			this->AW_Button->Location = System::Drawing::Point(675, 12);
 			this->AW_Button->Name = L"AW_Button";
 			this->AW_Button->Size = System::Drawing::Size(185, 45);
 			this->AW_Button->TabIndex = 21;
@@ -142,7 +149,7 @@ namespace SqlTest {
 			// 
 			this->PD_Button->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(128)), static_cast<System::Int32>(static_cast<System::Byte>(207)),
 				static_cast<System::Int32>(static_cast<System::Byte>(169)));
-			this->PD_Button->Location = System::Drawing::Point(12, 383);
+			this->PD_Button->Location = System::Drawing::Point(257, 487);
 			this->PD_Button->Name = L"PD_Button";
 			this->PD_Button->Size = System::Drawing::Size(201, 40);
 			this->PD_Button->TabIndex = 22;
@@ -153,7 +160,7 @@ namespace SqlTest {
 			// 
 			this->ND_Button->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(128)), static_cast<System::Int32>(static_cast<System::Byte>(207)),
 				static_cast<System::Int32>(static_cast<System::Byte>(169)));
-			this->ND_Button->Location = System::Drawing::Point(494, 383);
+			this->ND_Button->Location = System::Drawing::Point(696, 487);
 			this->ND_Button->Name = L"ND_Button";
 			this->ND_Button->Size = System::Drawing::Size(164, 40);
 			this->ND_Button->TabIndex = 23;
@@ -163,7 +170,7 @@ namespace SqlTest {
 			// label1
 			// 
 			this->label1->AutoSize = true;
-			this->label1->Location = System::Drawing::Point(12, 257);
+			this->label1->Location = System::Drawing::Point(261, 255);
 			this->label1->Name = L"label1";
 			this->label1->Size = System::Drawing::Size(88, 32);
 			this->label1->TabIndex = 26;
@@ -172,7 +179,7 @@ namespace SqlTest {
 			// label2
 			// 
 			this->label2->AutoSize = true;
-			this->label2->Location = System::Drawing::Point(12, 197);
+			this->label2->Location = System::Drawing::Point(261, 195);
 			this->label2->Name = L"label2";
 			this->label2->Size = System::Drawing::Size(226, 32);
 			this->label2->TabIndex = 25;
@@ -181,7 +188,7 @@ namespace SqlTest {
 			// label3
 			// 
 			this->label3->AutoSize = true;
-			this->label3->Location = System::Drawing::Point(12, 137);
+			this->label3->Location = System::Drawing::Point(261, 135);
 			this->label3->Name = L"label3";
 			this->label3->Size = System::Drawing::Size(197, 32);
 			this->label3->TabIndex = 24;
@@ -190,7 +197,7 @@ namespace SqlTest {
 			// label4
 			// 
 			this->label4->AutoSize = true;
-			this->label4->Location = System::Drawing::Point(399, 197);
+			this->label4->Location = System::Drawing::Point(261, 373);
 			this->label4->Name = L"label4";
 			this->label4->Size = System::Drawing::Size(130, 32);
 			this->label4->TabIndex = 28;
@@ -199,18 +206,55 @@ namespace SqlTest {
 			// label5
 			// 
 			this->label5->AutoSize = true;
-			this->label5->Location = System::Drawing::Point(399, 137);
+			this->label5->Location = System::Drawing::Point(261, 313);
 			this->label5->Name = L"label5";
 			this->label5->Size = System::Drawing::Size(79, 32);
 			this->label5->TabIndex = 27;
 			this->label5->Text = L"Sets:";
+			// 
+			// ID_ListBox
+			// 
+			this->ID_ListBox->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(76)), static_cast<System::Int32>(static_cast<System::Byte>(102)),
+				static_cast<System::Int32>(static_cast<System::Byte>(99)));
+			this->ID_ListBox->BorderStyle = System::Windows::Forms::BorderStyle::None;
+			this->ID_ListBox->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->ID_ListBox->FormattingEnabled = true;
+			this->ID_ListBox->ItemHeight = 29;
+			this->ID_ListBox->Items->AddRange(gcnew cli::array< System::Object^  >(12) {
+				L"1", L"2", L"3", L"4", L"5", L"6", L"7", L"8",
+					L"9", L"10", L"11", L"12"
+			});
+			this->ID_ListBox->Location = System::Drawing::Point(0, 58);
+			this->ID_ListBox->Name = L"ID_ListBox";
+			this->ID_ListBox->Size = System::Drawing::Size(251, 493);
+			this->ID_ListBox->TabIndex = 29;
+			// 
+			// label6
+			// 
+			this->label6->AutoSize = true;
+			this->label6->Location = System::Drawing::Point(10, 15);
+			this->label6->Name = L"label6";
+			this->label6->Size = System::Drawing::Size(238, 32);
+			this->label6->TabIndex = 30;
+			this->label6->Text = L"Today\'s Workouts";
+			// 
+			// panel1
+			// 
+			this->panel1->Controls->Add(this->label6);
+			this->panel1->Location = System::Drawing::Point(0, -3);
+			this->panel1->Name = L"panel1";
+			this->panel1->Size = System::Drawing::Size(251, 60);
+			this->panel1->TabIndex = 31;
 			// 
 			// Workouts
 			// 
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::None;
 			this->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(201)), static_cast<System::Int32>(static_cast<System::Byte>(215)),
 				static_cast<System::Int32>(static_cast<System::Byte>(248)));
-			this->ClientSize = System::Drawing::Size(670, 435);
+			this->ClientSize = System::Drawing::Size(872, 539);
+			this->Controls->Add(this->panel1);
+			this->Controls->Add(this->ID_ListBox);
 			this->Controls->Add(this->label4);
 			this->Controls->Add(this->label5);
 			this->Controls->Add(this->label1);
@@ -228,6 +272,8 @@ namespace SqlTest {
 				static_cast<System::Byte>(0)));
 			this->Name = L"Workouts";
 			this->Text = L"Workouts";
+			this->panel1->ResumeLayout(false);
+			this->panel1->PerformLayout();
 			this->ResumeLayout(false);
 			this->PerformLayout();
 

@@ -34,15 +34,15 @@ namespace SqlTest {
                 delete components;
             }
         }
-    private: System::Windows::Forms::Panel^ panel1;
+
     protected:
-    private: System::Windows::Forms::Label^ label1;
-    private: System::Windows::Forms::ComboBox^ Month_Box;
 
-    private: System::Windows::Forms::Label^ label2;
-    private: System::Windows::Forms::ComboBox^ Year_Box;
 
-    private: System::Windows::Forms::Button^ View_Button;
+
+
+
+
+
     private: System::Windows::Forms::Panel^ Cell_1;
 
     private: System::Windows::Forms::Label^ No_1;
@@ -202,6 +202,12 @@ namespace SqlTest {
     private: System::Windows::Forms::Label^ MG_7;
 
     private: System::Windows::Forms::Label^ No_7;
+private: System::Windows::Forms::Label^ label1;
+private: System::Windows::Forms::ComboBox^ Year_Box;
+private: System::Windows::Forms::Label^ label2;
+private: System::Windows::Forms::ComboBox^ Month_Box;
+private: System::Windows::Forms::Button^ View_Button;
+private: System::Windows::Forms::Panel^ panel1;
 
 
 
@@ -256,12 +262,6 @@ namespace SqlTest {
         /// </summary>
         void InitializeComponent(void)
         {
-            this->panel1 = (gcnew System::Windows::Forms::Panel());
-            this->View_Button = (gcnew System::Windows::Forms::Button());
-            this->Month_Box = (gcnew System::Windows::Forms::ComboBox());
-            this->label2 = (gcnew System::Windows::Forms::Label());
-            this->Year_Box = (gcnew System::Windows::Forms::ComboBox());
-            this->label1 = (gcnew System::Windows::Forms::Label());
             this->Cell_1 = (gcnew System::Windows::Forms::Panel());
             this->MG_1 = (gcnew System::Windows::Forms::Label());
             this->No_1 = (gcnew System::Windows::Forms::Label());
@@ -355,7 +355,12 @@ namespace SqlTest {
             this->panel32 = (gcnew System::Windows::Forms::Panel());
             this->MG_7 = (gcnew System::Windows::Forms::Label());
             this->No_7 = (gcnew System::Windows::Forms::Label());
-            this->panel1->SuspendLayout();
+            this->label1 = (gcnew System::Windows::Forms::Label());
+            this->Year_Box = (gcnew System::Windows::Forms::ComboBox());
+            this->label2 = (gcnew System::Windows::Forms::Label());
+            this->Month_Box = (gcnew System::Windows::Forms::ComboBox());
+            this->View_Button = (gcnew System::Windows::Forms::Button());
+            this->panel1 = (gcnew System::Windows::Forms::Panel());
             this->Cell_1->SuspendLayout();
             this->panel2->SuspendLayout();
             this->panel3->SuspendLayout();
@@ -387,72 +392,8 @@ namespace SqlTest {
             this->panel30->SuspendLayout();
             this->panel31->SuspendLayout();
             this->panel32->SuspendLayout();
+            this->panel1->SuspendLayout();
             this->SuspendLayout();
-            // 
-            // panel1
-            // 
-            this->panel1->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(76)), static_cast<System::Int32>(static_cast<System::Byte>(102)),
-                static_cast<System::Int32>(static_cast<System::Byte>(99)));
-            this->panel1->Controls->Add(this->View_Button);
-            this->panel1->Controls->Add(this->Month_Box);
-            this->panel1->Controls->Add(this->label2);
-            this->panel1->Controls->Add(this->Year_Box);
-            this->panel1->Controls->Add(this->label1);
-            this->panel1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-                static_cast<System::Byte>(0)));
-            this->panel1->Location = System::Drawing::Point(12, 12);
-            this->panel1->Name = L"panel1";
-            this->panel1->Size = System::Drawing::Size(1183, 79);
-            this->panel1->TabIndex = 0;
-            // 
-            // View_Button
-            // 
-            this->View_Button->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(128)), static_cast<System::Int32>(static_cast<System::Byte>(207)),
-                static_cast<System::Int32>(static_cast<System::Byte>(169)));
-            this->View_Button->Location = System::Drawing::Point(1065, 22);
-            this->View_Button->Name = L"View_Button";
-            this->View_Button->Size = System::Drawing::Size(102, 37);
-            this->View_Button->TabIndex = 4;
-            this->View_Button->Text = L"View";
-            this->View_Button->UseVisualStyleBackColor = false;
-            // 
-            // Month_Box
-            // 
-            this->Month_Box->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(128)), static_cast<System::Int32>(static_cast<System::Byte>(207)),
-                static_cast<System::Int32>(static_cast<System::Byte>(169)));
-            this->Month_Box->FormattingEnabled = true;
-            this->Month_Box->Location = System::Drawing::Point(301, 23);
-            this->Month_Box->Name = L"Month_Box";
-            this->Month_Box->Size = System::Drawing::Size(121, 37);
-            this->Month_Box->TabIndex = 3;
-            // 
-            // label2
-            // 
-            this->label2->AutoSize = true;
-            this->label2->Location = System::Drawing::Point(221, 26);
-            this->label2->Name = L"label2";
-            this->label2->Size = System::Drawing::Size(85, 29);
-            this->label2->TabIndex = 2;
-            this->label2->Text = L"Month:";
-            // 
-            // Year_Box
-            // 
-            this->Year_Box->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(128)), static_cast<System::Int32>(static_cast<System::Byte>(207)),
-                static_cast<System::Int32>(static_cast<System::Byte>(169)));
-            this->Year_Box->FormattingEnabled = true;
-            this->Year_Box->Location = System::Drawing::Point(76, 23);
-            this->Year_Box->Name = L"Year_Box";
-            this->Year_Box->Size = System::Drawing::Size(121, 37);
-            this->Year_Box->TabIndex = 1;
-            // 
-            // label1
-            // 
-            this->label1->AutoSize = true;
-            this->label1->Location = System::Drawing::Point(12, 26);
-            this->label1->Name = L"label1";
-            this->label1->Size = System::Drawing::Size(70, 29);
-            this->label1->TabIndex = 0;
-            this->label1->Text = L"Year:";
             // 
             // Cell_1
             // 
@@ -1477,6 +1418,71 @@ namespace SqlTest {
             this->No_7->TabIndex = 0;
             this->No_7->Text = L"7";
             // 
+            // label1
+            // 
+            this->label1->AutoSize = true;
+            this->label1->Location = System::Drawing::Point(12, 26);
+            this->label1->Name = L"label1";
+            this->label1->Size = System::Drawing::Size(70, 29);
+            this->label1->TabIndex = 0;
+            this->label1->Text = L"Year:";
+            // 
+            // Year_Box
+            // 
+            this->Year_Box->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(128)), static_cast<System::Int32>(static_cast<System::Byte>(207)),
+                static_cast<System::Int32>(static_cast<System::Byte>(169)));
+            this->Year_Box->FormattingEnabled = true;
+            this->Year_Box->Location = System::Drawing::Point(76, 23);
+            this->Year_Box->Name = L"Year_Box";
+            this->Year_Box->Size = System::Drawing::Size(121, 37);
+            this->Year_Box->TabIndex = 1;
+            // 
+            // label2
+            // 
+            this->label2->AutoSize = true;
+            this->label2->Location = System::Drawing::Point(221, 26);
+            this->label2->Name = L"label2";
+            this->label2->Size = System::Drawing::Size(85, 29);
+            this->label2->TabIndex = 2;
+            this->label2->Text = L"Month:";
+            // 
+            // Month_Box
+            // 
+            this->Month_Box->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(128)), static_cast<System::Int32>(static_cast<System::Byte>(207)),
+                static_cast<System::Int32>(static_cast<System::Byte>(169)));
+            this->Month_Box->FormattingEnabled = true;
+            this->Month_Box->Location = System::Drawing::Point(301, 23);
+            this->Month_Box->Name = L"Month_Box";
+            this->Month_Box->Size = System::Drawing::Size(121, 37);
+            this->Month_Box->TabIndex = 3;
+            // 
+            // View_Button
+            // 
+            this->View_Button->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(128)), static_cast<System::Int32>(static_cast<System::Byte>(207)),
+                static_cast<System::Int32>(static_cast<System::Byte>(169)));
+            this->View_Button->Location = System::Drawing::Point(1065, 22);
+            this->View_Button->Name = L"View_Button";
+            this->View_Button->Size = System::Drawing::Size(102, 37);
+            this->View_Button->TabIndex = 4;
+            this->View_Button->Text = L"View";
+            this->View_Button->UseVisualStyleBackColor = false;
+            // 
+            // panel1
+            // 
+            this->panel1->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(76)), static_cast<System::Int32>(static_cast<System::Byte>(102)),
+                static_cast<System::Int32>(static_cast<System::Byte>(99)));
+            this->panel1->Controls->Add(this->View_Button);
+            this->panel1->Controls->Add(this->Month_Box);
+            this->panel1->Controls->Add(this->label2);
+            this->panel1->Controls->Add(this->Year_Box);
+            this->panel1->Controls->Add(this->label1);
+            this->panel1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+                static_cast<System::Byte>(0)));
+            this->panel1->Location = System::Drawing::Point(12, 12);
+            this->panel1->Name = L"panel1";
+            this->panel1->Size = System::Drawing::Size(1183, 79);
+            this->panel1->TabIndex = 0;
+            // 
             // ExercisePlan
             // 
             this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::None;
@@ -1517,8 +1523,6 @@ namespace SqlTest {
             this->Controls->Add(this->panel1);
             this->Name = L"ExercisePlan";
             this->Text = L"Exercise Plan";
-            this->panel1->ResumeLayout(false);
-            this->panel1->PerformLayout();
             this->Cell_1->ResumeLayout(false);
             this->Cell_1->PerformLayout();
             this->panel2->ResumeLayout(false);
@@ -1581,6 +1585,8 @@ namespace SqlTest {
             this->panel31->PerformLayout();
             this->panel32->ResumeLayout(false);
             this->panel32->PerformLayout();
+            this->panel1->ResumeLayout(false);
+            this->panel1->PerformLayout();
             this->ResumeLayout(false);
 
         }
