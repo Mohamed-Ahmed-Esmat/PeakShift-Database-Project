@@ -2,6 +2,7 @@
 
 #include <string>
 #include <vector>
+#include "UpdateHealthAssessment.h"
 
 namespace SqlTest {
 
@@ -39,7 +40,7 @@ namespace SqlTest {
     private: System::Windows::Forms::Panel^ panel1;
     private: System::Windows::Forms::Label^ label1;
     private: System::Windows::Forms::Panel^ panel2;
-    private: System::Windows::Forms::Button^ button2;
+
     private: System::Windows::Forms::Button^ button1;
 
     protected:
@@ -61,7 +62,6 @@ namespace SqlTest {
             this->panel1 = (gcnew System::Windows::Forms::Panel());
             this->label1 = (gcnew System::Windows::Forms::Label());
             this->panel2 = (gcnew System::Windows::Forms::Panel());
-            this->button2 = (gcnew System::Windows::Forms::Button());
             this->button1 = (gcnew System::Windows::Forms::Button());
             this->panel1->SuspendLayout();
             this->panel2->SuspendLayout();
@@ -93,27 +93,12 @@ namespace SqlTest {
             // 
             this->panel2->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(76)), static_cast<System::Int32>(static_cast<System::Byte>(102)),
                 static_cast<System::Int32>(static_cast<System::Byte>(99)));
-            this->panel2->Controls->Add(this->button2);
             this->panel2->Controls->Add(this->button1);
             this->panel2->Dock = System::Windows::Forms::DockStyle::Fill;
             this->panel2->Location = System::Drawing::Point(0, 447);
             this->panel2->Name = L"panel2";
             this->panel2->Size = System::Drawing::Size(762, 117);
             this->panel2->TabIndex = 1;
-            // 
-            // button2
-            // 
-            this->button2->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(128)), static_cast<System::Int32>(static_cast<System::Byte>(207)),
-                static_cast<System::Int32>(static_cast<System::Byte>(169)));
-            this->button2->FlatStyle = System::Windows::Forms::FlatStyle::Popup;
-            this->button2->Font = (gcnew System::Drawing::Font(L"Microsoft YaHei", 10.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-                static_cast<System::Byte>(0)));
-            this->button2->Location = System::Drawing::Point(469, 23);
-            this->button2->Name = L"button2";
-            this->button2->Size = System::Drawing::Size(224, 40);
-            this->button2->TabIndex = 1;
-            this->button2->Text = L"Old Assessment";
-            this->button2->UseVisualStyleBackColor = false;
             // 
             // button1
             // 
@@ -122,12 +107,13 @@ namespace SqlTest {
             this->button1->FlatStyle = System::Windows::Forms::FlatStyle::Popup;
             this->button1->Font = (gcnew System::Drawing::Font(L"Microsoft YaHei", 10.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
                 static_cast<System::Byte>(0)));
-            this->button1->Location = System::Drawing::Point(58, 23);
+            this->button1->Location = System::Drawing::Point(252, 18);
             this->button1->Name = L"button1";
-            this->button1->Size = System::Drawing::Size(224, 40);
+            this->button1->Size = System::Drawing::Size(255, 78);
             this->button1->TabIndex = 0;
-            this->button1->Text = L"Retake Assessment";
+            this->button1->Text = L"Update Assessment";
             this->button1->UseVisualStyleBackColor = false;
+            this->button1->Click += gcnew System::EventHandler(this, &HealthAssess::button1_Click);
             // 
             // HealthAssess
             // 
@@ -175,5 +161,11 @@ namespace SqlTest {
                 yPos += labelSpacing;
             }
         }
-    };
+    private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
+        UpdateHealthAssessment^ updateHealthAssessment = gcnew UpdateHealthAssessment;
+        this->Hide();
+        updateHealthAssessment->ShowDialog();
+        this->Show();
+    }
+};
 }

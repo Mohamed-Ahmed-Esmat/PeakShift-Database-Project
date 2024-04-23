@@ -51,6 +51,24 @@
     <ClCompile Include="Workouts.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="CoachUserDashboard.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="UpdateHealthAssessment.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="EditExercisePlan.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="EditNutritionPlan.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="AddUser.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="AddCoach.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MyForm.h">
@@ -87,6 +105,24 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Workouts.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CoachUserDashboard.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="UpdateHealthAssessment.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="EditExercisePlan.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="EditNutritionPlan.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="AddUser.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="AddCoach.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

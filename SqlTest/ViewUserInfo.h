@@ -1,4 +1,5 @@
 #pragma once
+#include "CoachUserDashboard.h"
 
 namespace SqlTest {
 
@@ -126,7 +127,7 @@ namespace SqlTest {
             this->VUInfo_btn->TabIndex = 3;
             this->VUInfo_btn->Text = L"View User Info";
             this->VUInfo_btn->UseVisualStyleBackColor = false;
-            this->VUInfo_btn->Click += gcnew System::EventHandler(this, &ViewUserInfo::button1_Click);
+            this->VUInfo_btn->Click += gcnew System::EventHandler(this, &ViewUserInfo::VUInfo_btn_Click);
             // 
             // ViewUserInfo
             // 
@@ -140,6 +141,7 @@ namespace SqlTest {
             this->Controls->Add(this->label1);
             this->Controls->Add(this->textBox1);
             this->Name = L"ViewUserInfo";
+            this->SizeGripStyle = System::Windows::Forms::SizeGripStyle::Hide;
             this->Text = L"ViewUserInfo";
             this->ResumeLayout(false);
             this->PerformLayout();
@@ -151,7 +153,10 @@ namespace SqlTest {
         // Handle ListView item click event
         MessageBox::Show("You clicked on: " );
     }
-    private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
+    private: System::Void VUInfo_btn_Click(System::Object^ sender, System::EventArgs^ e) {
+        CoachUserDashboard^ coachuserdash = gcnew CoachUserDashboard();
+        this->Hide(); // Hide the current form
+        coachuserdash->Show();
     }
 };
 }

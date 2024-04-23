@@ -120,7 +120,7 @@ namespace SqlTest {
 			this->NA_Label->AutoSize = true;
 			this->NA_Label->Location = System::Drawing::Point(12, 237);
 			this->NA_Label->Name = L"NA_Label";
-			this->NA_Label->Size = System::Drawing::Size(316, 32);
+			this->NA_Label->Size = System::Drawing::Size(268, 29);
 			this->NA_Label->TabIndex = 5;
 			this->NA_Label->Text = L"If not active add periond";
 			// 
@@ -129,7 +129,7 @@ namespace SqlTest {
 			this->Gender_Label->AutoSize = true;
 			this->Gender_Label->Location = System::Drawing::Point(12, 142);
 			this->Gender_Label->Name = L"Gender_Label";
-			this->Gender_Label->Size = System::Drawing::Size(329, 32);
+			this->Gender_Label->Size = System::Drawing::Size(280, 29);
 			this->Gender_Label->TabIndex = 4;
 			this->Gender_Label->Text = L"Gender: GENDER HERE";
 			// 
@@ -138,7 +138,7 @@ namespace SqlTest {
 			this->Age_Label->AutoSize = true;
 			this->Age_Label->Location = System::Drawing::Point(12, 99);
 			this->Age_Label->Name = L"Age_Label";
-			this->Age_Label->Size = System::Drawing::Size(225, 32);
+			this->Age_Label->Size = System::Drawing::Size(189, 29);
 			this->Age_Label->TabIndex = 3;
 			this->Age_Label->Text = L"Age: AGE HERE";
 			// 
@@ -147,7 +147,7 @@ namespace SqlTest {
 			this->Active_Label->AutoSize = true;
 			this->Active_Label->Location = System::Drawing::Point(12, 187);
 			this->Active_Label->Name = L"Active_Label";
-			this->Active_Label->Size = System::Drawing::Size(262, 32);
+			this->Active_Label->Size = System::Drawing::Size(222, 29);
 			this->Active_Label->TabIndex = 2;
 			this->Active_Label->Text = L"Active: YES OR NO";
 			// 
@@ -158,7 +158,7 @@ namespace SqlTest {
 				static_cast<System::Byte>(0)));
 			this->ID_Label->Location = System::Drawing::Point(12, 55);
 			this->ID_Label->Name = L"ID_Label";
-			this->ID_Label->Size = System::Drawing::Size(168, 32);
+			this->ID_Label->Size = System::Drawing::Size(143, 29);
 			this->ID_Label->TabIndex = 1;
 			this->ID_Label->Text = L"ID: ID HERE";
 			// 
@@ -169,7 +169,7 @@ namespace SqlTest {
 				static_cast<System::Byte>(0)));
 			this->Username_Label->Location = System::Drawing::Point(12, 13);
 			this->Username_Label->Name = L"Username_Label";
-			this->Username_Label->Size = System::Drawing::Size(258, 32);
+			this->Username_Label->Size = System::Drawing::Size(220, 29);
 			this->Username_Label->TabIndex = 0;
 			this->Username_Label->Text = L"USERNAME HERE";
 			// 
@@ -299,9 +299,9 @@ private: System::Void NP_Button_Click(System::Object^ sender, System::EventArgs^
 	this->Show();
 }
 private: System::Void W_button_Click(System::Object^ sender, System::EventArgs^ e) {
-	Workouts^ workoutsForm = gcnew Workouts;
+	AllWorkouts^ allworkoutsForm = gcnew AllWorkouts;
 	this->Hide();
-	workoutsForm->ShowDialog();
+	allworkoutsForm->ShowDialog();
 	this->Show();
 }
 private: System::Void P_Button_Click(System::Object^ sender, System::EventArgs^ e) {

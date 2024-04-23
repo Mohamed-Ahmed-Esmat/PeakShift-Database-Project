@@ -1,6 +1,8 @@
 #pragma once
 
 #include "ViewUserInfo.h" // Include the header file for ViewUserInfo form
+#include "AddUser.h"
+#include "AddCoach.h"
 
 namespace SqlTest {
 
@@ -46,6 +48,10 @@ namespace SqlTest {
     private: System::Windows::Forms::Label^ label2;
     private: System::Windows::Forms::Label^ label1;
     private: System::Windows::Forms::Button^ VU_Button;
+    private: System::Windows::Forms::Button^ add_coach_btn;
+    private: System::Windows::Forms::Button^ add_user_btn;
+
+
 
 
     private:
@@ -69,6 +75,8 @@ namespace SqlTest {
             this->label2 = (gcnew System::Windows::Forms::Label());
             this->label1 = (gcnew System::Windows::Forms::Label());
             this->VU_Button = (gcnew System::Windows::Forms::Button());
+            this->add_coach_btn = (gcnew System::Windows::Forms::Button());
+            this->add_user_btn = (gcnew System::Windows::Forms::Button());
             this->panel1->SuspendLayout();
             this->SuspendLayout();
             // 
@@ -168,8 +176,39 @@ namespace SqlTest {
             this->VU_Button->TabIndex = 2;
             this->VU_Button->Text = L"View Users";
             this->VU_Button->UseVisualStyleBackColor = false;
-            // Attach the click event handler to the button
             this->VU_Button->Click += gcnew System::EventHandler(this, &CoachDashboard::VU_Button_Click);
+            // 
+            // add_coach_btn
+            // 
+            this->add_coach_btn->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(128)), static_cast<System::Int32>(static_cast<System::Byte>(207)),
+                static_cast<System::Int32>(static_cast<System::Byte>(169)));
+            this->add_coach_btn->Cursor = System::Windows::Forms::Cursors::Hand;
+            this->add_coach_btn->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14));
+            this->add_coach_btn->ForeColor = System::Drawing::SystemColors::ControlText;
+            this->add_coach_btn->Location = System::Drawing::Point(555, 17);
+            this->add_coach_btn->Margin = System::Windows::Forms::Padding(2);
+            this->add_coach_btn->Name = L"add_coach_btn";
+            this->add_coach_btn->Size = System::Drawing::Size(167, 167);
+            this->add_coach_btn->TabIndex = 2;
+            this->add_coach_btn->Text = L"Add Coach";
+            this->add_coach_btn->UseVisualStyleBackColor = false;
+            this->add_coach_btn->Click += gcnew System::EventHandler(this, &CoachDashboard::add_coach_Button_Click);
+            // 
+            // add_user_btn
+            // 
+            this->add_user_btn->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(128)), static_cast<System::Int32>(static_cast<System::Byte>(207)),
+                static_cast<System::Int32>(static_cast<System::Byte>(169)));
+            this->add_user_btn->Cursor = System::Windows::Forms::Cursors::Hand;
+            this->add_user_btn->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14));
+            this->add_user_btn->ForeColor = System::Drawing::SystemColors::ControlText;
+            this->add_user_btn->Location = System::Drawing::Point(430, 261);
+            this->add_user_btn->Margin = System::Windows::Forms::Padding(2);
+            this->add_user_btn->Name = L"add_user_btn";
+            this->add_user_btn->Size = System::Drawing::Size(167, 167);
+            this->add_user_btn->TabIndex = 2;
+            this->add_user_btn->Text = L"Add Users";
+            this->add_user_btn->UseVisualStyleBackColor = false;
+            this->add_user_btn->Click += gcnew System::EventHandler(this, &CoachDashboard::add_user_Button_Click);
             // 
             // CoachDashboard
             // 
@@ -178,6 +217,8 @@ namespace SqlTest {
             this->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(201)), static_cast<System::Int32>(static_cast<System::Byte>(215)),
                 static_cast<System::Int32>(static_cast<System::Byte>(248)));
             this->ClientSize = System::Drawing::Size(777, 553);
+            this->Controls->Add(this->add_user_btn);
+            this->Controls->Add(this->add_coach_btn);
             this->Controls->Add(this->VU_Button);
             this->Controls->Add(this->panel1);
             this->ForeColor = System::Drawing::SystemColors::ControlText;
@@ -193,7 +234,26 @@ namespace SqlTest {
     private: System::Void VU_Button_Click(System::Object^ sender, System::EventArgs^ e) {
         // When View Users button is clicked, open the ViewUserInfo form
         ViewUserInfo^ viewUserInfoForm = gcnew ViewUserInfo();
-        viewUserInfoForm->Show(); // Show the ViewUserInfo form
+        this->Hide(); // Hide the current form
+        viewUserInfoForm->ShowDialog();
+        this->Show(); // Show the ViewUserInfo form
+    }
+
+    private: System::Void add_coach_Button_Click(System::Object^ sender, System::EventArgs^ e) {
+        // When View Users button is clicked, open the ViewUserInfo form
+        AddCoach^ addCoach = gcnew AddCoach();
+        this->Hide(); // Hide the current form
+        addCoach->ShowDialog();
+        this->Show(); // Show the ViewUserInfo form // Show the ViewUserInfo form
+    }
+
+
+    private: System::Void add_user_Button_Click(System::Object^ sender, System::EventArgs^ e) {
+        // When View Users button is clicked, open the ViewUserInfo form
+        AddUser^ addUser = gcnew AddUser();
+        this->Hide(); // Hide the current form
+        addUser->ShowDialog();
+        this->Show(); // Show the ViewUserInfo form
     }
     };
 }
