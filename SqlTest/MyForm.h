@@ -1,4 +1,5 @@
 #pragma once
+#include "modularValues.h"
 
 namespace SqlTest {
 
@@ -169,7 +170,13 @@ namespace SqlTest {
             }*/
 
         try {
-            SqlConnection^ con = gcnew SqlConnection("Data Source=LEGION-5;Initial Catalog=PeakShift;Integrated Security=True");
+            Modules modules; // Create an instance of Modules to access its member variables
+
+            // Create the connection string using modular values
+            String^ connectionString = "Data Source=" + gcnew String(modules.serverName.c_str()) + ";Initial Catalog=" + gcnew String(modules.dataBaseName.c_str()) + ";Integrated Security=True";
+
+            // Create SQL connection
+            SqlConnection^ con = gcnew SqlConnection(connectionString);
             con->Open();
             String^ query = "SELECT * FROM [User] WHERE Username=@login and Password=@password";
             SqlCommand command(query, con);

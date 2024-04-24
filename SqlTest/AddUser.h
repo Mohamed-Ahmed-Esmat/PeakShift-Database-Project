@@ -1,13 +1,13 @@
 #pragma once
+#include "modularValues.h"
 
 namespace SqlTest {
 
     using namespace System;
     using namespace System::ComponentModel;
-    using namespace System::Collections;
     using namespace System::Windows::Forms;
     using namespace System::Data;
-    using namespace System::Drawing;
+    using namespace System::Data::SqlClient;
 
     /// <summary>
     /// Summary for AddUser
@@ -271,8 +271,41 @@ namespace SqlTest {
         // Event handler for the Submit button click
         System::Void btnSubmit_Click(System::Object^ sender, System::EventArgs^ e)
         {
-            // Implement the logic to submit the new user here
-            // You can retrieve values from the text boxes and add the user to the database or perform any other action.
+            Modules modules;
+
+            String^ connectionString = "Server=" + gcnew String(modules.serverName.c_str()) + ";Database=" + gcnew String(modules.dataBaseName.c_str()) + ";Integrated Security=True";
+            SqlConnection^ connection = gcnew SqlConnection(connectionString);
+
+            try
+            {
+
+                connection->Open();
+
+
+                SqlCommand^ command = gcnew SqlCommand("addUserDetails", connection);
+                command->CommandType = CommandType::StoredProcedure;
+                command->Parameters->AddWithValue("@UserID", txtUserID->Text);
+                command->Parameters->AddWithValue("@Username", txtUsername->Text);
+                command->Parameters->AddWithValue("@Gender", txtGender->Text);
+                command->Parameters->AddWithValue("@Age", txtAge->Text);
+                command->Parameters->AddWithValue("@Email", txtEmail->Text);
+                command->Parameters->AddWithValue("@Password", txtPassword->Text);
+                command->Parameters->AddWithValue("@Active", txtActive->Text);
+                command->Parameters->AddWithValue("@Frozen", txtFrozen->Text);
+                command->Parameters->AddWithValue("@ForzenLength", txtFreezeLength->Text);
+
+
+                command->ExecuteNonQuery();
+                MessageBox::Show("User added successfully!");
+            }
+            catch (Exception^ ex)
+            {
+                MessageBox::Show("Error: " + ex->Message);
+            }
+            finally
+            {
+                connection->Close();
+            }
         }
     };
 }
