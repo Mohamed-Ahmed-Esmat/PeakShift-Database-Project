@@ -125,5 +125,8 @@
     <ClInclude Include="AddCoach.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\PeakShift-Database-Project-main\PeakShift-Database-Project-main\SqlTest\modularValues.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

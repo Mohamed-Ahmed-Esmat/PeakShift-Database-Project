@@ -21,3 +21,23 @@ D:\Visual Studio 2022 projects\SqlTest\PeakShift-Database-Project\SqlTest\x64\De
 D:\Visual Studio 2022 projects\SqlTest\PeakShift-Database-Project\SqlTest\x64\Debug\SqlTest.UpdateHealthAssessment.resources
 D:\Visual Studio 2022 projects\SqlTest\PeakShift-Database-Project\SqlTest\x64\Debug\SqlTest.AddCoach.resources
 D:\Visual Studio 2022 projects\SqlTest\PeakShift-Database-Project\SqlTest\x64\Debug\SqlTest.AddUser.resources
+C:\Users\saifh\Desktop\Cloned Peakshift\PeakShift-Database-Project\SqlTest\x64\Debug\SqlTest.vcxproj.AssemblyReference.cache
+C:\Users\saifh\Desktop\Cloned Peakshift\PeakShift-Database-Project\SqlTest\x64\Debug\SqlTest.AddCoach.resources
+C:\Users\saifh\Desktop\Cloned Peakshift\PeakShift-Database-Project\SqlTest\x64\Debug\SqlTest.AddUser.resources
+C:\Users\saifh\Desktop\Cloned Peakshift\PeakShift-Database-Project\SqlTest\x64\Debug\SqlTest.AllWorkouts.resources
+C:\Users\saifh\Desktop\Cloned Peakshift\PeakShift-Database-Project\SqlTest\x64\Debug\SqlTest.CoachDashboard.resources
+C:\Users\saifh\Desktop\Cloned Peakshift\PeakShift-Database-Project\SqlTest\x64\Debug\SqlTest.CoachUserDashboard.resources
+C:\Users\saifh\Desktop\Cloned Peakshift\PeakShift-Database-Project\SqlTest\x64\Debug\SqlTest.DailyMetric.resources
+C:\Users\saifh\Desktop\Cloned Peakshift\PeakShift-Database-Project\SqlTest\x64\Debug\SqlTest.EditExercisePlan.resources
+C:\Users\saifh\Desktop\Cloned Peakshift\PeakShift-Database-Project\SqlTest\x64\Debug\SqlTest.EditNutritionPlan.resources
+C:\Users\saifh\Desktop\Cloned Peakshift\PeakShift-Database-Project\SqlTest\x64\Debug\SqlTest.ExercisePlan.resources
+C:\Users\saifh\Desktop\Cloned Peakshift\PeakShift-Database-Project\SqlTest\x64\Debug\SqlTest.HealthAssess.resources
+C:\Users\saifh\Desktop\Cloned Peakshift\PeakShift-Database-Project\SqlTest\x64\Debug\SqlTest.MyForm.resources
+C:\Users\saifh\Desktop\Cloned Peakshift\PeakShift-Database-Project\SqlTest\x64\Debug\SqlTest.NutritionPlan.resources
+C:\Users\saifh\Desktop\Cloned Peakshift\PeakShift-Database-Project\SqlTest\x64\Debug\SqlTest.Payments.resources
+C:\Users\saifh\Desktop\Cloned Peakshift\PeakShift-Database-Project\SqlTest\x64\Debug\SqlTest.SubscrpPlans.resources
+C:\Users\saifh\Desktop\Cloned Peakshift\PeakShift-Database-Project\SqlTest\x64\Debug\SqlTest.UpdateHealthAssessment.resources
+C:\Users\saifh\Desktop\Cloned Peakshift\PeakShift-Database-Project\SqlTest\x64\Debug\SqlTest.UserDashboard.resources
+C:\Users\saifh\Desktop\Cloned Peakshift\PeakShift-Database-Project\SqlTest\x64\Debug\SqlTest.ViewUserInfo.resources
+C:\Users\saifh\Desktop\Cloned Peakshift\PeakShift-Database-Project\SqlTest\x64\Debug\SqlTest.Workouts.resources
+C:\Users\saifh\Desktop\Cloned Peakshift\PeakShift-Database-Project\SqlTest\x64\Debug\SqlTest.vcxproj.GenerateResource.cache
