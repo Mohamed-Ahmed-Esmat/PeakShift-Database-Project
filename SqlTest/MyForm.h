@@ -1,5 +1,6 @@
 #pragma once
 #include "modularValues.h"
+#include "UserDashboard.h"
 
 namespace SqlTest {
 
@@ -189,6 +190,10 @@ namespace SqlTest {
             }
             if (count == 1) {
                 MessageBox::Show("Login Success");
+                UserDashboard^ userDashboard = gcnew UserDashboard;
+                this->Hide();
+                userDashboard->ShowDialog();
+                this->Show();
             }
             else {
                 MessageBox::Show("Login Failed");
