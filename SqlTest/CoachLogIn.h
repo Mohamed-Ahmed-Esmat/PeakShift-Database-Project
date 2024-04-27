@@ -1,7 +1,7 @@
 #pragma once
 #include "modularValues.h"
 #include "UserDashboard.h"
-#include "CoachLogIn.h"
+#include "CoachDashboard.h"
 
 namespace SqlTest {
 
@@ -14,12 +14,12 @@ namespace SqlTest {
     using namespace System::Data::SqlClient;
 
     /// <summary>
-    /// Summary for MyForm
+    /// Summary for CoachLogIn
     /// </summary>
-    public ref class MyForm : public System::Windows::Forms::Form
+    public ref class CoachLogIn : public System::Windows::Forms::Form
     {
     public:
-        MyForm(void)
+        CoachLogIn(void)
         {
             InitializeComponent();
             //
@@ -32,7 +32,7 @@ namespace SqlTest {
         /// <summary>
         /// Clean up any resources being used.
         /// </summary>
-        ~MyForm()
+        ~CoachLogIn()
         {
             if (components)
             {
@@ -46,7 +46,7 @@ namespace SqlTest {
     private: System::Windows::Forms::Label^ label2;
     private: System::Windows::Forms::Label^ label3;
     private: System::Windows::Forms::Label^ label4;
-    private: System::Windows::Forms::LinkLabel^ linkLabel1;
+
 
     protected:
 
@@ -70,7 +70,6 @@ namespace SqlTest {
             this->label2 = (gcnew System::Windows::Forms::Label());
             this->label3 = (gcnew System::Windows::Forms::Label());
             this->label4 = (gcnew System::Windows::Forms::Label());
-            this->linkLabel1 = (gcnew System::Windows::Forms::LinkLabel());
             this->SuspendLayout();
             // 
             // label1
@@ -82,7 +81,7 @@ namespace SqlTest {
             this->label1->Size = System::Drawing::Size(73, 29);
             this->label1->TabIndex = 0;
             this->label1->Text = L"Login";
-            this->label1->Click += gcnew System::EventHandler(this, &MyForm::label1_Click);
+            this->label1->Click += gcnew System::EventHandler(this, &CoachLogIn::label1_Click);
             // 
             // textBox1
             // 
@@ -109,16 +108,16 @@ namespace SqlTest {
             this->button1->TabIndex = 3;
             this->button1->Text = L"Submit";
             this->button1->UseVisualStyleBackColor = false;
-            this->button1->Click += gcnew System::EventHandler(this, &MyForm::button1_Click);
+            this->button1->Click += gcnew System::EventHandler(this, &CoachLogIn::button1_Click);
             // 
             // label2
             // 
             this->label2->AutoSize = true;
             this->label2->Location = System::Drawing::Point(12, 126);
             this->label2->Name = L"label2";
-            this->label2->Size = System::Drawing::Size(73, 16);
+            this->label2->Size = System::Drawing::Size(62, 16);
             this->label2->TabIndex = 4;
-            this->label2->Text = L"Username:";
+            this->label2->Text = L"CoachID:";
             // 
             // label3
             // 
@@ -140,25 +139,13 @@ namespace SqlTest {
             this->label4->TabIndex = 6;
             this->label4->Text = L"Welcome to PeakShift";
             // 
-            // linkLabel1
-            // 
-            this->linkLabel1->AutoSize = true;
-            this->linkLabel1->Location = System::Drawing::Point(103, 327);
-            this->linkLabel1->Name = L"linkLabel1";
-            this->linkLabel1->Size = System::Drawing::Size(143, 16);
-            this->linkLabel1->TabIndex = 7;
-            this->linkLabel1->TabStop = true;
-            this->linkLabel1->Text = L"Not a User\? Click Here";
-            this->linkLabel1->LinkClicked += gcnew System::Windows::Forms::LinkLabelLinkClickedEventHandler(this, &MyForm::linkLabel1_LinkClicked);
-            // 
-            // MyForm
+            // CoachLogIn
             // 
             this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
             this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
             this->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(201)), static_cast<System::Int32>(static_cast<System::Byte>(215)),
                 static_cast<System::Int32>(static_cast<System::Byte>(248)));
             this->ClientSize = System::Drawing::Size(403, 387);
-            this->Controls->Add(this->linkLabel1);
             this->Controls->Add(this->label4);
             this->Controls->Add(this->button1);
             this->Controls->Add(this->textBox2);
@@ -166,8 +153,8 @@ namespace SqlTest {
             this->Controls->Add(this->label1);
             this->Controls->Add(this->label2);
             this->Controls->Add(this->label3);
-            this->Name = L"MyForm";
-            this->Text = L"MyForm";
+            this->Name = L"CoachLogIn";
+            this->Text = L"CoachLogIn";
             this->ResumeLayout(false);
             this->PerformLayout();
 
@@ -206,9 +193,9 @@ namespace SqlTest {
             }
             if (count == 1) {
                 //MessageBox::Show("Login Success");
-                UserDashboard^ userDashboard = gcnew UserDashboard;
+                CoachDashboard^ coachDashboard = gcnew CoachDashboard;
                 this->Hide();
-                userDashboard->ShowDialog();
+                coachDashboard->ShowDialog();
                 this->Show();
             }
             else {
@@ -219,11 +206,5 @@ namespace SqlTest {
             MessageBox::Show(ex->Message);
         }
     }
-    private: System::Void linkLabel1_LinkClicked(System::Object^ sender, System::Windows::Forms::LinkLabelLinkClickedEventArgs^ e) {
-        CoachLogIn^ coachLogIn = gcnew CoachLogIn;
-        this->Hide();
-        coachLogIn->ShowDialog();
-        this->Show();
-    }
-};
+    };
 }

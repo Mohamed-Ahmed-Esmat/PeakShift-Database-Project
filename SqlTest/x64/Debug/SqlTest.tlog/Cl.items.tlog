@@ -1,19 +1,20 @@
-C:\Users\saifh\Desktop\Cloned Peakshift\PeakShift-Database-Project\SqlTest\AddCoach.cpp;C:\Users\saifh\Desktop\Cloned Peakshift\PeakShift-Database-Project\SqlTest\x64\Debug\AddCoach.obj
-C:\Users\saifh\Desktop\Cloned Peakshift\PeakShift-Database-Project\SqlTest\AddUser.cpp;C:\Users\saifh\Desktop\Cloned Peakshift\PeakShift-Database-Project\SqlTest\x64\Debug\AddUser.obj
-C:\Users\saifh\Desktop\Cloned Peakshift\PeakShift-Database-Project\SqlTest\AllWorkouts.cpp;C:\Users\saifh\Desktop\Cloned Peakshift\PeakShift-Database-Project\SqlTest\x64\Debug\AllWorkouts.obj
-C:\Users\saifh\Desktop\Cloned Peakshift\PeakShift-Database-Project\SqlTest\CoachDashboard.cpp;C:\Users\saifh\Desktop\Cloned Peakshift\PeakShift-Database-Project\SqlTest\x64\Debug\CoachDashboard.obj
-C:\Users\saifh\Desktop\Cloned Peakshift\PeakShift-Database-Project\SqlTest\CoachUserDashboard.cpp;C:\Users\saifh\Desktop\Cloned Peakshift\PeakShift-Database-Project\SqlTest\x64\Debug\CoachUserDashboard.obj
-C:\Users\saifh\Desktop\Cloned Peakshift\PeakShift-Database-Project\SqlTest\DailyMetric.cpp;C:\Users\saifh\Desktop\Cloned Peakshift\PeakShift-Database-Project\SqlTest\x64\Debug\DailyMetric.obj
-C:\Users\saifh\Desktop\Cloned Peakshift\PeakShift-Database-Project\SqlTest\EditExercisePlan.cpp;C:\Users\saifh\Desktop\Cloned Peakshift\PeakShift-Database-Project\SqlTest\x64\Debug\EditExercisePlan.obj
-C:\Users\saifh\Desktop\Cloned Peakshift\PeakShift-Database-Project\SqlTest\EditNutritionPlan.cpp;C:\Users\saifh\Desktop\Cloned Peakshift\PeakShift-Database-Project\SqlTest\x64\Debug\EditNutritionPlan.obj
-C:\Users\saifh\Desktop\Cloned Peakshift\PeakShift-Database-Project\SqlTest\ExercisePlan.cpp;C:\Users\saifh\Desktop\Cloned Peakshift\PeakShift-Database-Project\SqlTest\x64\Debug\ExercisePlan.obj
-C:\Users\saifh\Desktop\Cloned Peakshift\PeakShift-Database-Project\SqlTest\HealthAssess.cpp;C:\Users\saifh\Desktop\Cloned Peakshift\PeakShift-Database-Project\SqlTest\x64\Debug\HealthAssess.obj
-C:\Users\saifh\Desktop\Cloned Peakshift\PeakShift-Database-Project\SqlTest\MyForm.cpp;C:\Users\saifh\Desktop\Cloned Peakshift\PeakShift-Database-Project\SqlTest\x64\Debug\MyForm.obj
-C:\Users\saifh\Desktop\Cloned Peakshift\PeakShift-Database-Project\SqlTest\NutritionPlan.cpp;C:\Users\saifh\Desktop\Cloned Peakshift\PeakShift-Database-Project\SqlTest\x64\Debug\NutritionPlan.obj
-C:\Users\saifh\Desktop\Cloned Peakshift\PeakShift-Database-Project\SqlTest\Payments.cpp;C:\Users\saifh\Desktop\Cloned Peakshift\PeakShift-Database-Project\SqlTest\x64\Debug\Payments.obj
-C:\Users\saifh\Desktop\Cloned Peakshift\PeakShift-Database-Project\SqlTest\SubscrpPlans.cpp;C:\Users\saifh\Desktop\Cloned Peakshift\PeakShift-Database-Project\SqlTest\x64\Debug\SubscrpPlans.obj
-C:\Users\saifh\Desktop\Cloned Peakshift\PeakShift-Database-Project\SqlTest\UpdateHealthAssessment.cpp;C:\Users\saifh\Desktop\Cloned Peakshift\PeakShift-Database-Project\SqlTest\x64\Debug\UpdateHealthAssessment.obj
-C:\Users\saifh\Desktop\Cloned Peakshift\PeakShift-Database-Project\SqlTest\UserDashboard.cpp;C:\Users\saifh\Desktop\Cloned Peakshift\PeakShift-Database-Project\SqlTest\x64\Debug\UserDashboard.obj
-C:\Users\saifh\Desktop\Cloned Peakshift\PeakShift-Database-Project\SqlTest\ViewUserInfo.cpp;C:\Users\saifh\Desktop\Cloned Peakshift\PeakShift-Database-Project\SqlTest\x64\Debug\ViewUserInfo.obj
-C:\Users\saifh\Desktop\Cloned Peakshift\PeakShift-Database-Project\SqlTest\Workouts.cpp;C:\Users\saifh\Desktop\Cloned Peakshift\PeakShift-Database-Project\SqlTest\x64\Debug\Workouts.obj
-C:\Users\saifh\Desktop\Cloned Peakshift\PeakShift-Database-Project\SqlTest\x64\Debug\.NETFramework,Version=v4.7.2.AssemblyAttributes.cpp;C:\Users\saifh\Desktop\Cloned Peakshift\PeakShift-Database-Project\SqlTest\x64\Debug\.NETFramework,Version=v4.7.2.AssemblyAttributes.obj
+D:\Visual Studio 2022 projects\SqlTest\PeakShift-Database-Project\SqlTest\AddCoach.cpp;D:\Visual Studio 2022 projects\SqlTest\PeakShift-Database-Project\SqlTest\x64\Debug\AddCoach.obj
+D:\Visual Studio 2022 projects\SqlTest\PeakShift-Database-Project\SqlTest\AddUser.cpp;D:\Visual Studio 2022 projects\SqlTest\PeakShift-Database-Project\SqlTest\x64\Debug\AddUser.obj
+D:\Visual Studio 2022 projects\SqlTest\PeakShift-Database-Project\SqlTest\AllWorkouts.cpp;D:\Visual Studio 2022 projects\SqlTest\PeakShift-Database-Project\SqlTest\x64\Debug\AllWorkouts.obj
+D:\Visual Studio 2022 projects\SqlTest\PeakShift-Database-Project\SqlTest\CoachDashboard.cpp;D:\Visual Studio 2022 projects\SqlTest\PeakShift-Database-Project\SqlTest\x64\Debug\CoachDashboard.obj
+D:\Visual Studio 2022 projects\SqlTest\PeakShift-Database-Project\SqlTest\CoachLogIn.cpp;D:\Visual Studio 2022 projects\SqlTest\PeakShift-Database-Project\SqlTest\x64\Debug\CoachLogIn.obj
+D:\Visual Studio 2022 projects\SqlTest\PeakShift-Database-Project\SqlTest\CoachUserDashboard.cpp;D:\Visual Studio 2022 projects\SqlTest\PeakShift-Database-Project\SqlTest\x64\Debug\CoachUserDashboard.obj
+D:\Visual Studio 2022 projects\SqlTest\PeakShift-Database-Project\SqlTest\DailyMetric.cpp;D:\Visual Studio 2022 projects\SqlTest\PeakShift-Database-Project\SqlTest\x64\Debug\DailyMetric.obj
+D:\Visual Studio 2022 projects\SqlTest\PeakShift-Database-Project\SqlTest\EditExercisePlan.cpp;D:\Visual Studio 2022 projects\SqlTest\PeakShift-Database-Project\SqlTest\x64\Debug\EditExercisePlan.obj
+D:\Visual Studio 2022 projects\SqlTest\PeakShift-Database-Project\SqlTest\EditNutritionPlan.cpp;D:\Visual Studio 2022 projects\SqlTest\PeakShift-Database-Project\SqlTest\x64\Debug\EditNutritionPlan.obj
+D:\Visual Studio 2022 projects\SqlTest\PeakShift-Database-Project\SqlTest\ExercisePlan.cpp;D:\Visual Studio 2022 projects\SqlTest\PeakShift-Database-Project\SqlTest\x64\Debug\ExercisePlan.obj
+D:\Visual Studio 2022 projects\SqlTest\PeakShift-Database-Project\SqlTest\HealthAssess.cpp;D:\Visual Studio 2022 projects\SqlTest\PeakShift-Database-Project\SqlTest\x64\Debug\HealthAssess.obj
+D:\Visual Studio 2022 projects\SqlTest\PeakShift-Database-Project\SqlTest\MyForm.cpp;D:\Visual Studio 2022 projects\SqlTest\PeakShift-Database-Project\SqlTest\x64\Debug\MyForm.obj
+D:\Visual Studio 2022 projects\SqlTest\PeakShift-Database-Project\SqlTest\NutritionPlan.cpp;D:\Visual Studio 2022 projects\SqlTest\PeakShift-Database-Project\SqlTest\x64\Debug\NutritionPlan.obj
+D:\Visual Studio 2022 projects\SqlTest\PeakShift-Database-Project\SqlTest\Payments.cpp;D:\Visual Studio 2022 projects\SqlTest\PeakShift-Database-Project\SqlTest\x64\Debug\Payments.obj
+D:\Visual Studio 2022 projects\SqlTest\PeakShift-Database-Project\SqlTest\SubscrpPlans.cpp;D:\Visual Studio 2022 projects\SqlTest\PeakShift-Database-Project\SqlTest\x64\Debug\SubscrpPlans.obj
+D:\Visual Studio 2022 projects\SqlTest\PeakShift-Database-Project\SqlTest\UpdateHealthAssessment.cpp;D:\Visual Studio 2022 projects\SqlTest\PeakShift-Database-Project\SqlTest\x64\Debug\UpdateHealthAssessment.obj
+D:\Visual Studio 2022 projects\SqlTest\PeakShift-Database-Project\SqlTest\UserDashboard.cpp;D:\Visual Studio 2022 projects\SqlTest\PeakShift-Database-Project\SqlTest\x64\Debug\UserDashboard.obj
+D:\Visual Studio 2022 projects\SqlTest\PeakShift-Database-Project\SqlTest\ViewUserInfo.cpp;D:\Visual Studio 2022 projects\SqlTest\PeakShift-Database-Project\SqlTest\x64\Debug\ViewUserInfo.obj
+D:\Visual Studio 2022 projects\SqlTest\PeakShift-Database-Project\SqlTest\Workouts.cpp;D:\Visual Studio 2022 projects\SqlTest\PeakShift-Database-Project\SqlTest\x64\Debug\Workouts.obj
+D:\Visual Studio 2022 projects\SqlTest\PeakShift-Database-Project\SqlTest\x64\Debug\.NETFramework,Version=v4.7.2.AssemblyAttributes.cpp;D:\Visual Studio 2022 projects\SqlTest\PeakShift-Database-Project\SqlTest\x64\Debug\.NETFramework,Version=v4.7.2.AssemblyAttributes.obj

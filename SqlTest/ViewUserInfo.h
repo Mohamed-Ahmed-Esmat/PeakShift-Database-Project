@@ -27,10 +27,19 @@ namespace SqlTest {
             listView1->View = View::Details;
       
             // Add sample items
-            ListViewItem^ item1 = gcnew ListViewItem(gcnew array<String^>{"User1", "user1@example.com"});
-            ListViewItem^ item2 = gcnew ListViewItem(gcnew array<String^>{"User2", "user2@example.com"});
-            ListViewItem^ item3 = gcnew ListViewItem(gcnew array<String^>{"User3", "user3@example.com"});
-            listView1->Items->AddRange(gcnew array<ListViewItem^>{item1, item2, item3});
+            ListViewItem^ item1 = gcnew ListViewItem("User1");
+            item1->SubItems->Add("user1@example.com");
+
+            ListViewItem^ item2 = gcnew ListViewItem("User2");
+            item2->SubItems->Add("user2@example.com");
+
+            ListViewItem^ item3 = gcnew ListViewItem("User3");
+            item3->SubItems->Add("user3@example.com");
+
+            listView1->Items->Add(item1);
+            listView1->Items->Add(item2);
+            listView1->Items->Add(item3);
+
 
             // Handle ListView item click event
             //listView1->ItemClick += gcnew System::EventHandler(this, &ViewUserInfo::listView1_ItemClick);

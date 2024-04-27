@@ -41,3 +41,4 @@ C:\Users\saifh\Desktop\Cloned Peakshift\PeakShift-Database-Project\SqlTest\x64\D
 C:\Users\saifh\Desktop\Cloned Peakshift\PeakShift-Database-Project\SqlTest\x64\Debug\SqlTest.ViewUserInfo.resources
 C:\Users\saifh\Desktop\Cloned Peakshift\PeakShift-Database-Project\SqlTest\x64\Debug\SqlTest.Workouts.resources
 C:\Users\saifh\Desktop\Cloned Peakshift\PeakShift-Database-Project\SqlTest\x64\Debug\SqlTest.vcxproj.GenerateResource.cache
+D:\Visual Studio 2022 projects\SqlTest\PeakShift-Database-Project\SqlTest\x64\Debug\SqlTest.CoachLogIn.resources

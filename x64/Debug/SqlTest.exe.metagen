@@ -2,6 +2,7 @@
   SqlTest.AddUser.resources - Embedded, ContainedInManifestFile, 
   SqlTest.AllWorkouts.resources - Embedded, ContainedInManifestFile, 
   SqlTest.CoachDashboard.resources - Embedded, ContainedInManifestFile, 
+  SqlTest.CoachLogIn.resources - Embedded, ContainedInManifestFile, 
   SqlTest.CoachUserDashboard.resources - Embedded, ContainedInManifestFile, 
   SqlTest.DailyMetric.resources - Embedded, ContainedInManifestFile, 
   SqlTest.EditExercisePlan.resources - Embedded, ContainedInManifestFile, 
@@ -80,5 +81,11 @@ Class SqlTest.Payments: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
   :System.Windows.Forms.Form
     Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
 Class SqlTest.UserDashboard: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.Windows.Forms.Form
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+Class SqlTest.CoachLogIn: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.Windows.Forms.Form
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+Class SqlTest.MyForm: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
   :System.Windows.Forms.Form
     Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName

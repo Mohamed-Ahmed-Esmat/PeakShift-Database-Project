@@ -1,22 +1,5 @@
-﻿  AddCoach.cpp
-  AddUser.cpp
-  AllWorkouts.cpp
-  CoachDashboard.cpp
-  CoachUserDashboard.cpp
-  DailyMetric.cpp
-  EditExercisePlan.cpp
-  EditNutritionPlan.cpp
-  ExercisePlan.cpp
-  HealthAssess.cpp
-  MyForm.cpp
-  NutritionPlan.cpp
-  Payments.cpp
-  SubscrpPlans.cpp
-  UpdateHealthAssessment.cpp
-  UserDashboard.cpp
-  ViewUserInfo.cpp
-  Workouts.cpp
-  .NETFramework,Version=v4.7.2.AssemblyAttributes.cpp
+﻿  CoachDashboard.cpp
+  CoachLogIn.cpp
   Generating Code...
   AddCoach.obj : MSIL module encountered; incremental linking is disabled for MSIL; performing full link
-  SqlTest.vcxproj -> C:\Users\saifh\Desktop\Cloned Peakshift\PeakShift-Database-Project\x64\Debug\SqlTest.exe
+  SqlTest.vcxproj -> D:\Visual Studio 2022 projects\SqlTest\PeakShift-Database-Project\x64\Debug\SqlTest.exe
