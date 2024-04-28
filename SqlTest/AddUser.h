@@ -15,8 +15,14 @@ namespace SqlTest {
     public ref class AddUser : public System::Windows::Forms::Form
     {
     public:
+        String^ CoachID;
         AddUser(void)
         {
+            InitializeComponent();
+        }
+        AddUser(String^ CoachID)
+        {
+            this->CoachID = CoachID;
             InitializeComponent();
         }
 
@@ -295,8 +301,18 @@ namespace SqlTest {
                 command->Parameters->AddWithValue("@ForzenLength", txtFreezeLength->Text);
 
 
+
+
                 command->ExecuteNonQuery();
                 MessageBox::Show("User added successfully!");
+
+                SqlCommand^ createPlansCommand = gcnew SqlCommand("CreateExercisePlans", connection);
+                createPlansCommand->CommandType = CommandType::StoredProcedure;
+                createPlansCommand->Parameters->AddWithValue("@CoachID", CoachID); 
+                createPlansCommand->Parameters->AddWithValue("@UserID", txtUserID->Text);
+
+                createPlansCommand->ExecuteNonQuery();
+                MessageBox::Show("Exercise plans created successfully!");
             }
             catch (Exception^ ex)
             {

@@ -290,7 +290,7 @@ namespace SqlTest {
 
     private: System::Void add_user_Button_Click(System::Object^ sender, System::EventArgs^ e) {
         // When View Users button is clicked, open the ViewUserInfo form
-        AddUser^ addUser = gcnew AddUser();
+        AddUser^ addUser = gcnew AddUser(GetID());
         this->Hide(); // Hide the current form
         addUser->ShowDialog();
         this->Show(); // Show the ViewUserInfo form
