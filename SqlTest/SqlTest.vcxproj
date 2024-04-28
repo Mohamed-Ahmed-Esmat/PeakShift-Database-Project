@@ -132,6 +132,7 @@
     <ClCompile Include="DailyMetric.cpp" />
     <ClCompile Include="EditExercisePlan.cpp" />
     <ClCompile Include="EditNutritionPlan.cpp" />
+    <ClCompile Include="EditWorkout.cpp" />
     <ClCompile Include="ExercisePlan.cpp" />
     <ClCompile Include="HealthAssess.cpp" />
     <ClCompile Include="MyForm.cpp" />
@@ -170,6 +171,9 @@
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="EditNutritionPlan.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="EditWorkout.h">
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="ExercisePlan.h">
@@ -230,6 +234,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="EditNutritionPlan.resx">
       <DependentUpon>EditNutritionPlan.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditWorkout.resx">
+      <DependentUpon>EditWorkout.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ExercisePlan.resx">
       <DependentUpon>ExercisePlan.h</DependentUpon>

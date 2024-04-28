@@ -102,7 +102,7 @@ namespace SqlTest {
 	private: System::Windows::Forms::Button^ DM_Button;
 	private: System::Windows::Forms::Button^ EP_Button;
 	private: System::Windows::Forms::Button^ NP_Button;
-	private: System::Windows::Forms::Button^ W_button;
+
 	private: System::Windows::Forms::Button^ P_Button;
 	private: System::Windows::Forms::Button^ HA_Button;
 
@@ -138,7 +138,6 @@ namespace SqlTest {
 			this->DM_Button = (gcnew System::Windows::Forms::Button());
 			this->EP_Button = (gcnew System::Windows::Forms::Button());
 			this->NP_Button = (gcnew System::Windows::Forms::Button());
-			this->W_button = (gcnew System::Windows::Forms::Button());
 			this->P_Button = (gcnew System::Windows::Forms::Button());
 			this->HA_Button = (gcnew System::Windows::Forms::Button());
 			this->panel1->SuspendLayout();
@@ -259,25 +258,12 @@ namespace SqlTest {
 			this->NP_Button->UseVisualStyleBackColor = false;
 			this->NP_Button->Click += gcnew System::EventHandler(this, &UserDashboard::NP_Button_Click);
 			// 
-			// W_button
-			// 
-			this->W_button->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(128)), static_cast<System::Int32>(static_cast<System::Byte>(207)),
-				static_cast<System::Int32>(static_cast<System::Byte>(169)));
-			this->W_button->Cursor = System::Windows::Forms::Cursors::Hand;
-			this->W_button->Location = System::Drawing::Point(306, 219);
-			this->W_button->Name = L"W_button";
-			this->W_button->Size = System::Drawing::Size(200, 200);
-			this->W_button->TabIndex = 4;
-			this->W_button->Text = L"Workouts";
-			this->W_button->UseVisualStyleBackColor = false;
-			this->W_button->Click += gcnew System::EventHandler(this, &UserDashboard::W_button_Click);
-			// 
 			// P_Button
 			// 
 			this->P_Button->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(128)), static_cast<System::Int32>(static_cast<System::Byte>(207)),
 				static_cast<System::Int32>(static_cast<System::Byte>(169)));
 			this->P_Button->Cursor = System::Windows::Forms::Cursors::Hand;
-			this->P_Button->Location = System::Drawing::Point(512, 219);
+			this->P_Button->Location = System::Drawing::Point(418, 219);
 			this->P_Button->Name = L"P_Button";
 			this->P_Button->Size = System::Drawing::Size(200, 200);
 			this->P_Button->TabIndex = 5;
@@ -290,7 +276,7 @@ namespace SqlTest {
 			this->HA_Button->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(128)), static_cast<System::Int32>(static_cast<System::Byte>(207)),
 				static_cast<System::Int32>(static_cast<System::Byte>(169)));
 			this->HA_Button->Cursor = System::Windows::Forms::Cursors::Hand;
-			this->HA_Button->Location = System::Drawing::Point(718, 219);
+			this->HA_Button->Location = System::Drawing::Point(624, 219);
 			this->HA_Button->Name = L"HA_Button";
 			this->HA_Button->Size = System::Drawing::Size(200, 200);
 			this->HA_Button->TabIndex = 6;
@@ -307,7 +293,6 @@ namespace SqlTest {
 			this->ClientSize = System::Drawing::Size(932, 664);
 			this->Controls->Add(this->HA_Button);
 			this->Controls->Add(this->P_Button);
-			this->Controls->Add(this->W_button);
 			this->Controls->Add(this->NP_Button);
 			this->Controls->Add(this->EP_Button);
 			this->Controls->Add(this->DM_Button);

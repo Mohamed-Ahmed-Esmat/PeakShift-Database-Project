@@ -1,5 +1,5 @@
 #pragma once
-#include "AllWorkouts.h"
+
 
 namespace SqlTest {
 
@@ -11,12 +11,12 @@ namespace SqlTest {
 	using namespace System::Drawing;
 
 	/// <summary>
-	/// Summary for Workouts
+	/// Summary for EditWorkout
 	/// </summary>
-	public ref class Workouts : public System::Windows::Forms::Form
+	public ref class EditWorkout : public System::Windows::Forms::Form
 	{
 	public:
-		Workouts(void)
+		EditWorkout(void)
 		{
 			InitializeComponent();
 			//
@@ -28,19 +28,20 @@ namespace SqlTest {
 		/// <summary>
 		/// Clean up any resources being used.
 		/// </summary>
-		~Workouts()
+		~EditWorkout()
 		{
 			if (components)
 			{
 				delete components;
 			}
 		}
-	private: System::Windows::Forms::Label^ Duration;
+	private: System::Windows::Forms::TextBox^ Duration;
 	protected:
-	private: System::Windows::Forms::Label^ Sets;
-	private: System::Windows::Forms::Label^ Reps;
-	private: System::Windows::Forms::Label^ CB_Label;
-	private: System::Windows::Forms::Label^ WT_Labe;
+	private: System::Windows::Forms::TextBox^ Sets;
+	private: System::Windows::Forms::TextBox^ Reps;
+	private: System::Windows::Forms::TextBox^ CB_Label;
+	private: System::Windows::Forms::TextBox^ WT_Labe;
+
 
 
 
@@ -54,7 +55,10 @@ namespace SqlTest {
 	private: System::Windows::Forms::Label^ label6;
 	private: System::Windows::Forms::Panel^ panel1;
 	private: System::Windows::Forms::Label^ label7;
-	private: System::Windows::Forms::Label^ label8;
+	private: System::Windows::Forms::TextBox^ Machine_Name;
+	private: System::Windows::Forms::Button^ confirm_btn;
+
+
 
 
 
@@ -77,11 +81,11 @@ namespace SqlTest {
 		/// </summary>
 		void InitializeComponent(void)
 		{
-			this->Duration = (gcnew System::Windows::Forms::Label());
-			this->Sets = (gcnew System::Windows::Forms::Label());
-			this->Reps = (gcnew System::Windows::Forms::Label());
-			this->CB_Label = (gcnew System::Windows::Forms::Label());
-			this->WT_Labe = (gcnew System::Windows::Forms::Label());
+			this->Duration = (gcnew System::Windows::Forms::TextBox());
+			this->Sets = (gcnew System::Windows::Forms::TextBox());
+			this->Reps = (gcnew System::Windows::Forms::TextBox());
+			this->CB_Label = (gcnew System::Windows::Forms::TextBox());
+			this->WT_Labe = (gcnew System::Windows::Forms::TextBox());
 			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->label2 = (gcnew System::Windows::Forms::Label());
 			this->label3 = (gcnew System::Windows::Forms::Label());
@@ -91,52 +95,48 @@ namespace SqlTest {
 			this->label6 = (gcnew System::Windows::Forms::Label());
 			this->panel1 = (gcnew System::Windows::Forms::Panel());
 			this->label7 = (gcnew System::Windows::Forms::Label());
-			this->label8 = (gcnew System::Windows::Forms::Label());
+			this->Machine_Name = (gcnew System::Windows::Forms::TextBox());
+			this->confirm_btn = (gcnew System::Windows::Forms::Button());
 			this->panel1->SuspendLayout();
 			this->SuspendLayout();
 			// 
 			// Duration
 			// 
-			this->Duration->AutoSize = true;
 			this->Duration->Location = System::Drawing::Point(393, 373);
 			this->Duration->Name = L"Duration";
-			this->Duration->Size = System::Drawing::Size(103, 29);
+			this->Duration->Size = System::Drawing::Size(103, 34);
 			this->Duration->TabIndex = 20;
 			this->Duration->Text = L"Duration";
 			// 
 			// Sets
 			// 
-			this->Sets->AutoSize = true;
 			this->Sets->Location = System::Drawing::Point(393, 313);
 			this->Sets->Name = L"Sets";
-			this->Sets->Size = System::Drawing::Size(61, 29);
+			this->Sets->Size = System::Drawing::Size(61, 34);
 			this->Sets->TabIndex = 19;
 			this->Sets->Text = L"Sets";
 			// 
 			// Reps
 			// 
-			this->Reps->AutoSize = true;
 			this->Reps->Location = System::Drawing::Point(496, 255);
 			this->Reps->Name = L"Reps";
-			this->Reps->Size = System::Drawing::Size(70, 29);
+			this->Reps->Size = System::Drawing::Size(70, 34);
 			this->Reps->TabIndex = 18;
 			this->Reps->Text = L"Reps";
 			// 
 			// CB_Label
 			// 
-			this->CB_Label->AutoSize = true;
 			this->CB_Label->Location = System::Drawing::Point(496, 195);
 			this->CB_Label->Name = L"CB_Label";
-			this->CB_Label->Size = System::Drawing::Size(103, 29);
+			this->CB_Label->Size = System::Drawing::Size(103, 34);
 			this->CB_Label->TabIndex = 17;
 			this->CB_Label->Text = L"Calories";
 			// 
 			// WT_Labe
 			// 
-			this->WT_Labe->AutoSize = true;
 			this->WT_Labe->Location = System::Drawing::Point(496, 135);
 			this->WT_Labe->Name = L"WT_Labe";
-			this->WT_Labe->Size = System::Drawing::Size(68, 29);
+			this->WT_Labe->Size = System::Drawing::Size(68, 34);
 			this->WT_Labe->TabIndex = 16;
 			this->WT_Labe->Text = L"Type";
 			// 
@@ -208,9 +208,9 @@ namespace SqlTest {
 			this->label6->AutoSize = true;
 			this->label6->Location = System::Drawing::Point(10, 15);
 			this->label6->Name = L"label6";
-			this->label6->Size = System::Drawing::Size(204, 29);
+			this->label6->Size = System::Drawing::Size(234, 29);
 			this->label6->TabIndex = 30;
-			this->label6->Text = L"Today\'s Workouts";
+			this->label6->Text = L"Today\'s EditWorkout";
 			// 
 			// panel1
 			// 
@@ -229,21 +229,32 @@ namespace SqlTest {
 			this->label7->TabIndex = 28;
 			this->label7->Text = L"Machine Used:";
 			// 
-			// label8
+			// Machine_Name
 			// 
-			this->label8->AutoSize = true;
-			this->label8->Location = System::Drawing::Point(463, 432);
-			this->label8->Name = L"label8";
-			this->label8->Size = System::Drawing::Size(175, 29);
-			this->label8->TabIndex = 20;
-			this->label8->Text = L"Machine Name";
+			this->Machine_Name->Location = System::Drawing::Point(463, 432);
+			this->Machine_Name->Name = L"Machine_Name";
+			this->Machine_Name->Size = System::Drawing::Size(175, 34);
+			this->Machine_Name->TabIndex = 20;
+			this->Machine_Name->Text = L"Machine Name";
 			// 
-			// Workouts
+			// confirm_btn
+			// 
+			this->confirm_btn->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(128)), static_cast<System::Int32>(static_cast<System::Byte>(207)),
+				static_cast<System::Int32>(static_cast<System::Byte>(169)));
+			this->confirm_btn->Location = System::Drawing::Point(419, 484);
+			this->confirm_btn->Name = L"confirm_btn";
+			this->confirm_btn->Size = System::Drawing::Size(179, 48);
+			this->confirm_btn->TabIndex = 32;
+			this->confirm_btn->Text = L"Confirm";
+			this->confirm_btn->UseVisualStyleBackColor = false;
+			// 
+			// EditWorkout
 			// 
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::None;
 			this->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(201)), static_cast<System::Int32>(static_cast<System::Byte>(215)),
 				static_cast<System::Int32>(static_cast<System::Byte>(248)));
 			this->ClientSize = System::Drawing::Size(872, 539);
+			this->Controls->Add(this->confirm_btn);
 			this->Controls->Add(this->panel1);
 			this->Controls->Add(this->ID_ListBox);
 			this->Controls->Add(this->label7);
@@ -252,7 +263,7 @@ namespace SqlTest {
 			this->Controls->Add(this->label1);
 			this->Controls->Add(this->label2);
 			this->Controls->Add(this->label3);
-			this->Controls->Add(this->label8);
+			this->Controls->Add(this->Machine_Name);
 			this->Controls->Add(this->Duration);
 			this->Controls->Add(this->Sets);
 			this->Controls->Add(this->Reps);
@@ -260,8 +271,8 @@ namespace SqlTest {
 			this->Controls->Add(this->WT_Labe);
 			this->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->Name = L"Workouts";
-			this->Text = L"Workouts";
+			this->Name = L"EditWorkout";
+			this->Text = L"EditWorkout";
 			this->panel1->ResumeLayout(false);
 			this->panel1->PerformLayout();
 			this->ResumeLayout(false);
@@ -270,12 +281,6 @@ namespace SqlTest {
 		}
 #pragma endregion
 
-	private: System::Void AW_Button_Click(System::Object^ sender, System::EventArgs^ e) {
-		AllWorkouts^ allWorkoutsForm = gcnew AllWorkouts;
-		this->Hide();
-		allWorkoutsForm->ShowDialog();
-		this->Show();
-
-	}
-};
+	
+	};
 }

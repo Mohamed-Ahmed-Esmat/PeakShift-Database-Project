@@ -1,5 +1,5 @@
 #pragma once
-
+#include "Workouts.h"
 namespace SqlTest {
 
     using namespace System;
@@ -21,6 +21,13 @@ namespace SqlTest {
             //
             //TODO: Add the constructor code here
             //
+            Cell_1->Click += gcnew System::EventHandler(this, &ExercisePlan::panel_Click);
+            panel2->Click += gcnew System::EventHandler(this, &ExercisePlan::panel_Click);
+            panel16->Click += gcnew System::EventHandler(this, &ExercisePlan::panel_Click);
+            panel12->Click += gcnew System::EventHandler(this, &ExercisePlan::panel_Click);
+            panel24->Click += gcnew System::EventHandler(this, &ExercisePlan::panel_Click);
+            panel32->Click += gcnew System::EventHandler(this, &ExercisePlan::panel_Click);
+            panel20->Click += gcnew System::EventHandler(this, &ExercisePlan::panel_Click);
         }
 
     protected:
@@ -65,206 +72,6 @@ namespace SqlTest {
     private: System::Windows::Forms::Label^ No_6;
     private: System::Windows::Forms::Label^ MG_6;
     private: System::Windows::Forms::Panel^ panel20;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
     private:
@@ -572,6 +379,12 @@ namespace SqlTest {
             this->panel20->PerformLayout();
             this->ResumeLayout(false);
 
+        }
+        System::Void panel_Click(System::Object^ sender, System::EventArgs^ e)
+        {
+            // Open the Workouts page
+            Workouts^ workouts = gcnew Workouts();
+            workouts->Show();
         }
 #pragma endregion
 
