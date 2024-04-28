@@ -1,4 +1,6 @@
 #pragma once
+#include "modularValues.h"
+#include <msclr/marshal_cppstd.h>
 
 namespace SqlTest {
 
@@ -8,6 +10,7 @@ namespace SqlTest {
 	using namespace System::Windows::Forms;
 	using namespace System::Data;
 	using namespace System::Drawing;
+	using namespace System::Data::SqlClient;
 
 	/// <summary>
 	/// Summary for DailyMetric
@@ -15,9 +18,19 @@ namespace SqlTest {
 	public ref class DailyMetric : public System::Windows::Forms::Form
 	{
 	public:
+		String^ userID;
 		DailyMetric(void)
 		{
 			InitializeComponent();
+			//
+			//TODO: Add the constructor code here
+			//
+		}
+		DailyMetric(String^ UserID)
+		{
+			this->userID = UserID;
+			InitializeComponent();
+			ID_ListBox->SelectedIndexChanged += gcnew System::EventHandler(this, &DailyMetric::ID_ListBox_SelectedIndexChanged);
 			//
 			//TODO: Add the constructor code here
 			//
@@ -268,6 +281,100 @@ namespace SqlTest {
 			this->PerformLayout();
 
 		}
+		private: System::Void ID_ListBox_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e) {
+			// Get the selected index from the list
+			int selectedIndex = ID_ListBox->SelectedIndex + 1;
+			Modules modules;
+			// Call the SQL function to get the attribute values for the selected index
+			String^ connectionString = "Data Source=" + gcnew String(modules.serverName.c_str()) + ";Initial Catalog=" + gcnew String(modules.dataBaseName.c_str()) + ";Integrated Security=True";
+			SqlConnection^ con = gcnew SqlConnection(connectionString);
+			SqlCommand^ cmd = gcnew SqlCommand("SELECT dbo.getdailymetricAttributeByIndex(@UserID, @Index, @Attribute)", con);
+			cmd->Parameters->AddWithValue("@UserID", userID); // Assuming userID is a member variable storing the user ID
+			cmd->Parameters->AddWithValue("@Index", selectedIndex); // SQL index starts from 1
+
+			try {
+				con->Open();
+
+				// Get and display the Date attribute
+				cmd->Parameters->Clear();
+				cmd->Parameters->AddWithValue("@UserID", userID);
+				cmd->Parameters->AddWithValue("@Index", selectedIndex);
+				cmd->Parameters->AddWithValue("@Attribute", "Date");
+				Object^ dateResult = cmd->ExecuteScalar();
+				if (dateResult != nullptr) {
+					label8->Text = dateResult->ToString();
+				}
+
+				// Get and display the SleepHours attribute
+				cmd->Parameters->Clear();
+				cmd->Parameters->AddWithValue("@UserID", userID);
+				cmd->Parameters->AddWithValue("@Index", selectedIndex);
+				cmd->Parameters->AddWithValue("@Attribute", "SleepHours");
+				Object^ sleepHoursResult = cmd->ExecuteScalar();
+				if (sleepHoursResult != nullptr) {
+					SH_Label->Text = sleepHoursResult->ToString();
+				}
+
+				// Get and display the StepsTaken attribute
+				cmd->Parameters->Clear();
+				cmd->Parameters->AddWithValue("@UserID", userID);
+				cmd->Parameters->AddWithValue("@Index", selectedIndex);
+				cmd->Parameters->AddWithValue("@Attribute", "StepsTaken");
+				Object^ stepsTakenResult = cmd->ExecuteScalar();
+				if (stepsTakenResult != nullptr) {
+					ST_Label->Text = stepsTakenResult->ToString();
+				}
+
+				// Get and display the BloodPressure attribute
+				cmd->Parameters->Clear();
+				cmd->Parameters->AddWithValue("@UserID", userID);
+				cmd->Parameters->AddWithValue("@Index", selectedIndex);
+				cmd->Parameters->AddWithValue("@Attribute", "BloodPressure");
+				Object^ bloodPressureResult = cmd->ExecuteScalar();
+				if (bloodPressureResult != nullptr) {
+					BP_Label->Text = bloodPressureResult->ToString();
+				}
+
+				// Get and display the HeartRate attribute
+				cmd->Parameters->Clear();
+				cmd->Parameters->AddWithValue("@UserID", userID);
+				cmd->Parameters->AddWithValue("@Index", selectedIndex);
+				cmd->Parameters->AddWithValue("@Attribute", "HeartRate");
+				Object^ heartRateResult = cmd->ExecuteScalar();
+				if (heartRateResult != nullptr) {
+					HR_Label->Text = heartRateResult->ToString();
+				}
+
+				// Get and display the CaloriesBurned attribute
+				cmd->Parameters->Clear();
+				cmd->Parameters->AddWithValue("@UserID", userID);
+				cmd->Parameters->AddWithValue("@Index", selectedIndex);
+				cmd->Parameters->AddWithValue("@Attribute", "CaloriesBurned");
+				Object^ caloriesBurnedResult = cmd->ExecuteScalar();
+				if (caloriesBurnedResult != nullptr) {
+					CB_Label->Text = caloriesBurnedResult->ToString();
+				}
+
+				// Get and display the CaloriesConsumed attribute
+				cmd->Parameters->Clear();
+				cmd->Parameters->AddWithValue("@UserID", userID);
+				cmd->Parameters->AddWithValue("@Index", selectedIndex);
+				cmd->Parameters->AddWithValue("@Attribute", "CaloriesConsumed");
+				Object^ caloriesConsumedResult = cmd->ExecuteScalar();
+				if (caloriesConsumedResult != nullptr) {
+					CC_Labe->Text = caloriesConsumedResult->ToString();
+				}
+			}
+			catch (SqlException^ ex) {
+				// Handle SQL exceptions
+			}
+			finally {
+				con->Close();
+			}
+		}
+
+
+
 #pragma endregion
 	};
 }
