@@ -1,4 +1,5 @@
 #pragma once
+#include "modularValues.h"
 
 namespace SqlTest {
 
@@ -8,6 +9,7 @@ namespace SqlTest {
 	using namespace System::Windows::Forms;
 	using namespace System::Data;
 	using namespace System::Drawing;
+	using namespace System::Data::SqlClient;
 
 	/// <summary>
 	/// Summary for NutritionPlan
@@ -15,6 +17,8 @@ namespace SqlTest {
 	public ref class NutritionPlan : public System::Windows::Forms::Form
 	{
 	public:
+		String^ userID;
+		
 		NutritionPlan(void)
 		{
 			InitializeComponent();
@@ -22,6 +26,81 @@ namespace SqlTest {
 			//TODO: Add the constructor code here
 			//
 		}
+		NutritionPlan(String^ UserID)
+		{
+			InitializeComponent();
+			this->userID = UserID;
+
+			try {
+				Modules modules;
+				String^ connectionString = "Data Source=" + gcnew String(modules.serverName.c_str()) + ";Initial Catalog=" + gcnew String(modules.dataBaseName.c_str()) + ";Integrated Security=True";
+				SqlConnection^ con = gcnew SqlConnection(connectionString);
+				con->Open();
+
+				// Retrieve Plan Name
+				SqlCommand^ cmdPlanName = gcnew SqlCommand("SELECT dbo.GetNutritionPlanAttributeByUserID(@UserID, @Attribute)", con);
+				cmdPlanName->Parameters->AddWithValue("@UserID", userID);
+				cmdPlanName->Parameters->AddWithValue("@Attribute", "PlanName");
+				String^ planName = safe_cast<String^>(cmdPlanName->ExecuteScalar());
+				label11->Text = "Plan Name: " + planName;
+
+				// Retrieve Start Date
+				SqlCommand^ cmdStartDate = gcnew SqlCommand("SELECT dbo.GetNutritionPlanAttributeByUserID(@UserID, @Attribute)", con);
+				cmdStartDate->Parameters->AddWithValue("@UserID", userID);
+				cmdStartDate->Parameters->AddWithValue("@Attribute", "StartDate");
+				String^ startDate = safe_cast<String^>(cmdStartDate->ExecuteScalar());
+				label12->Text = "Start Date: " + startDate;
+
+				// Retrieve End Date
+				SqlCommand^ cmdEndDate = gcnew SqlCommand("SELECT dbo.GetNutritionPlanAttributeByUserID(@UserID, @Attribute)", con);
+				cmdEndDate->Parameters->AddWithValue("@UserID", userID);
+				cmdEndDate->Parameters->AddWithValue("@Attribute", "EndDate");
+				String^ endDate = safe_cast<String^>(cmdEndDate->ExecuteScalar());
+				label16->Text = "End Date: " + endDate;
+
+				// Retrieve Total Calories Per Day
+				SqlCommand^ cmdTotalCalories = gcnew SqlCommand("SELECT dbo.GetNutritionPlanAttributeByUserID(@UserID, @Attribute)", con);
+				cmdTotalCalories->Parameters->AddWithValue("@UserID", userID);
+				cmdTotalCalories->Parameters->AddWithValue("@Attribute", "TotalCaloriesPerDay");
+				String^ totalCalories = safe_cast<String^>(cmdTotalCalories->ExecuteScalar());
+				label15->Text = "Total Calories Per Day: " + totalCalories;
+
+				// Retrieve Protein Grams Per Day
+				SqlCommand^ cmdProteinGrams = gcnew SqlCommand("SELECT dbo.GetNutritionPlanAttributeByUserID(@UserID, @Attribute)", con);
+				cmdProteinGrams->Parameters->AddWithValue("@UserID", userID);
+				cmdProteinGrams->Parameters->AddWithValue("@Attribute", "ProteinGramsPerDay");
+				String^ proteinGrams = safe_cast<String^>(cmdProteinGrams->ExecuteScalar());
+				label14->Text = "Protein Grams Per Day: " + proteinGrams;
+
+				// Retrieve Carb Grams Per Day
+				SqlCommand^ cmdCarbGrams = gcnew SqlCommand("SELECT dbo.GetNutritionPlanAttributeByUserID(@UserID, @Attribute)", con);
+				cmdCarbGrams->Parameters->AddWithValue("@UserID", userID);
+				cmdCarbGrams->Parameters->AddWithValue("@Attribute", "CarbGramsPerDay");
+				String^ carbGrams = safe_cast<String^>(cmdCarbGrams->ExecuteScalar());
+				label13->Text = "Carb Grams Per Day: " + carbGrams;
+
+				// Retrieve Fat Grams Per Day
+				SqlCommand^ cmdFatGrams = gcnew SqlCommand("SELECT dbo.GetNutritionPlanAttributeByUserID(@UserID, @Attribute)", con);
+				cmdFatGrams->Parameters->AddWithValue("@UserID", userID);
+				cmdFatGrams->Parameters->AddWithValue("@Attribute", "FatGramsPerDay");
+				String^ fatGrams = safe_cast<String^>(cmdFatGrams->ExecuteScalar());
+				label9->Text = "Fat Grams Per Day: " + fatGrams;
+
+				// Retrieve Water Liters Per Day
+				SqlCommand^ cmdWaterLiters = gcnew SqlCommand("SELECT dbo.GetNutritionPlanAttributeByUserID(@UserID, @Attribute)", con);
+				cmdWaterLiters->Parameters->AddWithValue("@UserID", userID);
+				cmdWaterLiters->Parameters->AddWithValue("@Attribute", "WaterLitersPerDay");
+				String^ waterLiters = safe_cast<String^>(cmdWaterLiters->ExecuteScalar());
+				label10->Text = "Water Liters Per Day: " + waterLiters;
+
+				// Close the connection
+				con->Close();
+			}
+			catch (Exception^ ex) {
+				MessageBox::Show("An error occurred: " + ex->Message, "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
+			}
+		}
+
 
 	protected:
 		/// <summary>

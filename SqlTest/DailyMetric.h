@@ -282,15 +282,15 @@ namespace SqlTest {
 
 		}
 		private: System::Void ID_ListBox_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e) {
-			// Get the selected index from the list
+			
 			int selectedIndex = ID_ListBox->SelectedIndex + 1;
 			Modules modules;
-			// Call the SQL function to get the attribute values for the selected index
+			
 			String^ connectionString = "Data Source=" + gcnew String(modules.serverName.c_str()) + ";Initial Catalog=" + gcnew String(modules.dataBaseName.c_str()) + ";Integrated Security=True";
 			SqlConnection^ con = gcnew SqlConnection(connectionString);
 			SqlCommand^ cmd = gcnew SqlCommand("SELECT dbo.getdailymetricAttributeByIndex(@UserID, @Index, @Attribute)", con);
-			cmd->Parameters->AddWithValue("@UserID", userID); // Assuming userID is a member variable storing the user ID
-			cmd->Parameters->AddWithValue("@Index", selectedIndex); // SQL index starts from 1
+			cmd->Parameters->AddWithValue("@UserID", userID); 
+			cmd->Parameters->AddWithValue("@Index", selectedIndex); 
 
 			try {
 				con->Open();
