@@ -11,6 +11,6 @@ using namespace System::Windows::Forms;
 void main() {
 	Application::EnableVisualStyles();
 	Application::SetCompatibleTextRenderingDefault(false);
-	SqlTest::NutritionPlan form("1");
+	SqlTest::DailyMetric form("1");
 	Application::Run(% form);
 }

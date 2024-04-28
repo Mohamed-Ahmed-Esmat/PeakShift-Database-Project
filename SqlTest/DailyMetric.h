@@ -34,6 +34,9 @@ namespace SqlTest {
 			//
 			//TODO: Add the constructor code here
 			//
+
+			PopulateIDListBox();
+
 		}
 
 	protected:
@@ -112,10 +115,6 @@ namespace SqlTest {
 				static_cast<System::Byte>(0)));
 			this->ID_ListBox->FormattingEnabled = true;
 			this->ID_ListBox->ItemHeight = 29;
-			this->ID_ListBox->Items->AddRange(gcnew cli::array< System::Object^  >(12) {
-				L"1", L"2", L"3", L"4", L"5", L"6", L"7", L"8",
-					L"9", L"10", L"11", L"12"
-			});
 			this->ID_ListBox->Location = System::Drawing::Point(0, 0);
 			this->ID_ListBox->Name = L"ID_ListBox";
 			this->ID_ListBox->Size = System::Drawing::Size(146, 667);
@@ -283,6 +282,8 @@ namespace SqlTest {
 		}
 		private: System::Void ID_ListBox_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e) {
 			
+
+
 			int selectedIndex = ID_ListBox->SelectedIndex + 1;
 			Modules modules;
 			
@@ -373,7 +374,33 @@ namespace SqlTest {
 			}
 		}
 
+		private:
+			// Function to populate ID_ListBox with the number of daily metrics
+			void PopulateIDListBox() {
+				Modules modules;
 
+				// Establish connection to the database
+				String^ connectionString = "Data Source=" + gcnew String(modules.serverName.c_str()) + ";Initial Catalog=" + gcnew String(modules.dataBaseName.c_str()) + ";Integrated Security=True";
+				SqlConnection^ con = gcnew SqlConnection(connectionString);
+				SqlCommand^ cmd = gcnew SqlCommand("SELECT COUNT(*) FROM DailyMetrics WHERE UserID = @UserID", con);
+				cmd->Parameters->AddWithValue("@UserID", userID);
+
+				try {
+					con->Open();
+					int count = safe_cast<int>(cmd->ExecuteScalar());
+
+					// Populate ID_ListBox with the count of daily metrics
+					for (int i = 1; i <= count; i++) {
+						ID_ListBox->Items->Add(i);
+					}
+				}
+				catch (SqlException^ ex) {
+					// Handle SQL exceptions
+				}
+				finally {
+					con->Close();
+				}
+			}
 
 #pragma endregion
 	};
