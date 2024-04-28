@@ -6,6 +6,7 @@
 #include "NutritionPlan.h"
 #include "EditNutritionPlan.h"
 #include "EditExercisePlan.h"
+#include "modularValues.h"
 
 namespace SqlTest {
 
@@ -15,6 +16,7 @@ namespace SqlTest {
     using namespace System::Windows::Forms;
     using namespace System::Data;
     using namespace System::Drawing;
+    using namespace System::Data::SqlClient;
 
     /// <summary>
     /// Summary for CoachUserDashboard
@@ -29,6 +31,50 @@ namespace SqlTest {
             //TODO: Add the constructor code here
             //
         }
+        CoachUserDashboard(String^ Username)
+        {
+            InitializeComponent();
+
+            Modules modules;
+            String^ connectionString = "Data Source=" + gcnew String(modules.serverName.c_str()) + ";Initial Catalog=" + gcnew String(modules.dataBaseName.c_str()) + ";Integrated Security=True";
+            SqlConnection^ con = gcnew SqlConnection(connectionString);
+            con->Open();
+
+            SqlCommand^ cmd = gcnew SqlCommand("SELECT dbo.GetUserAttributeByUsername(@Username, 'UserID') AS UserID, dbo.GetUserAttributeByUsername(@Username, 'Gender') AS Gender, dbo.GetUserAttributeByUsername(@Username, 'Age') AS Age, dbo.GetUserAttributeByUsername(@Username, 'Email') AS Email, dbo.GetUserAttributeByUsername(@Username, 'Active') AS Active, dbo.GetUserAttributeByUsername(@Username, 'Frozen') AS Frozen, dbo.GetUserAttributeByUsername(@Username, 'ForzenLength') AS FrozenLength", con);
+            cmd->Parameters->AddWithValue("@Username", Username);
+
+            SqlDataReader^ reader = cmd->ExecuteReader();
+            if (reader->Read())
+            {
+                String^ UserID = safe_cast<String^>(reader["UserID"]);
+                String^ Gender = safe_cast<String^>(reader["Gender"]);
+                String^ Age = safe_cast<String^>(reader["Age"]);
+                String^ Email = safe_cast<String^>(reader["Email"]);
+                String^ Active = safe_cast<String^>(reader["Active"]);
+                String^ Frozen = safe_cast<String^>(reader["Frozen"]);
+                String^ FrozenLength = safe_cast<String^>(reader["FrozenLength"]);
+
+                // Assign values to labels
+                labelUserID->Text = "User ID: " + UserID;
+                labelUsername->Text = "Username: " + Username;
+                labelGender->Text = "Gender: " + Gender;
+                labelAge->Text = "Age: " + Age;
+                labelEmail->Text = "Email: " + Email;
+                labelActive->Text = "Active: " + Active;
+                labelFrozen->Text = "Frozen: " + Frozen;
+                labelFreezeLength->Text = "Freeze Length: " + FrozenLength;
+            }
+
+            reader->Close();
+            con->Close();
+
+            
+        }
+
+
+
+
+
 
     protected:
         /// <summary>

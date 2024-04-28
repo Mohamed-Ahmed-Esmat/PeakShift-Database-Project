@@ -19,6 +19,7 @@ namespace SqlTest {
     public ref class CoachLogIn : public System::Windows::Forms::Form
     {
     public:
+        static String^ loggedInCoachID;
         CoachLogIn(void)
         {
             InitializeComponent();
@@ -165,24 +166,12 @@ namespace SqlTest {
     private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
         String^ login = textBox1->Text;
         String^ password = textBox2->Text;
-
-        /*if (login == "admin" && password == "admin") {
-            MessageBox::Show("Login Success");
-        }
-        else {
-            MessageBox::Show("Login Failed");
-            }*/
-
         try {
-            Modules modules; // Create an instance of Modules to access its member variables
-
-            // Create the connection string using modular values
+            Modules modules; 
             String^ connectionString = "Data Source=" + gcnew String(modules.serverName.c_str()) + ";Initial Catalog=" + gcnew String(modules.dataBaseName.c_str()) + ";Integrated Security=True";
-
-            // Create SQL connection
             SqlConnection^ con = gcnew SqlConnection(connectionString);
             con->Open();
-            String^ query = "SELECT * FROM [User] WHERE Username=@login and Password=@password";
+            String^ query = "SELECT * FROM [Coach] WHERE CoachID=@login and Password=@password";
             SqlCommand command(query, con);
             command.Parameters->AddWithValue("@login", login);
             command.Parameters->AddWithValue("@password", password);
@@ -192,10 +181,84 @@ namespace SqlTest {
                 count += 1;
             }
             if (count == 1) {
+                loggedInCoachID = login;
                 //MessageBox::Show("Login Success");
-                CoachDashboard^ coachDashboard = gcnew CoachDashboard;
+                CoachDashboard^ userDashboard = gcnew CoachDashboard;
+                dr->Close();
+                // Prepare the SQL query to call the function
+                String^ query2 = "SELECT dbo.GetCoachAttribute(@CoachID, @Attribute)";
+                SqlCommand^ command2 = gcnew SqlCommand(query2, con);
+                SqlCommand^ command3 = gcnew SqlCommand(query2, con);
+                command2->Parameters->AddWithValue("@CoachID", login);
+                command2->Parameters->AddWithValue("@Attribute", "CoachName"); 
+                command3->Parameters->AddWithValue("@CoachID", login);
+                command3->Parameters->AddWithValue("@Attribute", "CoachID");
+
+                // Execute the query
+                String^ coachName = dynamic_cast<String^>(command2->ExecuteScalar());
+                String^ ID = dynamic_cast<String^>(command3->ExecuteScalar());
+
+                if (coachName != nullptr) {
+                    userDashboard->SetUsername("Username: " + coachName);
+                }
+                else {
+                    MessageBox::Show("Coach name not found or NULL");
+                }
+                if (ID != nullptr) {
+                    userDashboard->SetID(ID);
+                }
+                else {
+                    MessageBox::Show("ID not found or NULL");
+                }
+
+                command2->Parameters->Clear();
+                command2->Parameters->AddWithValue("@CoachID", login);
+                command2->Parameters->AddWithValue("@Attribute", "Age");
+                String^ age = dynamic_cast<String^>(command2->ExecuteScalar());
+                if (age != nullptr) {
+                    userDashboard->SetAge("Age: " + age);
+                }
+                else {
+                    MessageBox::Show("Age not found or NULL");
+                }
+
+
+                command2->Parameters->Clear();
+                command2->Parameters->AddWithValue("@CoachID", login);
+                command2->Parameters->AddWithValue("@Attribute", "Gender");
+                String^ gender = dynamic_cast<String^>(command2->ExecuteScalar());
+                if (gender != nullptr) {
+                     userDashboard->SetGender("Gender: " + gender);
+                }
+                else {
+                    MessageBox::Show("Gender not found or NULL");
+                }
+
+                
+                command2->Parameters->Clear();
+                command2->Parameters->AddWithValue("@CoachID", login);
+                command2->Parameters->AddWithValue("@Attribute", "Active");
+                String^ active = dynamic_cast<String^>(command2->ExecuteScalar());
+                if (active != nullptr) {
+                    userDashboard->SetActive("Active: " + active);
+                }
+                else {
+                    MessageBox::Show("Active not found or NULL");
+                }
+
+                command2->Parameters->Clear();
+                command2->Parameters->AddWithValue("@CoachID", login);
+                command2->Parameters->AddWithValue("@Attribute", "Salary");
+                String^ salary = dynamic_cast<String^>(command2->ExecuteScalar());
+                if (salary != nullptr) {
+                    userDashboard->SetSalary("Salary: " + salary);
+                }
+                else {
+                    MessageBox::Show("Salary not found or NULL");
+                } 
+
                 this->Hide();
-                coachDashboard->ShowDialog();
+                userDashboard->ShowDialog();
                 this->Show();
             }
             else {
@@ -205,6 +268,6 @@ namespace SqlTest {
         catch (Exception^ ex) {
             MessageBox::Show(ex->Message);
         }
-    }
+    };
     };
 }

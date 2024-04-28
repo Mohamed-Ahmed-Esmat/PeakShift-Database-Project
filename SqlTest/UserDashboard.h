@@ -299,7 +299,7 @@ private: System::Void NP_Button_Click(System::Object^ sender, System::EventArgs^
 	this->Show();
 }
 private: System::Void W_button_Click(System::Object^ sender, System::EventArgs^ e) {
-	AllWorkouts^ allworkoutsForm = gcnew AllWorkouts;
+	Workouts^ allworkoutsForm = gcnew Workouts;
 	this->Hide();
 	allworkoutsForm->ShowDialog();
 	this->Show();

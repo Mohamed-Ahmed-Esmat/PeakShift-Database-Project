@@ -21,11 +21,51 @@ namespace SqlTest {
     public:
         CoachDashboard(void)
         {
+
             InitializeComponent();
             //
             //TODO: Add the constructor code here
             //
          //   this->VU_Button->Click += gcnew System::EventHandler(this, &CoachDashboard::VU_Button_Click);
+        }
+
+        void SetUsername(String^ username)
+        {
+            label1->Text = username;
+        }
+
+
+        void SetID(String^ id)
+        {
+            label2->Text = id;
+        }
+
+        String^ GetID()
+        {
+            return label2->Text; 
+        }
+
+        void SetAge(String^ age)
+        {
+            label4->Text = age;
+        }
+
+
+        void SetGender(String^ gender)
+        {
+            label5->Text = gender;
+        }
+
+
+        void SetActive(String^ active)
+        {
+            label3->Text = active;
+        }
+
+
+        void SetSalary(String^ salary)
+        {
+            label6->Text = salary;
         }
 
     protected:
@@ -233,10 +273,10 @@ namespace SqlTest {
 
     private: System::Void VU_Button_Click(System::Object^ sender, System::EventArgs^ e) {
         // When View Users button is clicked, open the ViewUserInfo form
-        ViewUserInfo^ viewUserInfoForm = gcnew ViewUserInfo();
-        this->Hide(); // Hide the current form
+        ViewUserInfo^ viewUserInfoForm = gcnew ViewUserInfo(this->GetID());
+        this->Hide(); 
         viewUserInfoForm->ShowDialog();
-        this->Show(); // Show the ViewUserInfo form
+        this->Show(); 
     }
 
     private: System::Void add_coach_Button_Click(System::Object^ sender, System::EventArgs^ e) {

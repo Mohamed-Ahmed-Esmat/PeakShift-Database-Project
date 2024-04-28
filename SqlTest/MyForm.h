@@ -225,5 +225,6 @@ namespace SqlTest {
         coachLogIn->ShowDialog();
         this->Show();
     }
-};
+    };
 }
+

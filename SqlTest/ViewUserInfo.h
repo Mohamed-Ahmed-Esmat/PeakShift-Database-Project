@@ -1,5 +1,6 @@
 #pragma once
 #include "CoachUserDashboard.h"
+#include "modularValues.h"
 
 namespace SqlTest {
 
@@ -9,6 +10,7 @@ namespace SqlTest {
     using namespace System::Windows::Forms;
     using namespace System::Data;
     using namespace System::Drawing;
+    using namespace System::Data::SqlClient;
 
     /// <summary>
     /// Summary for ViewUserInfo
@@ -16,6 +18,7 @@ namespace SqlTest {
     public ref class ViewUserInfo : public System::Windows::Forms::Form
     {
     public:
+
         ViewUserInfo(void)
         {
             InitializeComponent();
@@ -24,7 +27,7 @@ namespace SqlTest {
             //
 
             // Populate the ListView with sample data
-            listView1->View = View::Details;
+       /*     listView1->View = View::Details;
       
             // Add sample items
             ListViewItem^ item1 = gcnew ListViewItem("User1");
@@ -38,12 +41,49 @@ namespace SqlTest {
 
             listView1->Items->Add(item1);
             listView1->Items->Add(item2);
-            listView1->Items->Add(item3);
+            listView1->Items->Add(item3); */
 
 
             // Handle ListView item click event
             //listView1->ItemClick += gcnew System::EventHandler(this, &ViewUserInfo::listView1_ItemClick);
         }
+        ViewUserInfo(String^ CoachID)
+        {
+            InitializeComponent();
+
+            listView1->View = View::Details;
+            Modules modules;
+            String^ connectionString = "Data Source=" + gcnew String(modules.serverName.c_str()) + ";Initial Catalog=" + gcnew String(modules.dataBaseName.c_str()) + ";Integrated Security=True";
+            SqlConnection^ con = gcnew SqlConnection(connectionString);
+            con->Open();
+
+            int coachID; // Define an integer variable to hold the parsed CoachID
+
+            // Attempt to convert CoachID to an integer
+            if (!Int32::TryParse(CoachID, coachID))
+            {
+                // Handle the case where CoachID is not in the correct format
+                MessageBox::Show("CoachID must be a valid integer.");
+                return;
+            }
+
+            // Pass CoachID as an integer to the SQL function
+            String^ query = "SELECT Username, Email FROM GetCoachUsers(@CoachID)";
+            SqlCommand^ command = gcnew SqlCommand(query, con);
+            command->Parameters->AddWithValue("@CoachID", coachID);
+
+            SqlDataReader^ reader = command->ExecuteReader();
+            while (reader->Read()) {
+                String^ username = reader->GetString(0);
+                String^ email = reader->GetString(1);
+                ListViewItem^ newItem = gcnew ListViewItem(username);
+                newItem->SubItems->Add(email);
+                listView1->Items->Add(newItem);
+            }
+            reader->Close();
+            con->Close();
+        }
+
 
     protected:
         /// <summary>
@@ -163,9 +203,23 @@ namespace SqlTest {
         MessageBox::Show("You clicked on: " );
     }
     private: System::Void VUInfo_btn_Click(System::Object^ sender, System::EventArgs^ e) {
-        CoachUserDashboard^ coachuserdash = gcnew CoachUserDashboard();
-        this->Hide(); // Hide the current form
+        if (listView1->SelectedItems->Count > 0) {
+        // Get the selected item
+        ListViewItem^ selectedItem = listView1->SelectedItems[0];
+        // Get the username from the first column of the selected item
+        String^ username = selectedItem->SubItems[0]->Text;
+
+        // Create an instance of CoachUserDashboard and pass the username to the constructor
+        CoachUserDashboard^ coachuserdash = gcnew CoachUserDashboard(username);
+
+        // Hide the current form
+        this->Hide();
+        // Show the CoachUserDashboard form
         coachuserdash->Show();
+    } else {
+        // If no item is selected, display a message
+        MessageBox::Show("Please select a user.");
+    }
     }
 };
 }

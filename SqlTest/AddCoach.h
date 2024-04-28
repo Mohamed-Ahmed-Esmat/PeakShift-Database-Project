@@ -1,4 +1,5 @@
 #pragma once
+#include "modularValues.h"
 
 namespace SqlTest {
 
@@ -8,6 +9,8 @@ namespace SqlTest {
 	using namespace System::Windows::Forms;
 	using namespace System::Data;
 	using namespace System::Drawing;
+	using namespace System::Data;
+	using namespace System::Data::SqlClient;
 
 	/// <summary>
 	/// Summary for AddCoach
@@ -272,8 +275,42 @@ namespace SqlTest {
 		// Event handler for the Submit button click
 		System::Void btnSubmit_Click(System::Object^ sender, System::EventArgs^ e)
 		{
-			// Implement the logic to submit the new coach here
-			// You can retrieve values from the text boxes and add the coach to the database or perform any other action.
+			Modules modules;
+
+			String^ connectionString = "Server=" + gcnew String(modules.serverName.c_str()) + ";Database=" + gcnew String(modules.dataBaseName.c_str()) + ";Integrated Security=True";
+			SqlConnection^ connection = gcnew SqlConnection(connectionString);
+
+			try
+			{
+
+				connection->Open();
+
+
+				SqlCommand^ command = gcnew SqlCommand("InsertCoachData", connection);
+				command->CommandType = CommandType::StoredProcedure;
+				command->Parameters->AddWithValue("@CoachID", txtCoachID->Text);
+				command->Parameters->AddWithValue("@CoachName", txtCoachName->Text);
+				command->Parameters->AddWithValue("@StartDate", txtStartDate->Text);
+				command->Parameters->AddWithValue("@Active", txtActive->Text);
+				command->Parameters->AddWithValue("@Salary", txtSalary->Text);
+				command->Parameters->AddWithValue("@Email", txtEmail->Text);
+				command->Parameters->AddWithValue("@Password", txtPassword->Text);
+				command->Parameters->AddWithValue("@Age", txtAge->Text);
+				command->Parameters->AddWithValue("@Gender", txtGender->Text);
+
+
+				command->ExecuteNonQuery();
+				MessageBox::Show("Coach added successfully!");
+			}
+			catch (Exception^ ex)
+			{
+				MessageBox::Show("Error: " + ex->Message);
+			}
+			finally
+			{
+				connection->Close();
+			}
+
 		}
 	};
 }

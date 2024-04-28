@@ -3,6 +3,7 @@
 #include <string>
 #include <vector>
 #include "UpdateHealthAssessment.h"
+#include "modularValues.h"
 
 namespace SqlTest {
 
@@ -10,6 +11,7 @@ namespace SqlTest {
     using namespace System::ComponentModel;
     using namespace System::Windows::Forms;
     using namespace System::Drawing;
+    using namespace System::Data::SqlClient;
 
     /// <summary>
     /// Summary for HealthAssess
@@ -17,14 +19,108 @@ namespace SqlTest {
     public ref class HealthAssess : public System::Windows::Forms::Form
     {
     public:
+        String^ UserID;
         HealthAssess(void)
         {
             InitializeComponent();
             //
             //TODO: Add the constructor code here
             //
-            AddAttributeLabels();
+           // AddAttributeLabels();
         }
+        HealthAssess(String^ UserID)
+        {
+            this->UserID = UserID;
+            InitializeComponent();
+
+            Modules modules;
+            String^ connectionString = "Data Source=" + gcnew String(modules.serverName.c_str()) + ";Initial Catalog=" + gcnew String(modules.dataBaseName.c_str()) + ";Integrated Security=True";
+            SqlConnection^ con = gcnew SqlConnection(connectionString);
+            con->Open();
+
+            SqlCommand^ cmd = gcnew SqlCommand("SELECT dbo.GetUserHealthByID(@UserID, 'AssessmentID') AS AssessmentID, dbo.GetUserHealthByID(@UserID, 'Date') AS Date, dbo.GetUserHealthByID(@UserID, 'Height') AS Height, dbo.GetUserHealthByID(@UserID, 'Weight') AS Weight, dbo.GetUserHealthByID(@UserID, 'BMI') AS BMI, dbo.GetUserHealthByID(@UserID, 'BFP') AS BodyFatPercentage, dbo.GetUserHealthByID(@UserID, 'BMP') AS BodyMusclePercentage, dbo.GetUserHealthByID(@UserID, 'BMR') AS BMR, dbo.GetUserHealthByID(@UserID, 'HealthConcerns') AS HealthConcerns, dbo.GetUserHealthByID(@UserID, 'FitnessGoals') AS FitnessGoals", con);
+            cmd->Parameters->AddWithValue("@UserID", UserID);
+            SqlDataReader^ reader = cmd->ExecuteReader();
+
+            // Add labels for each attribute
+            Label^ assessmentIDLabel = gcnew Label();
+            assessmentIDLabel->AutoSize = true;
+            assessmentIDLabel->Location = System::Drawing::Point(20, 60);
+            assessmentIDLabel->Text = "AssessmentID:";
+            panel1->Controls->Add(assessmentIDLabel);
+
+            Label^ dateLabel = gcnew Label();
+            dateLabel->AutoSize = true;
+            dateLabel->Location = System::Drawing::Point(20, 90);
+            dateLabel->Text = "Date:";
+            panel1->Controls->Add(dateLabel);
+
+            Label^ heightLabel = gcnew Label();
+            heightLabel->AutoSize = true;
+            heightLabel->Location = System::Drawing::Point(20, 120);
+            heightLabel->Text = "Height:";
+            panel1->Controls->Add(heightLabel);
+
+            Label^ weightLabel = gcnew Label();
+            weightLabel->AutoSize = true;
+            weightLabel->Location = System::Drawing::Point(20, 150);
+            weightLabel->Text = "Weight:";
+            panel1->Controls->Add(weightLabel);
+
+            Label^ BMILabel = gcnew Label();
+            BMILabel->AutoSize = true;
+            BMILabel->Location = System::Drawing::Point(20, 180);
+            BMILabel->Text = "BMI (Body Mass Index):";
+            panel1->Controls->Add(BMILabel);
+
+            Label^ bodyFatLabel = gcnew Label();
+            bodyFatLabel->AutoSize = true;
+            bodyFatLabel->Location = System::Drawing::Point(20, 210);
+            bodyFatLabel->Text = "BodyFatPercentage:";
+            panel1->Controls->Add(bodyFatLabel);
+
+            Label^ bodyMuscleLabel = gcnew Label();
+            bodyMuscleLabel->AutoSize = true;
+            bodyMuscleLabel->Location = System::Drawing::Point(20, 240);
+            bodyMuscleLabel->Text = "BodyMusclePercentage:";
+            panel1->Controls->Add(bodyMuscleLabel);
+
+            Label^ BMRLabel = gcnew Label();
+            BMRLabel->AutoSize = true;
+            BMRLabel->Location = System::Drawing::Point(20, 270);
+            BMRLabel->Text = "BMR (Base Metabolic Rate):";
+            panel1->Controls->Add(BMRLabel);
+
+            Label^ healthConcernsLabel = gcnew Label();
+            healthConcernsLabel->AutoSize = true;
+            healthConcernsLabel->Location = System::Drawing::Point(20, 300);
+            healthConcernsLabel->Text = "HealthConcerns:";
+            panel1->Controls->Add(healthConcernsLabel);
+
+            Label^ fitnessGoalsLabel = gcnew Label();
+            fitnessGoalsLabel->AutoSize = true;
+            fitnessGoalsLabel->Location = System::Drawing::Point(20, 330);
+            fitnessGoalsLabel->Text = "FitnessGoals:";
+            panel1->Controls->Add(fitnessGoalsLabel);
+            if (reader->Read()) {
+                // Assign fetched data to labels
+                assessmentIDLabel->Text = "AssessmentID: " + reader["AssessmentID"]->ToString();
+                dateLabel->Text = "Date: " + reader["Date"]->ToString();
+                heightLabel->Text = "Height: " + reader["Height"]->ToString();
+                weightLabel->Text = "Weight: " + reader["Weight"]->ToString();
+                BMILabel->Text = "BMI (Body Mass Index): " + reader["BMI"]->ToString();
+                bodyFatLabel->Text = "BodyFatPercentage: " + reader["BodyFatPercentage"]->ToString();
+                bodyMuscleLabel->Text = "BodyMusclePercentage: " + reader["BodyMusclePercentage"]->ToString();
+                BMRLabel->Text = "BMR (Base Metabolic Rate): " + reader["BMR"]->ToString();
+                healthConcernsLabel->Text = "HealthConcerns: " + reader["HealthConcerns"]->ToString();
+                fitnessGoalsLabel->Text = "FitnessGoals: " + reader["FitnessGoals"]->ToString();
+            }
+
+            // Close the reader and connection
+            reader->Close();
+            con->Close();
+        }
+
 
     protected:
         /// <summary>
@@ -133,7 +229,7 @@ namespace SqlTest {
 #pragma endregion
 
     private:
-        void AddAttributeLabels() {
+       /* void AddAttributeLabels() {
             // Add labels for attributes
             std::vector<std::string> attributeLabels = {
                 "AssessmentID:",
@@ -160,12 +256,12 @@ namespace SqlTest {
                 panel1->Controls->Add(attributeLabel);
                 yPos += labelSpacing;
             }
-        }
+        } */
     private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
-        UpdateHealthAssessment^ updateHealthAssessment = gcnew UpdateHealthAssessment;
+        UpdateHealthAssessment^ updateHealthAssessment = gcnew UpdateHealthAssessment(UserID);
         this->Hide();
         updateHealthAssessment->ShowDialog();
         this->Show();
-    }
+    } 
 };
 }

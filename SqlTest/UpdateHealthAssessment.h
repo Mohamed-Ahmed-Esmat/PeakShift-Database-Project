@@ -1,4 +1,5 @@
 #pragma once
+#include "modularValues.h"
 
 namespace SqlTest {
 
@@ -8,6 +9,7 @@ namespace SqlTest {
     using namespace System::Windows::Forms;
     using namespace System::Data;
     using namespace System::Drawing;
+    using namespace System::Data::SqlClient;
 
     /// <summary>
     /// Summary for UpdateHealthAssessment
@@ -15,6 +17,7 @@ namespace SqlTest {
     public ref class UpdateHealthAssessment : public System::Windows::Forms::Form
     {
     public:
+        String^ UserID;
         UpdateHealthAssessment(void)
         {
             InitializeComponent();
@@ -22,6 +25,16 @@ namespace SqlTest {
             //TODO: Add the constructor code here
             //
         }
+        UpdateHealthAssessment(String^ UserID)
+        {
+            this->UserID = UserID;
+            InitializeComponent();
+            buttonSubmit->Click += gcnew System::EventHandler(this, &UpdateHealthAssessment::buttonSubmit_Click);
+            //
+            //TODO: Add the constructor code here
+            //
+        }
+
 
     protected:
         /// <summary>
@@ -299,6 +312,38 @@ namespace SqlTest {
             this->PerformLayout();
 
         }
+        System::Void buttonSubmit_Click(System::Object^ sender, System::EventArgs^ e)
+        {
+            Modules modules;
+            String^ connectionString = "Data Source=" + gcnew String(modules.serverName.c_str()) + ";Initial Catalog=" + gcnew String(modules.dataBaseName.c_str()) + ";Integrated Security=True";
+            SqlConnection^ con = gcnew SqlConnection(connectionString);
+            con->Open();
+
+            // Create SqlCommand object for the stored procedure
+            SqlCommand^ cmd = gcnew SqlCommand("InsertHealthAssessment", con);
+            cmd->CommandType = CommandType::StoredProcedure;
+
+            // Add parameters for the stored procedure
+            cmd->Parameters->AddWithValue("@UserID", Convert::ToInt32(UserID)); 
+            cmd->Parameters->AddWithValue("@AssessmentID", Convert::ToInt32(textBoxAssessmentID->Text));
+            cmd->Parameters->AddWithValue("@HealthConcerns", textBoxHealthConcerns->Text);
+            cmd->Parameters->AddWithValue("@BMI", Convert::ToDecimal(textBoxBMI->Text));
+            cmd->Parameters->AddWithValue("@BFP", Convert::ToDecimal(textBoxBodyFatPercentage->Text));
+            cmd->Parameters->AddWithValue("@BMP", Convert::ToDecimal(textBoxBodyMusclePercentage->Text));
+            cmd->Parameters->AddWithValue("@BMR", Convert::ToDecimal(textBoxBMR->Text));
+            cmd->Parameters->AddWithValue("@Height", Convert::ToDecimal(textBoxHeight->Text));
+            cmd->Parameters->AddWithValue("@Weight", Convert::ToDecimal(textBoxWeight->Text));
+            cmd->Parameters->AddWithValue("@Date", Convert::ToDateTime(textBoxDate->Text));
+            cmd->Parameters->AddWithValue("@FitnessGoals", textBoxFitnessGoals->Text);
+
+            // Execute the stored procedure
+            cmd->ExecuteNonQuery();
+
+            MessageBox::Show("Assessment submitted successfully!", "Success", MessageBoxButtons::OK, MessageBoxIcon::Information);
+        }
 #pragma endregion
     };
+
+
 }
+
