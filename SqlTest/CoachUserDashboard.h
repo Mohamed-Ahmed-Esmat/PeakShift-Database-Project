@@ -64,8 +64,8 @@ namespace SqlTest {
                 labelGender->Text = "Gender: " + Gender;
                 labelAge->Text = "Age: " + Age;
                 labelEmail->Text = "Email: " + Email;
-                labelActive->Text = "Active: " + Active;
-                labelFrozen->Text = "Frozen: " + Frozen;
+                labelActive->Text = "Active: " + (Active = 0? "NO" : "Yes");
+                labelFrozen->Text = "Frozen: " + (Frozen = 0 ? "NO" : "Yes");
                 labelFreezeLength->Text = "Freeze Length: " + FrozenLength;
             }
 

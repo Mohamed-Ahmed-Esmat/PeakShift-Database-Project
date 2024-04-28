@@ -96,7 +96,7 @@ namespace SqlTest {
                 delete components;
             }
         }
-    private: System::Windows::Forms::TextBox^ textBox1;
+
     protected:
     private: System::Windows::Forms::Label^ label1;
     private: System::Windows::Forms::ListView^ listView1;
@@ -118,7 +118,6 @@ namespace SqlTest {
         /// </summary>
         void InitializeComponent(void)
         {
-            this->textBox1 = (gcnew System::Windows::Forms::TextBox());
             this->label1 = (gcnew System::Windows::Forms::Label());
             this->listView1 = (gcnew System::Windows::Forms::ListView());
             this->columnHeader1 = (gcnew System::Windows::Forms::ColumnHeader());
@@ -126,23 +125,15 @@ namespace SqlTest {
             this->VUInfo_btn = (gcnew System::Windows::Forms::Button());
             this->SuspendLayout();
             // 
-            // textBox1
-            // 
-            this->textBox1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 8.25F));
-            this->textBox1->Location = System::Drawing::Point(153, 62);
-            this->textBox1->Name = L"textBox1";
-            this->textBox1->Size = System::Drawing::Size(276, 23);
-            this->textBox1->TabIndex = 0;
-            // 
             // label1
             // 
             this->label1->AutoSize = true;
             this->label1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14));
-            this->label1->Location = System::Drawing::Point(23, 55);
+            this->label1->Location = System::Drawing::Point(152, 79);
             this->label1->Name = L"label1";
-            this->label1->Size = System::Drawing::Size(124, 29);
+            this->label1->Size = System::Drawing::Size(136, 29);
             this->label1->TabIndex = 1;
-            this->label1->Text = L"Username";
+            this->label1->Text = L"Usernames";
             // 
             // listView1
             // 
@@ -188,7 +179,6 @@ namespace SqlTest {
             this->Controls->Add(this->VUInfo_btn);
             this->Controls->Add(this->listView1);
             this->Controls->Add(this->label1);
-            this->Controls->Add(this->textBox1);
             this->Name = L"ViewUserInfo";
             this->SizeGripStyle = System::Windows::Forms::SizeGripStyle::Hide;
             this->Text = L"ViewUserInfo";

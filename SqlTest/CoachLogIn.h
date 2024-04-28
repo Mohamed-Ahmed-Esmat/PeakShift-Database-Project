@@ -240,7 +240,7 @@ namespace SqlTest {
                 command2->Parameters->AddWithValue("@Attribute", "Active");
                 String^ active = dynamic_cast<String^>(command2->ExecuteScalar());
                 if (active != nullptr) {
-                    userDashboard->SetActive("Active: " + active);
+                    userDashboard->SetActive("Active: " + (active = 0 ? "NO" : "Yes"));
                 }
                 else {
                     MessageBox::Show("Active not found or NULL");
