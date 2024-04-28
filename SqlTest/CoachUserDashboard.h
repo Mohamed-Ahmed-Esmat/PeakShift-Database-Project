@@ -24,6 +24,8 @@ namespace SqlTest {
     public ref class CoachUserDashboard : public System::Windows::Forms::Form
     {
     public:
+        String^ UserID;
+        String^ CoachID;
         CoachUserDashboard(void)
         {
             InitializeComponent();
@@ -53,6 +55,8 @@ namespace SqlTest {
                 String^ Active = safe_cast<String^>(reader["Active"]);
                 String^ Frozen = safe_cast<String^>(reader["Frozen"]);
                 String^ FrozenLength = safe_cast<String^>(reader["FrozenLength"]);
+
+                this->UserID = UserID;
 
                 // Assign values to labels
                 labelUserID->Text = "User ID: " + UserID;
@@ -346,7 +350,7 @@ namespace SqlTest {
            }
 #pragma endregion
     private: System::Void health_btn_click(System::Object^ sender, System::EventArgs^ e) {
-        HealthAssess^ healthAssessForm = gcnew HealthAssess;
+        HealthAssess^ healthAssessForm = gcnew HealthAssess(UserID);
         this->Hide();
         healthAssessForm->ShowDialog();
         this->Show();
@@ -364,13 +368,13 @@ namespace SqlTest {
         this->Show();
     }
     private: System::Void daily_btn_Click(System::Object^ sender, System::EventArgs^ e) {
-        DailyMetric^ dailyMetric = gcnew DailyMetric;
+        DailyMetric^ dailyMetric = gcnew DailyMetric(UserID);
         this->Hide();
         dailyMetric->ShowDialog();
         this->Show();
     }
     private: System::Void Nutririon_btn_Click(System::Object^ sender, System::EventArgs^ e) {
-        NutritionPlan^ nutritionPlan = gcnew NutritionPlan;
+        NutritionPlan^ nutritionPlan = gcnew NutritionPlan(UserID);
         this->Hide();
         nutritionPlan->ShowDialog();
         this->Show();
@@ -381,11 +385,50 @@ namespace SqlTest {
         editExercisePlan->ShowDialog();
         this->Show();
     }
-    private: System::Void editNutrition_btn_Click(System::Object^ sender, System::EventArgs^ e) {
-        EditNutritionPlan^ editNutritionPlan = gcnew EditNutritionPlan;
-        this->Hide();
-        editNutritionPlan->ShowDialog();
-        this->Show();
-    }
+   private: System::Void editNutrition_btn_Click(System::Object^ sender, System::EventArgs^ e) {
+       // Create an instance of the Modules class
+       Modules modules;
+
+       // Define the connection string using the server name and database name from the Modules class
+       String^ connectionString = "Data Source=" + gcnew String(modules.serverName.c_str()) + ";Initial Catalog=" + gcnew String(modules.dataBaseName.c_str()) + ";Integrated Security=True";
+
+       // Create a SqlConnection object and open the connection
+       SqlConnection^ con = gcnew SqlConnection(connectionString);
+       con->Open();
+
+       // SQL query to get the CoachID based on UserID
+       String^ query = "SELECT CoachID FROM [User] WHERE UserID = @UserID;";
+       SqlCommand^ cmd = gcnew SqlCommand(query, con);
+
+       // Add parameter for UserID
+       cmd->Parameters->AddWithValue("@UserID", UserID);
+
+       // Execute the query and read the result
+       SqlDataReader^ reader = cmd->ExecuteReader();
+
+       String^ coachID = nullptr; // Initialize as nullptr
+
+       // Check if there's a result
+       if (reader->Read()) {
+           // Retrieve the CoachID from the result and convert it to String
+           int coachIDInt = safe_cast<int>(reader["CoachID"]); // Retrieve CoachID as int
+           coachID = coachIDInt.ToString(); // Convert int to String
+       }
+
+       // Close the reader and the connection
+       reader->Close();
+       con->Close();
+
+       // Create an instance of EditNutritionPlan form with the retrieved CoachID
+       EditNutritionPlan^ editNutritionPlan = gcnew EditNutritionPlan(UserID, coachID);
+
+       // Hide the current form, show the EditNutritionPlan form as a dialog, and then show the current form again after the dialog is closed
+       this->Hide();
+       editNutritionPlan->ShowDialog();
+       this->Show();
+   }
+
+
+
 };
 }

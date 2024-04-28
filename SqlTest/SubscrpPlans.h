@@ -1,4 +1,5 @@
 #pragma once
+#include "modularValues.h"
 
 namespace SqlTest {
 
@@ -8,6 +9,7 @@ namespace SqlTest {
 	using namespace System::Windows::Forms;
 	using namespace System::Data;
 	using namespace System::Drawing;
+	using namespace System::Data::SqlClient;
 
 	/// <summary>
 	/// Summary for SubscrpPlans
@@ -15,9 +17,21 @@ namespace SqlTest {
 	public ref class SubscrpPlans : public System::Windows::Forms::Form
 	{
 	public:
+		String^ UserID;
 		SubscrpPlans(void)
 		{
 			InitializeComponent();
+			//
+			//TODO: Add the constructor code here
+			//
+		}
+		SubscrpPlans(String^ UserID)
+		{
+			this->UserID = UserID;
+			InitializeComponent();
+			this->button1->Click += gcnew System::EventHandler(this, &SubscrpPlans::button1_Click);
+			this->button2->Click += gcnew System::EventHandler(this, &SubscrpPlans::button2_Click);
+
 			//
 			//TODO: Add the constructor code here
 			//
@@ -274,10 +288,62 @@ namespace SqlTest {
 		}
 #pragma endregion
 	private: System::Void label2_Click(System::Object^ sender, System::EventArgs^ e) {
+
 	}
 private: System::Void panel1_Paint(System::Object^ sender, System::Windows::Forms::PaintEventArgs^ e) {
 }
-private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e) {
+private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
+	// This function handles the click event of button1 (One Month Subscription)
+	// Add your code here to handle subscription for one month
+
+	// Add payment record for one month subscription with amount 100
+	InsertPaymentRecord(1, 100);
+
+	// For demonstration purposes, let's display a message box indicating successful subscription
+	MessageBox::Show("You have subscribed for one month!");
 }
+
+private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
+	// This function handles the click event of button2 (Six Months Subscription)
+	// Add your code here to handle subscription for six months
+
+	// Add payment record for six months subscription with amount 500
+	InsertPaymentRecord(6, 500);
+
+	// For demonstration purposes, let's display a message box indicating successful subscription
+	MessageBox::Show("You have subscribed for six months!");
+}
+
+private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e) {
+	// This function handles the click event of subsc_btn (One Year Subscription)
+	// Add your code here to handle subscription for one year
+
+	// Add payment record for one year subscription with amount 1000
+	InsertPaymentRecord(12, 1000);
+
+	// For demonstration purposes, let's display a message box indicating successful subscription
+	MessageBox::Show("You have subscribed for one year!");
+}
+
+	   // Function to insert payment record into the Payments table
+	   void InsertPaymentRecord(int months, int amount) {
+		   Modules modules;
+		   String^ connectionString = "Data Source=" + gcnew String(modules.serverName.c_str()) + ";Initial Catalog=" + gcnew String(modules.dataBaseName.c_str()) + ";Integrated Security=True";
+		   SqlConnection^ con = gcnew SqlConnection(connectionString);
+		   con->Open();
+
+		   // Prepare SQL command to insert payment record
+		   String^ insertQuery = "INSERT INTO Payments (UserID, PaymentAmount) VALUES (@UserID, @PaymentAmount)";
+		   SqlCommand^ cmd = gcnew SqlCommand(insertQuery, con);
+		   cmd->Parameters->AddWithValue("@UserID", UserID); 
+		   cmd->Parameters->AddWithValue("@PaymentAmount", amount);
+		  // cmd->Parameters->AddWithValue("@SubscriptionDuration", months);
+
+		   // Execute the command
+		   cmd->ExecuteNonQuery();
+
+		   // Close the connection
+		   con->Close();
+	   }
 };
 }

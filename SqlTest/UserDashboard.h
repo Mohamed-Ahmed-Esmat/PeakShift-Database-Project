@@ -5,6 +5,7 @@
 #include "Payments.h"
 #include "DailyMetric.h"
 #include "HealthAssess.h"
+#include "modularValues.h"
 
 namespace SqlTest {
 
@@ -14,6 +15,7 @@ namespace SqlTest {
 	using namespace System::Windows::Forms;
 	using namespace System::Data;
 	using namespace System::Drawing;
+	using namespace System::Data::SqlClient;
 
 	/// <summary>
 	/// Summary for UserDashboard
@@ -21,6 +23,8 @@ namespace SqlTest {
 	public ref class UserDashboard : public System::Windows::Forms::Form
 	{
 	public:
+		String^ Username;
+		String^ CoachID;
 		UserDashboard(void)
 		{
 			InitializeComponent();
@@ -28,6 +32,48 @@ namespace SqlTest {
 			//TODO: Add the constructor code here
 			//
 		}
+		UserDashboard(String^ Username)
+		{
+			this->Username = Username;
+			InitializeComponent();
+
+			Modules modules; // Create an instance of Modules to access its member variables
+
+			// Create the connection string using modular values
+			String^ connectionString = "Data Source=" + gcnew String(modules.serverName.c_str()) + ";Initial Catalog=" + gcnew String(modules.dataBaseName.c_str()) + ";Integrated Security=True";
+
+			// Create SQL connection
+			SqlConnection^ con = gcnew SqlConnection(connectionString);
+			con->Open();
+
+			try {
+				// Call the SQL function to get user attributes
+				SqlCommand^ cmd = gcnew SqlCommand("SELECT dbo.GetUserAttributeByUsername(@Username, 'UserID') AS UserID, dbo.GetUserAttributeByUsername(@Username, 'Active') AS Active, dbo.GetUserAttributeByUsername(@Username, 'Gender') AS Gender, dbo.GetUserAttributeByUsername(@Username, 'Age') AS Age", con);
+				cmd->Parameters->AddWithValue("@Username", this->Username);
+
+				// Execute SQL query
+				SqlDataReader^ reader = cmd->ExecuteReader();
+
+				// Read and assign attributes to labels
+				if (reader->Read()) {
+					Username_Label->Text = "Username: " + Username;
+					ID_Label->Text = "ID: " + reader["UserID"]->ToString();
+					Active_Label->Text = "Active: " + reader["Active"]->ToString();
+					Gender_Label->Text = "Gender: " + reader["Gender"]->ToString();
+					Age_Label->Text = "Age: " + reader["Age"]->ToString();
+				}
+				// Close reader and connection
+				reader->Close();
+				con->Close();
+			}
+			catch (Exception^ ex) {
+				// Handle any exceptions
+				MessageBox::Show("Error: " + ex->Message, "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
+				con->Close(); // Close connection in case of exception
+			}
+		}
+
+
 
 	protected:
 		/// <summary>
@@ -280,12 +326,55 @@ namespace SqlTest {
 
 
 private: System::Void DM_Button_Click(System::Object^ sender, System::EventArgs^ e) {
-	DailyMetric^ dailyMetricForm = gcnew DailyMetric;
-	this->Hide();
-	dailyMetricForm->ShowDialog();
-	this->Show();
+	// Create the connection string using modular values
+	Modules modules; // Create an instance of Modules to access its member variables
+	String^ connectionString = "Data Source=" + gcnew String(modules.serverName.c_str()) + ";Initial Catalog=" + gcnew String(modules.dataBaseName.c_str()) + ";Integrated Security=True";
 
+	// Create SQL connection
+	SqlConnection^ con = gcnew SqlConnection(connectionString);
+	con->Open();
+
+	try {
+		// SQL query to retrieve UserID based on Username
+		SqlCommand^ cmd = gcnew SqlCommand("SELECT dbo.GetUserAttributeByUsername(@Username, 'UserID') AS UserID", con);
+
+		cmd->Parameters->AddWithValue("@Username", Username);
+
+		// Execute SQL query
+		SqlDataReader^ reader = cmd->ExecuteReader();
+
+		// Check if data is retrieved
+		if (reader->Read()) {
+			// Retrieve UserID as string
+			String^ userID = reader["UserID"]->ToString();
+
+			// Close the reader
+			reader->Close();
+			con->Close();
+
+			// Open the DailyMetric form passing the UserID
+			DailyMetric^ dailyMetricForm = gcnew DailyMetric(userID);
+			this->Hide();
+			dailyMetricForm->ShowDialog();
+			this->Show();
+		}
+		else {
+			// If UserID not found, display an error message
+			MessageBox::Show("User ID not found for the provided username.", "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
+
+			// Close the reader and connection
+			reader->Close();
+			con->Close();
+		}
+	}
+	catch (Exception^ ex) {
+		// Handle any exceptions
+		MessageBox::Show("Error: " + ex->Message, "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
+		con->Close(); // Close connection in case of exception
+	}
 }
+
+
 private: System::Void EP_Button_Click(System::Object^ sender, System::EventArgs^ e) {
 	ExercisePlan^ exercisePlaneForm = gcnew ExercisePlan;
 	this->Hide();
@@ -293,10 +382,52 @@ private: System::Void EP_Button_Click(System::Object^ sender, System::EventArgs^
 	this->Show();
 }
 private: System::Void NP_Button_Click(System::Object^ sender, System::EventArgs^ e) {
-	NutritionPlan^ nutritionPlanForm = gcnew NutritionPlan;
-	this->Hide();
-	nutritionPlanForm->ShowDialog();
-	this->Show();
+	// Create the connection string using modular values
+	Modules modules; // Create an instance of Modules to access its member variables
+	String^ connectionString = "Data Source=" + gcnew String(modules.serverName.c_str()) + ";Initial Catalog=" + gcnew String(modules.dataBaseName.c_str()) + ";Integrated Security=True";
+
+	// Create SQL connection
+	SqlConnection^ con = gcnew SqlConnection(connectionString);
+	con->Open();
+
+	try {
+		// SQL query to retrieve UserID based on Username
+		SqlCommand^ cmd = gcnew SqlCommand("SELECT dbo.GetUserAttributeByUsername(@Username, 'UserID') AS UserID", con);
+
+		cmd->Parameters->AddWithValue("@Username", Username);
+
+		// Execute SQL query
+		SqlDataReader^ reader = cmd->ExecuteReader();
+
+		// Check if data is retrieved
+		if (reader->Read()) {
+			// Retrieve UserID as string
+			String^ userID = reader["UserID"]->ToString();
+
+			// Close the reader
+			reader->Close();
+			con->Close();
+
+			// Open the NutritionPlan form passing the UserID
+			NutritionPlan^ nutritionPlanForm = gcnew NutritionPlan(userID);
+			this->Hide();
+			nutritionPlanForm->ShowDialog();
+			this->Show();
+		}
+		else {
+			// If UserID not found, display an error message
+			MessageBox::Show("User ID not found for the provided username.", "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
+
+			// Close the reader and connection
+			reader->Close();
+			con->Close();
+		}
+	}
+	catch (Exception^ ex) {
+		// Handle any exceptions
+		MessageBox::Show("Error: " + ex->Message, "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
+		con->Close(); // Close connection in case of exception
+	}
 }
 private: System::Void W_button_Click(System::Object^ sender, System::EventArgs^ e) {
 	Workouts^ allworkoutsForm = gcnew Workouts;
@@ -305,16 +436,100 @@ private: System::Void W_button_Click(System::Object^ sender, System::EventArgs^ 
 	this->Show();
 }
 private: System::Void P_Button_Click(System::Object^ sender, System::EventArgs^ e) {
-	Payments^ paymentsForm = gcnew Payments;
-	this->Hide();
-	paymentsForm->ShowDialog();
-	this->Show();
+	// Create the connection string using modular values
+	Modules modules; // Create an instance of Modules to access its member variables
+	String^ connectionString = "Data Source=" + gcnew String(modules.serverName.c_str()) + ";Initial Catalog=" + gcnew String(modules.dataBaseName.c_str()) + ";Integrated Security=True";
+
+	// Create SQL connection
+	SqlConnection^ con = gcnew SqlConnection(connectionString);
+	con->Open();
+
+	try {
+		// SQL query to retrieve UserID based on Username
+		SqlCommand^ cmd = gcnew SqlCommand("SELECT dbo.GetUserAttributeByUsername(@Username, 'UserID') AS UserID", con);
+
+		cmd->Parameters->AddWithValue("@Username", Username);
+
+		// Execute SQL query
+		SqlDataReader^ reader = cmd->ExecuteReader();
+
+		// Check if data is retrieved
+		if (reader->Read()) {
+			// Retrieve UserID as string
+			String^ userID = reader["UserID"]->ToString();
+
+			// Close the reader
+			reader->Close();
+			con->Close();
+
+			// Open the Payments form passing the UserID
+			Payments^ paymentsForm = gcnew Payments(userID);
+			this->Hide();
+			paymentsForm->ShowDialog();
+			this->Show();
+		}
+		else {
+			// If UserID not found, display an error message
+			MessageBox::Show("User ID not found for the provided username.", "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
+
+			// Close the reader and connection
+			reader->Close();
+			con->Close();
+		}
+	}
+	catch (Exception^ ex) {
+		// Handle any exceptions
+		MessageBox::Show("Error: " + ex->Message, "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
+		con->Close(); // Close connection in case of exception
+	}
 }
 private: System::Void HA_Button_Click(System::Object^ sender, System::EventArgs^ e) {
-	HealthAssess^ healthAssessForm = gcnew HealthAssess;
-	this->Hide();
-	healthAssessForm->ShowDialog();
-	this->Show();
+	// Create the connection string using modular values
+	Modules modules; // Create an instance of Modules to access its member variables
+	String^ connectionString = "Data Source=" + gcnew String(modules.serverName.c_str()) + ";Initial Catalog=" + gcnew String(modules.dataBaseName.c_str()) + ";Integrated Security=True";
+
+	// Create SQL connection
+	SqlConnection^ con = gcnew SqlConnection(connectionString);
+	con->Open();
+
+	try {
+		// SQL query to retrieve UserID based on Username
+		SqlCommand^ cmd = gcnew SqlCommand("SELECT dbo.GetUserAttributeByUsername(@Username, 'UserID') AS UserID", con);
+
+		cmd->Parameters->AddWithValue("@Username", Username);
+
+		// Execute SQL query
+		SqlDataReader^ reader = cmd->ExecuteReader();
+
+		// Check if data is retrieved
+		if (reader->Read()) {
+			// Retrieve UserID as string
+			String^ userID = reader["UserID"]->ToString();
+
+			// Close the reader
+			reader->Close();
+			con->Close();
+
+			// Open the HealthAssess form passing the UserID
+			HealthAssess^ healthAssessForm = gcnew HealthAssess(userID);
+			this->Hide();
+			healthAssessForm->ShowDialog();
+			this->Show();
+		}
+		else {
+			// If UserID not found, display an error message
+			MessageBox::Show("User ID not found for the provided username.", "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
+
+			// Close the reader and connection
+			reader->Close();
+			con->Close();
+		}
+	}
+	catch (Exception^ ex) {
+		// Handle any exceptions
+		MessageBox::Show("Error: " + ex->Message, "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
+		con->Close(); // Close connection in case of exception
+	}
 }
 };
 }

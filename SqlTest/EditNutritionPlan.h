@@ -1,4 +1,5 @@
 #pragma once
+#include "modularValues.h"
 
 namespace SqlTest {
 
@@ -8,15 +9,25 @@ namespace SqlTest {
     using namespace System::Windows::Forms;
     using namespace System::Data;
     using namespace System::Drawing;
+    using namespace System::Data::SqlClient;
 
     /// <summary>
     /// Summary for EditNutritionPlan
     /// </summary>
     public ref class EditNutritionPlan : public System::Windows::Forms::Form
     {
+        String^ UserID;
+        String^ CoachID;
+
     public:
         EditNutritionPlan(void)
         {
+            InitializeComponent();
+        }
+        EditNutritionPlan(String^ UserID, String^ CoachID)
+        {
+            this->UserID = UserID;
+            this->CoachID = CoachID;
             InitializeComponent();
         }
 
@@ -248,10 +259,57 @@ namespace SqlTest {
 #pragma endregion
 
         // Event handler for the Update button click
+        // Event handler for the Update button click
         System::Void btnUpdate_Click(System::Object^ sender, System::EventArgs^ e)
         {
-            // Implement the logic to update the nutrition plan here
-            // You can retrieve values from the text boxes and update the database or perform any other action.
+            try
+            {
+                Modules modules;
+                String^ connectionString = "Data Source=" + gcnew String(modules.serverName.c_str()) + ";Initial Catalog=" + gcnew String(modules.dataBaseName.c_str()) + ";Integrated Security=True";
+                SqlConnection^ con = gcnew SqlConnection(connectionString);
+                con->Open();
+
+                // Retrieve values from text boxes
+                String^ planName = txtPlanName->Text;
+                String^ startDate = txtStartDate->Text;
+                String^ endDate = txtEndDate->Text;
+                String^ totalCaloriesPerDay = txtTotalCaloriesPerDay->Text;
+                String^ proteinGramsPerDay = txtProteinGramsPerDay->Text;
+                String^ carbGramsPerDay = txtCarbGramsPerDay->Text;
+                String^ fatGramsPerDay = txtFatGramsPerDay->Text;
+                String^ waterLitersPerDay = txtWaterLitersPerDay->Text;
+
+                // Create and execute the SQL command to call the stored procedure
+                SqlCommand^ cmd = gcnew SqlCommand("AddNutritionPlan", con);
+                cmd->CommandType = CommandType::StoredProcedure;
+
+                // Add parameters
+                cmd->Parameters->AddWithValue("@UserID", UserID);
+                cmd->Parameters->AddWithValue("@CoachID", CoachID); // Add CoachID parameter
+                cmd->Parameters->AddWithValue("@PlanName", planName);
+                // Assuming other parameters are of appropriate types, convert them accordingly
+                cmd->Parameters->AddWithValue("@StartDate", startDate);
+                cmd->Parameters->AddWithValue("@EndDate", endDate);
+                cmd->Parameters->AddWithValue("@TotalCaloriesPerDay", totalCaloriesPerDay);
+                cmd->Parameters->AddWithValue("@ProteinGramsPerDay", proteinGramsPerDay);
+                cmd->Parameters->AddWithValue("@CarbGramsPerDay", carbGramsPerDay);
+                cmd->Parameters->AddWithValue("@FatGramsPerDay", fatGramsPerDay);
+                cmd->Parameters->AddWithValue("@WaterLitersPerDay", waterLitersPerDay);
+
+                // Execute the command
+                cmd->ExecuteNonQuery();
+
+                // Close the connection
+                con->Close();
+
+                // Optionally, show a message box indicating success
+                MessageBox::Show("Nutrition plan updated successfully.", "Success", MessageBoxButtons::OK, MessageBoxIcon::Information);
+            }
+            catch (Exception^ ex)
+            {
+                MessageBox::Show("An error occurred: " + ex->Message, "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
+            }
         }
+
     };
 }

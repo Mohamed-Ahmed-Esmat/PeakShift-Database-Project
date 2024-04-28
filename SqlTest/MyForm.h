@@ -206,7 +206,7 @@ namespace SqlTest {
             }
             if (count == 1) {
                 //MessageBox::Show("Login Success");
-                UserDashboard^ userDashboard = gcnew UserDashboard;
+                UserDashboard^ userDashboard = gcnew UserDashboard(login);
                 this->Hide();
                 userDashboard->ShowDialog();
                 this->Show();
