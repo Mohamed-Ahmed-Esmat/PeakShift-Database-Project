@@ -88,7 +88,6 @@ namespace SqlTest {
 					// For example, display default values or show an error message
 					label1->Text = "Current Subscription: Unknown";
 					label2->Text = "Renew on: <date>";
-					Active_Label->Text = "Unknown";
 				}
 			}
 			catch (Exception^ ex)
@@ -289,7 +288,7 @@ private:
 		}
 	}
 	private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e) {
-		SubscrpPlans^ subscrpPlans = gcnew SubscrpPlans;
+		SubscrpPlans^ subscrpPlans = gcnew SubscrpPlans(UserID);
 		this->Hide();
 		subscrpPlans->ShowDialog();
 		this->Show();

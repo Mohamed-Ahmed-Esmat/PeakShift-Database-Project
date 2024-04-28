@@ -29,8 +29,7 @@ namespace SqlTest {
 		{
 			this->UserID = UserID;
 			InitializeComponent();
-			this->button1->Click += gcnew System::EventHandler(this, &SubscrpPlans::button1_Click);
-			this->button2->Click += gcnew System::EventHandler(this, &SubscrpPlans::button2_Click);
+			
 
 			//
 			//TODO: Add the constructor code here
@@ -142,6 +141,7 @@ namespace SqlTest {
 			this->button1->TabIndex = 2;
 			this->button1->Text = L"Subscribe";
 			this->button1->UseVisualStyleBackColor = false;
+			this->button1->Click += gcnew System::EventHandler(this, &SubscrpPlans::button1_Click_1);
 			// 
 			// label2
 			// 
@@ -193,6 +193,7 @@ namespace SqlTest {
 			this->button2->TabIndex = 2;
 			this->button2->Text = L"Subscribe";
 			this->button2->UseVisualStyleBackColor = false;
+			this->button2->Click += gcnew System::EventHandler(this, &SubscrpPlans::button2_Click_1);
 			// 
 			// label3
 			// 
@@ -292,15 +293,14 @@ namespace SqlTest {
 	}
 private: System::Void panel1_Paint(System::Object^ sender, System::Windows::Forms::PaintEventArgs^ e) {
 }
+
+
 private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
 	// This function handles the click event of button1 (One Month Subscription)
 	// Add your code here to handle subscription for one month
 
 	// Add payment record for one month subscription with amount 100
-	InsertPaymentRecord(1, 100);
-
-	// For demonstration purposes, let's display a message box indicating successful subscription
-	MessageBox::Show("You have subscribed for one month!");
+	
 }
 
 private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
@@ -345,5 +345,17 @@ private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e
 		   // Close the connection
 		   con->Close();
 	   }
+private: System::Void button1_Click_1(System::Object^ sender, System::EventArgs^ e) {
+	InsertPaymentRecord(1, 100);
+
+	// For demonstration purposes, let's display a message box indicating successful subscription
+	MessageBox::Show("You have subscribed for one month!");
+}
+private: System::Void button2_Click_1(System::Object^ sender, System::EventArgs^ e) {
+	InsertPaymentRecord(6, 500);
+
+	// For demonstration purposes, let's display a message box indicating successful subscription
+	MessageBox::Show("You have subscribed for six months!");
+}
 };
 }
