@@ -1,6 +1,10 @@
 #pragma once
-#include "Workouts.h"
+#include "modularValues.h"
+#include "AllWorkouts.h"
+
 namespace SqlTest {
+
+    
 
     using namespace System;
     using namespace System::ComponentModel;
@@ -8,6 +12,7 @@ namespace SqlTest {
     using namespace System::Windows::Forms;
     using namespace System::Data;
     using namespace System::Drawing;
+    using namespace System::Data::SqlClient;
 
     /// <summary>
     /// Summary for ExercisePlan
@@ -15,8 +20,69 @@ namespace SqlTest {
     public ref class ExercisePlan : public System::Windows::Forms::Form
     {
     public:
+        //7 plans variables
+        int fgi = 0;
+        String^ plan1;
+        String^ plan2;
+        String^ plan3;
+        String^ plan4;
+        String^ plan5;
+        String^ plan6;
+        String^ plan7;
+        String^ User_ID;
         ExercisePlan(void)
         {
+            InitializeComponent();
+            //
+            //TODO: Add the constructor code here
+            //
+            Cell_1->Click += gcnew System::EventHandler(this, &ExercisePlan::panel_Click);
+            panel2->Click += gcnew System::EventHandler(this, &ExercisePlan::panel_Click);
+            panel16->Click += gcnew System::EventHandler(this, &ExercisePlan::panel_Click);
+            panel12->Click += gcnew System::EventHandler(this, &ExercisePlan::panel_Click);
+            panel24->Click += gcnew System::EventHandler(this, &ExercisePlan::panel_Click);
+            panel32->Click += gcnew System::EventHandler(this, &ExercisePlan::panel_Click);
+            panel20->Click += gcnew System::EventHandler(this, &ExercisePlan::panel_Click);
+        }
+        ExercisePlan(String^ User_ID)
+        {
+			this->User_ID = User_ID;
+            Modules modules;
+            String^ connectionString = "Data Source=" + gcnew String(modules.serverName.c_str()) + ";Initial Catalog=" + gcnew String(modules.dataBaseName.c_str()) + ";Integrated Security=True";
+            SqlConnection^ con = gcnew SqlConnection(connectionString);
+            con->Open();
+
+            
+
+            
+            
+            
+            
+            for (int day = 1; day <= 7; ++day)
+            {
+                // Create a SqlCommand object with a SELECT statement
+                SqlCommand^ cmd = gcnew SqlCommand("SELECT dbo.GetTargetedMuscleGroup(@UserID, @Day)", con);
+
+                // Add parameters to SqlCommand
+                cmd->Parameters->AddWithValue("@UserID", User_ID);
+                cmd->Parameters->AddWithValue("@Day", day);
+
+                // Execute the command and get the result
+                String^ result = (String^)cmd->ExecuteScalar();
+
+                // Replace the placeholder muscle group names with the result
+                switch (day)
+                {
+                case 1: plan1 = result; break;
+                case 2: plan2 = result; break;
+                case 3: plan3 = result; break;
+                case 4: plan4 = result; break;
+                case 5: plan5 = result; break;
+                case 6: plan6 = result; break;
+                case 7: plan7 = result; break;
+                }
+            }
+
             InitializeComponent();
             //
             //TODO: Add the constructor code here
@@ -137,7 +203,7 @@ namespace SqlTest {
             this->MG_1->Name = L"MG_1";
             this->MG_1->Size = System::Drawing::Size(104, 64);
             this->MG_1->TabIndex = 1;
-            this->MG_1->Text = L"Muscle\r\nGroup";
+            this->MG_1->Text = plan1;
             // 
             // No_1
             // 
@@ -168,7 +234,7 @@ namespace SqlTest {
             this->MG_3->Name = L"MG_3";
             this->MG_3->Size = System::Drawing::Size(104, 64);
             this->MG_3->TabIndex = 1;
-            this->MG_3->Text = L"Muscle\r\nGroup";
+            this->MG_3->Text = plan3;
             // 
             // panel16
             // 
@@ -201,7 +267,7 @@ namespace SqlTest {
             this->MG_2->Name = L"MG_2";
             this->MG_2->Size = System::Drawing::Size(104, 64);
             this->MG_2->TabIndex = 1;
-            this->MG_2->Text = L"Muscle\r\nGroup";
+            this->MG_2->Text = plan2;
             // 
             // panel2
             // 
@@ -234,7 +300,7 @@ namespace SqlTest {
             this->MG_4->Name = L"MG_4";
             this->MG_4->Size = System::Drawing::Size(104, 64);
             this->MG_4->TabIndex = 1;
-            this->MG_4->Text = L"Muscle\r\nGroup";
+            this->MG_4->Text = plan4;
             // 
             // panel12
             // 
@@ -267,7 +333,7 @@ namespace SqlTest {
             this->MG_5->Name = L"MG_5";
             this->MG_5->Size = System::Drawing::Size(104, 64);
             this->MG_5->TabIndex = 1;
-            this->MG_5->Text = L"Muscle\r\nGroup";
+            this->MG_5->Text = plan5;
             // 
             // panel24
             // 
@@ -300,7 +366,7 @@ namespace SqlTest {
             this->MG_7->Name = L"MG_7";
             this->MG_7->Size = System::Drawing::Size(104, 64);
             this->MG_7->TabIndex = 1;
-            this->MG_7->Text = L"Muscle\r\nGroup";
+            this->MG_7->Text = plan7;
             // 
             // panel32
             // 
@@ -333,7 +399,7 @@ namespace SqlTest {
             this->MG_6->Name = L"MG_6";
             this->MG_6->Size = System::Drawing::Size(104, 64);
             this->MG_6->TabIndex = 1;
-            this->MG_6->Text = L"Muscle\r\nGroup";
+            this->MG_6->Text = plan6;
             // 
             // panel20
             // 
@@ -382,8 +448,42 @@ namespace SqlTest {
         }
         System::Void panel_Click(System::Object^ sender, System::EventArgs^ e)
         {
-            // Open the Workouts page
-            Workouts^ workouts = gcnew Workouts();
+            int day;
+			if (sender == Cell_1)
+			{
+				day = 1;
+			}
+			else if (sender == panel2)
+			{
+				day = 2;
+			}
+			else if (sender == panel16)
+			{
+				day = 3;
+			}
+			else if (sender == panel12)
+			{
+				day = 4;
+			}
+			else if (sender == panel24)
+			{
+				day = 5;
+			}
+			else if (sender == panel20)
+			{
+				day = 6;
+			}
+			else if (sender == panel32)
+			{
+				day = 7;
+			}
+
+            AllWorkouts^ workouts = gcnew AllWorkouts(day, User_ID);
+
+            String^ params = day.ToString() + "," + User_ID;
+            
+            MessageBox::Show(params, "Params");
+
             workouts->Show();
         }
 #pragma endregion
