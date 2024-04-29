@@ -130,6 +130,7 @@
     <ClCompile Include="CoachLogIn.cpp" />
     <ClCompile Include="CoachUserDashboard.cpp" />
     <ClCompile Include="DailyMetric.cpp" />
+    <ClCompile Include="DaySelector1.cpp" />
     <ClCompile Include="EditExercisePlan.cpp" />
     <ClCompile Include="EditNutritionPlan.cpp" />
     <ClCompile Include="EditWorkout.cpp" />
@@ -165,6 +166,9 @@
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="DailyMetric.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="DaySelector1.h">
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="EditExercisePlan.h">
