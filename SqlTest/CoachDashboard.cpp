@@ -11,6 +11,6 @@ using namespace System::Windows::Forms;
 void main() {
 	Application::EnableVisualStyles();
 	Application::SetCompatibleTextRenderingDefault(false);
-	SqlTest::MyForm form;
+	SqlTest::AllWorkouts form;
 	Application::Run(% form);
 }

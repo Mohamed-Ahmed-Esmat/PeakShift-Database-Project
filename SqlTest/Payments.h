@@ -289,10 +289,91 @@ private:
 	}
 	private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e) {
 		SubscrpPlans^ subscrpPlans = gcnew SubscrpPlans(UserID);
+		subscrpPlans->FormClosed += gcnew FormClosedEventHandler(this, &Payments::SubscrpPlans_FormClosed); // Attach event handler
 		this->Hide();
 		subscrpPlans->ShowDialog();
-		this->Show();
+		
+
+
+
+
+
+
+
+
+
 	}
+
+		   private: System::Void SubscrpPlans_FormClosed(System::Object^ sender, System::Windows::Forms::FormClosedEventArgs^ e) {
+			   Modules modules;
+			   connectionString = "Data Source=" + gcnew String(modules.serverName.c_str()) + ";Initial Catalog=" + gcnew String(modules.dataBaseName.c_str()) + ";Integrated Security=True";
+			   SqlConnection^ con = gcnew SqlConnection(connectionString);
+			   con->Open();
+
+
+			   // Retrieve payment amount, date, and active status from database
+			   Decimal paymentAmount;
+			   DateTime paymentDate;
+			   String^ activeStatus;
+
+
+			   try
+			   {
+				   SqlCommand^ cmd = gcnew SqlCommand("SELECT dbo.GetPaymentDetails(@UserID, 'PaymentAmount'), dbo.GetPaymentDetails(@UserID, 'PaymentDate'), dbo.GetPaymentDetails(@UserID, 'Active')", con);
+				   cmd->Parameters->AddWithValue("@UserID", UserID);
+
+				   SqlDataReader^ reader = cmd->ExecuteReader();
+
+				   if (reader->Read())
+				   {
+					   if (Decimal::TryParse(reader[0]->ToString(), paymentAmount) &&
+						   DateTime::TryParse(reader[1]->ToString(), paymentDate))
+					   {
+						   // Calculate subscription duration based on payment amount
+						   int subscriptionDuration = CalculateSubscriptionDuration(paymentAmount);
+
+						   // Calculate renewal date by adding subscription duration to payment date
+						   DateTime renewDate = paymentDate.AddMonths(subscriptionDuration);
+
+						   // Update labels with subscription duration, renewal date, and active status information
+						   label1->Text = "Current Subscription: " + subscriptionDuration.ToString() + " months";
+						   label2->Text = "Renew on: " + renewDate.ToString("yyyy-MM-dd");
+
+
+						   // Set Active_Label based on active status
+						   label5->Text = (reader[2]->ToString() == "1") ? "Active: True" : "Active: False";
+					   }
+					   else
+					   {
+						   // Handle case where payment amount, date, or active status is not retrieved or parsed successfully
+						   // For example, display default values or show an error message
+						   label1->Text = "Current Subscription: N/A";
+						   label2->Text = "Renew on: <date>";
+						   label5->Text = "Unknown";
+					   }
+				   }
+				   else
+				   {
+					   // Handle case where no payment record is found for the user
+					   // For example, display default values or show an error message
+					   label1->Text = "Current Subscription: Unknown";
+					   label2->Text = "Renew on: <date>";
+				   }
+			   }
+			   catch (Exception^ ex)
+			   {
+				   MessageBox::Show("An error occurred: " + ex->Message, "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
+			   }
+			   finally
+			   {
+				   con->Close();
+			   }
+			   MessageBox::Show("SubscrpPlans form is closed.");
+			   this->Show();
+
+			   // Or do something else
+		   }
+
 private: System::Void CancelSubscription_Click(System::Object^ sender, System::EventArgs^ e) {
 	// The event handler code for canceling the subscription
 	SqlConnection^ con = gcnew SqlConnection(connectionString);

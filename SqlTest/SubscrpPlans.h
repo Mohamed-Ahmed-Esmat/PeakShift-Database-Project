@@ -350,12 +350,14 @@ private: System::Void button1_Click_1(System::Object^ sender, System::EventArgs^
 
 	// For demonstration purposes, let's display a message box indicating successful subscription
 	MessageBox::Show("You have subscribed for one month!");
+
 }
 private: System::Void button2_Click_1(System::Object^ sender, System::EventArgs^ e) {
 	InsertPaymentRecord(6, 500);
 
 	// For demonstration purposes, let's display a message box indicating successful subscription
 	MessageBox::Show("You have subscribed for six months!");
+
 }
 };
 }

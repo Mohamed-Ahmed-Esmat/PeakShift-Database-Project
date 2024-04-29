@@ -1,4 +1,5 @@
 #pragma once
+#include "modularValues.h"
 
 namespace SqlTest {
 
@@ -8,6 +9,7 @@ namespace SqlTest {
 	using namespace System::Windows::Forms;
 	using namespace System::Data;
 	using namespace System::Drawing;
+	using namespace System::Data::SqlClient;
 
 	/// <summary>
 	/// Summary for AllWorkouts
@@ -18,9 +20,14 @@ namespace SqlTest {
 		AllWorkouts(void)
 		{
 			InitializeComponent();
+			
 			//
 			//TODO: Add the constructor code here
 			//
+
+			// Attach the SelectedIndexChanged event handler to the ID_ListBox
+			ID_ListBox->SelectedIndexChanged += gcnew System::EventHandler(this, &AllWorkouts::ID_ListBox_SelectedIndexChanged);
+			
 		}
 
 	protected:
@@ -35,27 +42,17 @@ namespace SqlTest {
 			}
 		}
 
-	private: System::Windows::Forms::Label^ Duration;
+
 	protected:
 
-	private: System::Windows::Forms::Label^ Sets;
-
-	private: System::Windows::Forms::Label^ Reps;
-
-	private: System::Windows::Forms::Label^ CB_Label;
-	private: System::Windows::Forms::Label^ WT_Label;
-
-
 	private: System::Windows::Forms::ListBox^ ID_ListBox;
-
-
 	private: System::Windows::Forms::Label^ label1;
 	private: System::Windows::Forms::Label^ label2;
 	private: System::Windows::Forms::Label^ label3;
 	private: System::Windows::Forms::Label^ label4;
 	private: System::Windows::Forms::Label^ label5;
 	private: System::Windows::Forms::Label^ label6;
-	private: System::Windows::Forms::Label^ label7;
+	private: SqlConnection^ connection; // SqlConnection object for database connection
 
 	private:
 		/// <summary>
@@ -70,11 +67,6 @@ namespace SqlTest {
 		/// </summary>
 		void InitializeComponent(void)
 		{
-			this->Duration = (gcnew System::Windows::Forms::Label());
-			this->Sets = (gcnew System::Windows::Forms::Label());
-			this->Reps = (gcnew System::Windows::Forms::Label());
-			this->CB_Label = (gcnew System::Windows::Forms::Label());
-			this->WT_Label = (gcnew System::Windows::Forms::Label());
 			this->ID_ListBox = (gcnew System::Windows::Forms::ListBox());
 			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->label2 = (gcnew System::Windows::Forms::Label());
@@ -82,53 +74,7 @@ namespace SqlTest {
 			this->label4 = (gcnew System::Windows::Forms::Label());
 			this->label5 = (gcnew System::Windows::Forms::Label());
 			this->label6 = (gcnew System::Windows::Forms::Label());
-			this->label7 = (gcnew System::Windows::Forms::Label());
 			this->SuspendLayout();
-			// 
-			// Duration
-			// 
-			this->Duration->AutoSize = true;
-			this->Duration->Location = System::Drawing::Point(382, 270);
-			this->Duration->Name = L"Duration";
-			this->Duration->Size = System::Drawing::Size(103, 29);
-			this->Duration->TabIndex = 15;
-			this->Duration->Text = L"Duration";
-			// 
-			// Sets
-			// 
-			this->Sets->AutoSize = true;
-			this->Sets->Location = System::Drawing::Point(382, 210);
-			this->Sets->Name = L"Sets";
-			this->Sets->Size = System::Drawing::Size(61, 29);
-			this->Sets->TabIndex = 14;
-			this->Sets->Text = L"Sets";
-			// 
-			// Reps
-			// 
-			this->Reps->AutoSize = true;
-			this->Reps->Location = System::Drawing::Point(382, 150);
-			this->Reps->Name = L"Reps";
-			this->Reps->Size = System::Drawing::Size(70, 29);
-			this->Reps->TabIndex = 13;
-			this->Reps->Text = L"Reps";
-			// 
-			// CB_Label
-			// 
-			this->CB_Label->AutoSize = true;
-			this->CB_Label->Location = System::Drawing::Point(382, 90);
-			this->CB_Label->Name = L"CB_Label";
-			this->CB_Label->Size = System::Drawing::Size(103, 29);
-			this->CB_Label->TabIndex = 12;
-			this->CB_Label->Text = L"Calories";
-			// 
-			// WT_Label
-			// 
-			this->WT_Label->AutoSize = true;
-			this->WT_Label->Location = System::Drawing::Point(382, 30);
-			this->WT_Label->Name = L"WT_Label";
-			this->WT_Label->Size = System::Drawing::Size(68, 29);
-			this->WT_Label->TabIndex = 11;
-			this->WT_Label->Text = L"Type";
 			// 
 			// ID_ListBox
 			// 
@@ -138,14 +84,14 @@ namespace SqlTest {
 			this->ID_ListBox->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->ID_ListBox->FormattingEnabled = true;
-			this->ID_ListBox->ItemHeight = 25;
+			this->ID_ListBox->ItemHeight = 20;
 			this->ID_ListBox->Items->AddRange(gcnew cli::array< System::Object^  >(12) {
 				L"1", L"2", L"3", L"4", L"5", L"6", L"7", L"8",
 					L"9", L"10", L"11", L"12"
 			});
 			this->ID_ListBox->Location = System::Drawing::Point(0, 0);
 			this->ID_ListBox->Name = L"ID_ListBox";
-			this->ID_ListBox->Size = System::Drawing::Size(146, 650);
+			this->ID_ListBox->Size = System::Drawing::Size(146, 640);
 			this->ID_ListBox->TabIndex = 10;
 			// 
 			// label1
@@ -153,7 +99,7 @@ namespace SqlTest {
 			this->label1->AutoSize = true;
 			this->label1->Location = System::Drawing::Point(152, 270);
 			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(109, 29);
+			this->label1->Size = System::Drawing::Size(85, 24);
 			this->label1->TabIndex = 22;
 			this->label1->Text = L"Duration:";
 			// 
@@ -162,7 +108,7 @@ namespace SqlTest {
 			this->label2->AutoSize = true;
 			this->label2->Location = System::Drawing::Point(152, 210);
 			this->label2->Name = L"label2";
-			this->label2->Size = System::Drawing::Size(67, 29);
+			this->label2->Size = System::Drawing::Size(51, 24);
 			this->label2->TabIndex = 21;
 			this->label2->Text = L"Sets:";
 			// 
@@ -171,7 +117,7 @@ namespace SqlTest {
 			this->label3->AutoSize = true;
 			this->label3->Location = System::Drawing::Point(152, 150);
 			this->label3->Name = L"label3";
-			this->label3->Size = System::Drawing::Size(76, 29);
+			this->label3->Size = System::Drawing::Size(59, 24);
 			this->label3->TabIndex = 20;
 			this->label3->Text = L"Reps:";
 			// 
@@ -180,7 +126,7 @@ namespace SqlTest {
 			this->label4->AutoSize = true;
 			this->label4->Location = System::Drawing::Point(152, 90);
 			this->label4->Name = L"label4";
-			this->label4->Size = System::Drawing::Size(193, 29);
+			this->label4->Size = System::Drawing::Size(150, 24);
 			this->label4->TabIndex = 19;
 			this->label4->Text = L"Calories Burned:";
 			// 
@@ -189,7 +135,7 @@ namespace SqlTest {
 			this->label5->AutoSize = true;
 			this->label5->Location = System::Drawing::Point(152, 30);
 			this->label5->Name = L"label5";
-			this->label5->Size = System::Drawing::Size(169, 29);
+			this->label5->Size = System::Drawing::Size(133, 24);
 			this->label5->TabIndex = 18;
 			this->label5->Text = L"Workout Type:";
 			// 
@@ -198,18 +144,9 @@ namespace SqlTest {
 			this->label6->AutoSize = true;
 			this->label6->Location = System::Drawing::Point(148, 346);
 			this->label6->Name = L"label6";
-			this->label6->Size = System::Drawing::Size(173, 29);
+			this->label6->Size = System::Drawing::Size(137, 24);
 			this->label6->TabIndex = 22;
 			this->label6->Text = L"Machine Used:";
-			// 
-			// label7
-			// 
-			this->label7->AutoSize = true;
-			this->label7->Location = System::Drawing::Point(382, 346);
-			this->label7->Name = L"label7";
-			this->label7->Size = System::Drawing::Size(175, 29);
-			this->label7->TabIndex = 15;
-			this->label7->Text = L"Machine Name";
 			// 
 			// AllWorkouts
 			// 
@@ -223,12 +160,6 @@ namespace SqlTest {
 			this->Controls->Add(this->label3);
 			this->Controls->Add(this->label4);
 			this->Controls->Add(this->label5);
-			this->Controls->Add(this->label7);
-			this->Controls->Add(this->Duration);
-			this->Controls->Add(this->Sets);
-			this->Controls->Add(this->Reps);
-			this->Controls->Add(this->CB_Label);
-			this->Controls->Add(this->WT_Label);
 			this->Controls->Add(this->ID_ListBox);
 			this->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
@@ -239,5 +170,67 @@ namespace SqlTest {
 
 		}
 #pragma endregion
+
+		// Event handler for the SelectedIndexChanged event of the ID_ListBox
+	private: System::Void ID_ListBox_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e) {
+		// Ensure that SelectedItem is not null
+		if (ID_ListBox->SelectedItem != nullptr) {
+			// Get the selected workout ID from the list box
+			String^ selectedID = ID_ListBox->SelectedItem->ToString();
+
+			// Call the GetWorkoutAttribute function for the selected workout ID to retrieve its attributes
+			String^ workoutType = GetWorkoutAttribute(selectedID, "WorkoutType");
+			String^ caloriesBurned = GetWorkoutAttribute(selectedID, "CaloriesBurned");
+			String^ reps = GetWorkoutAttribute(selectedID, "Reps");
+			String^ sets = GetWorkoutAttribute(selectedID, "Sets");
+			String^ duration = GetWorkoutAttribute(selectedID, "Duration");
+			String^ machineUsed = GetWorkoutAttribute(selectedID, "MachineName");
+
+			// Display the attributes in the corresponding labels, handling null values
+			label5->Text = "Workout Type: " + (workoutType != nullptr ? workoutType : "NULL");
+			label4->Text = "Calories Burned: " + (caloriesBurned != nullptr ? caloriesBurned : "NULL");
+			label3->Text = "Reps: " + (reps != nullptr ? reps : "NULL");
+			label2->Text = "Sets: " + (sets != nullptr ? sets : "NULL");
+			label1->Text = "Duration: " + (duration != nullptr ? duration : "NULL");
+			label6->Text = "Machine Used: " + (machineUsed != nullptr ? machineUsed : "NULL");
+		}
+		else {
+			// Handle the case where SelectedItem is null (optional)
+		}
+	}
+
+		   // Function to call the SQL function GetWorkoutAttribute
+private: String^ GetWorkoutAttribute(String^ workoutID, String^ attribute) {
+	String^ result = "";
+
+	try {
+		// Create the connection string
+		Modules modules;
+		String^ connectionString = "Server=" + gcnew String(modules.serverName.c_str()) + ";Database=" + gcnew String(modules.dataBaseName.c_str()) + ";Integrated Security=True";
+
+		// Create SqlConnection object
+		SqlConnection^ connection = gcnew SqlConnection(connectionString);
+
+		// Open the connection
+		connection->Open();
+
+		// Create the SqlCommand object
+		SqlCommand^ cmd = gcnew SqlCommand("SELECT dbo.GetWorkoutAttribute(@WorkoutID, @Attribute)", connection);
+
+		// Add parameters to the command
+		cmd->Parameters->AddWithValue("@WorkoutID", workoutID);
+		cmd->Parameters->AddWithValue("@Attribute", attribute);
+
+		// Execute the command and retrieve the result
+		result = dynamic_cast<String^>(cmd->ExecuteScalar());
+	}
+	catch (Exception^ ex) {
+		// Handle any exceptions
+		MessageBox::Show(ex->Message, "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
+	}
+
+	return result;
+}
+
 	};
 }

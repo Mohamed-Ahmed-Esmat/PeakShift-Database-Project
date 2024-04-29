@@ -299,6 +299,8 @@ namespace SqlTest {
                 command->Parameters->AddWithValue("@Active", txtActive->Text);
                 command->Parameters->AddWithValue("@Frozen", txtFrozen->Text);
                 command->Parameters->AddWithValue("@ForzenLength", txtFreezeLength->Text);
+                command->Parameters->AddWithValue("@CoachID", CoachID);
+
 
 
 
@@ -308,11 +310,33 @@ namespace SqlTest {
 
                 SqlCommand^ createPlansCommand = gcnew SqlCommand("CreateExercisePlans", connection);
                 createPlansCommand->CommandType = CommandType::StoredProcedure;
-                createPlansCommand->Parameters->AddWithValue("@CoachID", CoachID); 
+                createPlansCommand->Parameters->AddWithValue("@CoachID", CoachID);
                 createPlansCommand->Parameters->AddWithValue("@UserID", txtUserID->Text);
-
                 createPlansCommand->ExecuteNonQuery();
-                MessageBox::Show("Exercise plans created successfully!");
+
+
+                for (int i = 0; i < 7; i++)
+                {
+                    for (int j = 0; j < 12; j++) {
+                        // Modify the values of parameters to avoid duplicates
+                        String^ I = i.ToString();
+                        String^ J = j.ToString();
+
+                        SqlCommand^ AggrigateWorkoutsCommand = gcnew SqlCommand("AddWorkoutsToExercisePlan", connection);
+                        AggrigateWorkoutsCommand->CommandType = CommandType::StoredProcedure;
+                        AggrigateWorkoutsCommand->Parameters->AddWithValue("@CoachID", CoachID);
+                        AggrigateWorkoutsCommand->Parameters->AddWithValue("@UserID", txtUserID->Text);
+                        AggrigateWorkoutsCommand->Parameters->AddWithValue("@WorkoutID", j + 1);  
+                        AggrigateWorkoutsCommand->Parameters->AddWithValue("@Day", i + 1);  
+
+                        AggrigateWorkoutsCommand->ExecuteNonQuery();
+                    }
+                }
+
+
+
+
+                MessageBox::Show("Exercise plans created and aggrefated successfully!");
             }
             catch (Exception^ ex)
             {
