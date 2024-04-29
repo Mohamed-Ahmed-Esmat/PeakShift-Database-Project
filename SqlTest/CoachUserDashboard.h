@@ -1,6 +1,6 @@
 #pragma once
 #include "HealthAssess.h"
-#include "Workouts.h"
+#include "EditWorkout.h"
 #include "ExercisePlan.h"
 #include "DailyMetric.h"
 #include "NutritionPlan.h"
@@ -301,7 +301,7 @@ namespace SqlTest {
                this->work_btn->Name = L"work_btn";
                this->work_btn->Size = System::Drawing::Size(185, 122);
                this->work_btn->TabIndex = 1;
-               this->work_btn->Text = L"Workouts";
+               this->work_btn->Text = L"Edit Workouts";
                this->work_btn->UseVisualStyleBackColor = false;
                this->work_btn->Click += gcnew System::EventHandler(this, &CoachUserDashboard::work_btn_Click);
                // 
@@ -356,13 +356,13 @@ namespace SqlTest {
         this->Show();
     }
     private: System::Void work_btn_Click(System::Object^ sender, System::EventArgs^ e) {
-        Workouts^ workouts = gcnew Workouts;
+        EditWorkout^ workouts = gcnew EditWorkout;
         this->Hide();
         workouts->ShowDialog();
         this->Show();
     }
     private: System::Void exercise_btn_Click(System::Object^ sender, System::EventArgs^ e) {
-        ExercisePlan^ exercisePlan = gcnew ExercisePlan;
+        ExercisePlan^ exercisePlan = gcnew ExercisePlan(UserID);
         this->Hide();
         exercisePlan->ShowDialog();
         this->Show();

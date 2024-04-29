@@ -8,6 +8,6 @@ using namespace std;
 class Modules
 {
 public:
-	string serverName = "DESKTOP-O086REE";
+	string serverName = "DESKTOP-COPSU05";
 	string dataBaseName = "PeakShift";
 };

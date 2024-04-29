@@ -1,7 +1,7 @@
 #pragma once
 #include "ExercisePlan.h"
 #include "NutritionPlan.h"
-#include "Workouts.h"
+
 #include "Payments.h"
 #include "DailyMetric.h"
 #include "HealthAssess.h"
@@ -361,10 +361,57 @@ private: System::Void DM_Button_Click(System::Object^ sender, System::EventArgs^
 
 
 private: System::Void EP_Button_Click(System::Object^ sender, System::EventArgs^ e) {
-	ExercisePlan^ exercisePlaneForm = gcnew ExercisePlan;
-	this->Hide();
-	exercisePlaneForm->ShowDialog();
-	this->Show();
+
+
+	Modules modules; // Create an instance of Modules to access its member variables
+	String^ connectionString = "Data Source=" + gcnew String(modules.serverName.c_str()) + ";Initial Catalog=" + gcnew String(modules.dataBaseName.c_str()) + ";Integrated Security=True";
+
+	// Create SQL connection
+	SqlConnection^ con = gcnew SqlConnection(connectionString);
+	con->Open();
+
+	try {
+		// SQL query to retrieve UserID based on Username
+		SqlCommand^ cmd = gcnew SqlCommand("SELECT dbo.GetUserAttributeByUsername(@Username, 'UserID') AS UserID", con);
+
+		cmd->Parameters->AddWithValue("@Username", Username);
+
+		// Execute SQL query
+		SqlDataReader^ reader = cmd->ExecuteReader();
+
+		// Check if data is retrieved
+		if (reader->Read()) {
+			// Retrieve UserID as string
+			String^ userID = reader["UserID"]->ToString();
+
+			// Close the reader
+			reader->Close();
+			con->Close();
+
+			// Open the ExcercisePlan form passing the UserID
+			ExercisePlan^ exercisePlaneForm = gcnew ExercisePlan(userID);
+			this->Hide();
+			exercisePlaneForm->ShowDialog();
+			this->Show();
+		}
+		else {
+			// If UserID not found, display an error message
+			MessageBox::Show("User ID not found for the provided username.", "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
+
+			// Close the reader and connection
+			reader->Close();
+			con->Close();
+		}
+	}
+	catch (Exception^ ex) {
+		// Handle any exceptions
+		MessageBox::Show("Error: " + ex->Message, "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
+		con->Close(); // Close connection in case of exception
+	}
+
+
+	
+	
 }
 private: System::Void NP_Button_Click(System::Object^ sender, System::EventArgs^ e) {
 	// Create the connection string using modular values
@@ -414,12 +461,7 @@ private: System::Void NP_Button_Click(System::Object^ sender, System::EventArgs^
 		con->Close(); // Close connection in case of exception
 	}
 }
-private: System::Void W_button_Click(System::Object^ sender, System::EventArgs^ e) {
-	Workouts^ allworkoutsForm = gcnew Workouts;
-	this->Hide();
-	allworkoutsForm->ShowDialog();
-	this->Show();
-}
+
 private: System::Void P_Button_Click(System::Object^ sender, System::EventArgs^ e) {
 	// Create the connection string using modular values
 	Modules modules; // Create an instance of Modules to access its member variables
